@@ -38,4 +38,4 @@ CREATE TABLE bank_board (
 
 drop table bank_member;
 SELECT * FROM bank_member;
-INSERT INTO bank_member(name, ssn, id, pw, email, phone) VALUES ('¿Ã»´¿Á', '0104171234567', 'saihong', '12345', 'ghdwo901088@gmail.com', '01030598507');
+INSERT INTO bank_member(name, ssn, id, pw, email, phone) VALUES ('Ïù¥ÌôçÏû¨', '0104171234567', 'saihong', '12345', 'ghdwo901088@gmail.com', '01030598507');
