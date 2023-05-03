@@ -1,4 +1,4 @@
-package sample.oracle;
+package bank.orcle;
 import java.beans.Statement;
 import java.sql.Connection;
 import java.sql.DriverManager;
