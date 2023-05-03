@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@page import="bank.dao.MemberDAO"%>
 <%@page import="bank.dto.MemberDTO"%>
+<%@page import="bank.oracle.PWManager"%>
 <%@page import="java.util.*"%>
 <!DOCTYPE html>
 <html>
@@ -16,8 +17,8 @@
 		String name = request.getParameter("name");
 		String ssn = request.getParameter("ssn1") + request.getParameter("ssn2");
 		String id = request.getParameter("id");
-		String pw = request.getParameter("pw");
-		String email = request.getParameter("email");
+		String pw = PWManager.encryption(request.getParameter("pw"));
+		String email = request.getParameter("email") + "@" + request.getParameter("emailAddr");
 		String phone = request.getParameter("phone");
 		
 		MemberDAO memberDao = new MemberDAO();
@@ -30,23 +31,31 @@
 		memberDto.setEmail(email);
 		memberDto.setPhone(phone);
 		
+		boolean isSignedUp = memberDao.isSignedUpBefore(name, ssn);
+	
+		if (!isSignedUp) {
 		int result = memberDao.insertPersonInfo(memberDto);
-		
-		if (result == 1) {
-			// 추가 성공
-	%>
-	<script>
-	alert("회원가입을 축하합니다!");
-	</script>
-	<%
-		} else {
-	%>
-	<!-- 수정 실패-->
-	<script>
-	alert("회원가입에 실패하였습니다..");
-	</script>
-	<%
-		}
-	%>
+			if (result == 1) {
+			%>
+				<script>
+					alert("회원가입을 축하합니다!");
+					// 회원가입하고 메인이나 로그인 페이지로 연결
+				</script>
+			<%
+			} else {
+			%>
+				<script>
+					alert("회원가입에 실패하였습니다..");
+					// 메인이나 가입 페이지로 재연결
+				</script>
+			<% 
+			}
+			%>
+			<% } else { %>
+				<script>
+					alert("기존에 가입했던 내역이 존재합니다!");
+					// 메인이나 로그인 페이지로 연결
+				</script>
+			<% } %>
 </body>
 </html>

@@ -1,5 +1,4 @@
 package bank.dto;
-
 public class MemberDTO {
 	String name;
 	String ssn;

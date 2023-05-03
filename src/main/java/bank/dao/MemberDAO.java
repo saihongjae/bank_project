@@ -9,6 +9,34 @@ import bank.dto.MemberDTO;
 import bank.oracle.DBConnectionManager;
 
 public class MemberDAO {
+		// select (멤버가 존재하는지 안하는지)
+		public boolean isSignedUpBefore(String name, String ssn) {
+			Connection conn = null;
+			PreparedStatement psmt = null;
+			ResultSet rs = null;
+			boolean isSignedUp = false;
+			
+			try {
+				conn = DBConnectionManager.getConnection();
+				String sql = "SELECT * FROM bank_member"
+					+ " WHERE name = ? AND ssn = ?";
+				
+				psmt = conn.prepareStatement(sql);
+				psmt.setString(1, name);
+				psmt.setString(2, ssn);
+				
+				rs = psmt.executeQuery(); //쿼리를 실행!!
+				isSignedUp = rs.next();
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+				DBConnectionManager.close(rs, psmt, conn);			
+			}
+			return isSignedUp;
+		}
+	
 		// insert
 		public int insertPersonInfo(MemberDTO accountInfo) {
 
@@ -19,9 +47,8 @@ public class MemberDAO {
 			
 			try {
 				conn = DBConnectionManager.getConnection();
-				System.out.println("시작!!");
 
-//				// 쿼리문!
+				// 쿼리문!
 				String sql = "INSERT INTO bank_member(name, ssn, id, pw, email, phone)"
 							+" values(?, ?, ?, ?, ?, ?)";
 
