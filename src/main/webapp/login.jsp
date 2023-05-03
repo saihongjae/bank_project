@@ -30,7 +30,7 @@
 			</tr>
 			<tr>
 				<td>비밀번호</td>
-				<td><input type="password" name="pass"></td>
+				<td><input type="password" name="pw"></td>
 			</tr>
 			<tr><td colspan="2" align="center"><input type="submit" value="로그인하기"></td></tr>
 		</table>
