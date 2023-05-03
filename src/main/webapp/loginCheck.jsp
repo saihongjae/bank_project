@@ -7,7 +7,7 @@
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.SQLException"%>
 <%@page import="java.util.*"%>
-<%@page import="bank.orcle.DBConnectionManager"%>
+<%@page import="bank.oracle.DBConnectionManager"%>
 
 <!DOCTYPE html>
 <html>
@@ -27,6 +27,7 @@
 	String sql = "select * from bank_member";
 	PreparedStatement pstmt = con.prepareStatement(sql);
 	ResultSet rs = pstmt.executeQuery();
+	
 	if (rs.next()) {
 		if(id.equals(rs.getString("id"))){
 			System.out.println("아이디 있음");
@@ -37,12 +38,12 @@
 		} else {
 			System.out.println("비밀번호 틀림");
 			%>
-			<script>alert("비밀번호 틀림");
-			history.back();
-			</script>	
+	<script>
+		alert("비밀번호 틀림");
+		history.back();
+	</script>
 	<% 	}
 	
-
 	} else {
 	System.out.println("아이디 없음");
 	%>
@@ -52,7 +53,7 @@
 	</script>
 	<%
 	}
-	}
+}
 	%>
 
 </body>
