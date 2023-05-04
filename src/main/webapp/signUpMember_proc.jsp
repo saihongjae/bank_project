@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@page import="bank.dao.MemberDAO"%>
@@ -42,14 +43,15 @@
 			%>
 				<script>
 					alert("회원가입을 축하합니다!");
-					// 회원가입하고 메인이나 로그인 페이지로 연결
+					location.href='./login.jsp';// 회원가입하고 메인이나 로그인 페이지로 연결
 				</script>
 			<%
 			} else {
 			%>
 				<script>
 					alert("회원가입에 실패하였습니다..");
-					// 메인이나 가입 페이지로 재연결
+					history.back(); // 메인이나 가입 페이지로 재연결
+					
 				</script>
 			<% 
 			}
@@ -57,7 +59,7 @@
 			<% } else { %>
 				<script>
 					alert("기존에 가입했던 내역이 존재합니다!");
-					// 메인이나 로그인 페이지로 연결
+					history.back(); // 메인이나 로그인 페이지로 연결
 				</script>
 			<% } %>
 </body>

@@ -17,6 +17,7 @@
 </head>
 <body>
 	<%
+	request.setCharacterEncoding("UTF-8");
 	String id = request.getParameter("id");
 	String pass = request.getParameter("pw");
 	Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -24,36 +25,33 @@
 	String db_id = "scott";
 	String db_pw = "tiger";
 	Connection con = DriverManager.getConnection(db_url, db_id, db_pw);
-	String sql = "select * from bank_member";
-	PreparedStatement pstmt = con.prepareStatement(sql);
-	ResultSet rs = pstmt.executeQuery();
-	
+	String sql = "select * from bank_member" + " WHERE id = ? and pw = ?";
+
+	PreparedStatement psmt = null;
+	ResultSet rs = null;
+
+	psmt = con.prepareStatement(sql);
+	psmt.setString(1, id);
+	psmt.setString(2, pass);
+
+	rs = psmt.executeQuery();
+
 	if (rs.next()) {
-		if(id.equals(rs.getString("id"))){
-			System.out.println("아이디 있음");
-		if (pass.equals(rs.getString("pw"))) {
-			System.out.println("비밀번호 맞음");
-			session.setAttribute("id", id);
-			response.sendRedirect("main.jsp");
-		} else {
-			System.out.println("비밀번호 틀림");
-			%>
-	<script>
-		alert("비밀번호 틀림");
-		history.back();
-	</script>
-	<% 	}
-	
-	} else {
-	System.out.println("아이디 없음");
+		session.setAttribute("id", id); // id를 세션값으로 설정
 	%>
-	<script type="text/javascript">
-		alert("아이디 없음");
+	<script>
+		alert("<%=id%> 님 환영합니다 :) ")
+		location.href = './main.jsp';
+	</script>
+	<%
+	} else {
+	%>
+	<script>
+		alert("로그인 실패");
 		history.back();
 	</script>
 	<%
 	}
-}
 	%>
 
 </body>
