@@ -13,12 +13,15 @@
 <body>
 	<%
 		request.setCharacterEncoding("UTF-8"); // 한글 정상 인식을 위해
-
+		
 		String name = request.getParameter("name");
 		String ssn = request.getParameter("ssn1") + request.getParameter("ssn2");
 		String id = request.getParameter("id");
-		String pw = PWManager.encryption(request.getParameter("pw"));
-		String email = request.getParameter("email") + "@" + request.getParameter("emailAddr");
+		//String pw = PWManager.encryption(request.getParameter("pw"));
+		String pw = request.getParameter("pw");
+		
+		String emailAddr = request.getParameter("emailAddrs").length() == 0 ? request.getParameter("emailAddr") : request.getParameter("emailAddrs"); 
+		String email = request.getParameter("email") + "@" + emailAddr;
 		String phone = request.getParameter("phone");
 		
 		MemberDAO memberDao = new MemberDAO();

@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%@ include file="navBar.jsp"%>
 	메인페이지
 </body>
 </html>

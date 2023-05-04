@@ -11,7 +11,7 @@ function noSpaceForm(obj) { // 공백사용못하게
 }
 		
 form.addEventListener('submit', (e)=>{
-	if (form.name.value.trim() === "") return false;
+	if (form.name.value.trim() == "") return false;
 	if (form.pw.value !== form.pw2.value) return false;
 })
 
@@ -35,7 +35,7 @@ document.querySelector("#cancelBtn").addEventListener('click', ()=>{
 	// location.href="";
 });
 		
-document.querySelector(".addrsSelect").addEventListener('change', (e)=>{
+form.emailAddrs.addEventListener('change', (e)=>{
 	if (e.target.value === "") {
 		form.emailAddr.value = "";
 		form.emailAddr.removeAttribute("disabled");
