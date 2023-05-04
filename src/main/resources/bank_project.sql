@@ -75,5 +75,4 @@ VALUES ('saihong', '제목', '내용');
 --   loan_cost NUMBER(20) NOT NULL
 --);
 --------------------------------
-select * from bank_manager
-WHERE m_id = 'king_saihong' and m_pw = '12345';
+select * from bank_manager;

@@ -45,11 +45,11 @@ public class bank_Dao {
 		return bank_Dto;
 	}
 	
-	public boolean BankManagerLoginCheck(String m_id, String m_pw) {
+	public int BankManagerLoginCheck(String m_id, String m_pw) {
 		Connection conn = null;
 		PreparedStatement psmt = null;
 		ResultSet rs = null;
-		bank_Dto bank_Dto = null;
+		int rs_next_val = 0;
 		//select 한개 단일
 		try {
 			conn = DBConnectionManager.getConnection();
@@ -65,7 +65,9 @@ public class bank_Dao {
 			rs = psmt.executeQuery(); //쿼리를 실행!!
 
 			if(rs.next()) {
-				return true;
+				rs_next_val =  1;
+			} else {
+				rs_next_val =  2;
 			}
 			// DB에 쿼리문 실행
 			// 쿼리 결과를 반환 -> 활용
@@ -75,7 +77,7 @@ public class bank_Dao {
 		} finally {
 			DBConnectionManager.close(rs, psmt, conn);			
 		}
-		return false;
 		
+		return rs_next_val;
 	}
 }

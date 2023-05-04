@@ -28,35 +28,14 @@
 
 <body>
 	<div id="container">
-		<form name="frmLogin" method="post" action="login_tap.jsp"
+		<form name="frmLogin" method="post" action="login_check.jsp"
 		encType="UTF-8">
-		아이디 :<input type="text" name="id"><br> 비밀번호 :<input
-			type="password" name="pw"><br> <input id="submit"
+		아이디 :<input id="m_id" type="text" name="id"><br> 비밀번호 :<input
+		id="m_pw" type="password" name="pw"><br> <input id="submit"
 			type="submit" value="로그인"> <input type="reset" value="다시입력">
 	</form>
 	</div>
 
-	<script>
-document.querySelector("#submit").addEventListener('click', function () {
-<%
-bank_Dao dao = new bank_Dao();
-bank_Dto dto = new bank_Dto();
-
-dto.setAdmin_id(request.getParameter("id"));
-dto.setAdmin_pw(request.getParameter("pw"));
-
-boolean LoginCheckValue = dao.BankManagerLoginCheck(dto.getAdmin_id(), dto.getAdmin_pw());
-
-if (LoginCheckValue) {
-	response.sendRedirect("admin_tap.jsp");
-	return;
-} else {
-	out.print("로그인 실패");
-}
-%>
-
-});
-</script>
 </body>
 
 </html>
