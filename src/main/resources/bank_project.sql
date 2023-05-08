@@ -10,7 +10,7 @@ CREATE TABLE bank_member (
 );
 
 drop table bank_member;
-SELECT * FROM bank_member;
+SELECT * FROM bank_member WHERE id = 'saihong' and pw = '12345';
 
 INSERT INTO bank_member(name, ssn, id, pw, email, phone)
 VALUES ('이홍재', '0104171234567', 'saihong', '12345', 'ghdwo901088@gmail.com', '01030598507');
@@ -54,7 +54,7 @@ drop table bank_manager;
 SELECT * FROM bank_manager;
 
 INSERT INTO bank_manager
-VALUES ('이홍재(개발자)', 'king_saihong', '1234');
+VALUES ('이홍재', 'king_saihong', '1234');
 ----------------------------------------------
 CREATE TABLE bank_board (
     id VARCHAR2(20) PRIMARY KEY,
@@ -75,3 +75,4 @@ VALUES ('saihong', '제목', '내용');
 --   loan_cost NUMBER(20) NOT NULL
 --);
 --------------------------------
+select * from bank_manager;
