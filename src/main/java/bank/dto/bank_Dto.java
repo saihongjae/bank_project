@@ -1,4 +1,4 @@
-package bank_project_java;
+package bank.dto;
 
 public class bank_Dto {
 	String admin_id;

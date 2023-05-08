@@ -1,4 +1,4 @@
-package bank_project_java;
+package bank.oracle;
 
 import java.io.IOException;
 

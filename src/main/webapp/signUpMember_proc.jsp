@@ -43,7 +43,7 @@
 			%>
 				<script>
 					alert("회원가입을 축하합니다!");
-					location.href='./login.jsp';// 회원가입하고 메인이나 로그인 페이지로 연결
+					location.href='./main_login.jsp';// 회원가입하고 메인이나 로그인 페이지로 연결
 				</script>
 			<%
 			} else {

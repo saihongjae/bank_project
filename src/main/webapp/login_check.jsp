@@ -1,10 +1,11 @@
+<%@page import="bank.dto.bank_Dto"%>
+<%@page import="bank.dao.bank_Dao"%>
 <%@page import="org.apache.catalina.connector.Response"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.Connection"%>
-<%@page import="bank_project_java.bank_Dto"%>
-<%@page import="bank_project_java.bank_Dao"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
