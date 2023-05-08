@@ -10,7 +10,7 @@ CREATE TABLE bank_member (
 );
 
 drop table bank_member;
-SELECT * FROM bank_member;
+SELECT * FROM bank_member WHERE id = 'saihong' and pw = '12345';
 
 INSERT INTO bank_member(name, ssn, id, pw, email, phone)
 VALUES ('이홍재', '0104171234567', 'saihong', '12345', 'ghdwo901088@gmail.com', '01030598507');
