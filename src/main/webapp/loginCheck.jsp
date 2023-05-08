@@ -8,6 +8,8 @@
 <%@page import="java.sql.SQLException"%>
 <%@page import="java.util.*"%>
 <%@page import="bank.oracle.DBConnectionManager"%>
+<%@page import="bank.oracle.PWManager"%>
+<%@page import="bank.dao.MemberDAO"%>
 
 <!DOCTYPE html>
 <html>
@@ -20,23 +22,11 @@
 	request.setCharacterEncoding("UTF-8");
 	String id = request.getParameter("id");
 	String pass = request.getParameter("pw");
-	Class.forName("oracle.jdbc.driver.OracleDriver");
-	String db_url = "jdbc:oracle:thin:@localhost:1521:orcl";
-	String db_id = "scott";
-	String db_pw = "tiger";
-	Connection con = DriverManager.getConnection(db_url, db_id, db_pw);
-	String sql = "select * from bank_member" + " WHERE id = ? and pw = ?";
-
-	PreparedStatement psmt = null;
-	ResultSet rs = null;
-
-	psmt = con.prepareStatement(sql);
-	psmt.setString(1, id);
-	psmt.setString(2, pass);
-
-	rs = psmt.executeQuery();
-
-	if (rs.next()) {
+	
+	MemberDAO memberDao = new MemberDAO();
+	boolean isLoggedIn = memberDao.loginMember(id, PWManager.encryption(pass));
+	
+	if (isLoggedIn) {
 		session.setAttribute("id", id); // id를 세션값으로 설정
 	%>
 	<script>

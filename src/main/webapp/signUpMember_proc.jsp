@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@page import="bank.dao.MemberDAO"%>
@@ -18,8 +17,8 @@
 		String name = request.getParameter("name");
 		String ssn = request.getParameter("ssn1") + request.getParameter("ssn2");
 		String id = request.getParameter("id");
-		//String pw = PWManager.encryption(request.getParameter("pw"));
-		String pw = request.getParameter("pw");
+		String pw = PWManager.encryption(request.getParameter("pw"));
+		//String pw2 = request.getParameter("pw");
 		
 		String emailAddr = request.getParameter("emailAddrs").length() == 0 ? request.getParameter("emailAddr") : request.getParameter("emailAddrs"); 
 		String email = request.getParameter("email") + "@" + emailAddr;
