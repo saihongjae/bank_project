@@ -10,7 +10,7 @@ CREATE TABLE bank_member (
 );
 
 drop table bank_member;
-SELECT * FROM bank_member WHERE id = 'saihong' and pw = '12345';
+SELECT * FROM bank_member;
 
 INSERT INTO bank_member(name, ssn, id, pw, email, phone)
 VALUES ('이홍재', '0104171234567', 'saihong', '12345', 'ghdwo901088@gmail.com', '01030598507');
@@ -41,8 +41,16 @@ CREATE TABLE bank_account (
 
 drop table bank_account;
 SELECT * FROM bank_account;
+
+SELECT * FROM bank_member
+WHERE name = '이홍재' and ssn = '0104171234567';
+
+                    
 INSERT INTO bank_account(ssn, account_num, pw, balance, account_type) 
-VALUES ('0104171234567', '3021234567881', '1234', 100000, 1);
+VALUES ('0104171234567','4084170000001', '1234', 5000000, 1);
+
+INSERT INTO bank_account(ssn, account_num, pw, balance, account_type) 
+VALUES ('0104171234567', (SELECT MAX(account_num)+1 FROM bank_account), '1234', 0, 1);
 ----------------------------------------------------------------
 CREATE TABLE bank_manager (
     m_name VARCHAR(10) NOT NULL,
