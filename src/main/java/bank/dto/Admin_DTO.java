@@ -1,6 +1,6 @@
 package bank.dto;
 
-public class bank_Dto {
+public class Admin_DTO {
 	String admin_id;
 	String admin_pw;
 	

@@ -10,7 +10,7 @@ CREATE TABLE bank_member (
 );
 
 drop table bank_member;
-SELECT * FROM bank_member WHERE id = 'saihong' and pw = '12345';
+SELECT * FROM bank_member;
 
 INSERT INTO bank_member(name, ssn, id, pw, email, phone)
 VALUES ('이홍재', '0104171234567', 'saihong', '12345', 'ghdwo901088@gmail.com', '01030598507');
@@ -24,11 +24,13 @@ drop table bank_account_type;
 SELECT * FROM bank_account_type;
 
 INSERT INTO bank_account_type 
-VALUES (1,'대출');
+VALUES (1,'기본');
 INSERT INTO bank_account_type
 VALUES (2,'예금');
 INSERT INTO bank_account_type 
 VALUES (3,'적금');
+INSERT INTO bank_account_type 
+VALUES (4,'대출');
 -----------------------------------------------------------------
 CREATE TABLE bank_account (
     ssn VARCHAR2(13) NOT NULL,
@@ -41,8 +43,19 @@ CREATE TABLE bank_account (
 
 drop table bank_account;
 SELECT * FROM bank_account;
+
+INSERT INTO bank_account(ssn, account_num, pw, balance, account_type)
+VALUES (?, (SELECT TO_CHAR(MAX(TO_NUMBER(account_num))+1) FROM bank_account), ?, 0, 1);
+
+SELECT TO_CHAR(MAX(account_num)+1) FROM bank_account;
+
+SELECT MAX(account_num)+1 FROM bank_account;
+                    
 INSERT INTO bank_account(ssn, account_num, pw, balance, account_type) 
-VALUES ('0104171234567', '3021234567881', '1234', 100000, 1);
+VALUES ('0104171234567','4084170000001', '1234', 5000000, 1);
+
+INSERT INTO bank_account(ssn, account_num, pw, balance, account_type) 
+VALUES ('0104171234567', (SELECT MAX(account_num)+1 FROM bank_account), '1234', 0, 1);
 ----------------------------------------------------------------
 CREATE TABLE bank_manager (
     m_name VARCHAR(10) NOT NULL,
@@ -75,4 +88,54 @@ VALUES ('saihong', '제목', '내용');
 --   loan_cost NUMBER(20) NOT NULL
 --);
 --------------------------------
-select * from bank_manager;
+--상품명 p_name
+--상품코드 p_code
+--기간 p_term (12, 24, 36)
+--이율 p_rate
+
+CREATE TABLE product_list (
+    p_name VARCHAR2(50) PRIMARY KEY, 
+    p_code NUMBER(3) NOT NULL,
+    p_term NUMBER(2) NOT NULL,
+    p_rate NUMBER(2, 2) NOT NULL
+);
+
+
+
+-- 상품코드 code -- 예금인지 적금인지 + 대출 / 예적대
+-- 고객주민번호 ssn -- 이걸 누가 가지고 있는지 (외부키?)
+-- 계좌번호 accNum
+-- 해지유무 isClosed
+-- 시작일 startDate
+-- 만기일 endDate (시작일 + 상품 기간)
+-- 잔액(한도) balance
+-- 만기금액 expiration
+-- 월적금액 monthly
+
+-- 일반통장 예금
+CREATE TABLE customer_account_dn (
+    c_code NUMBER(3) NOT NULL,
+    c_accNum VARCHAR2(13) NOT NULL,
+    c_pw VARCHAR2(4) NOT NULL,
+    c_ssn VARCHAR2(13) NOT NULL,
+    c_isClosed boolean DEFAULT false NOT NULL,
+    c_startDate VARCHAR2(20) DEFAULT TO_CHAR(sysdate, 'YYYY/MM/DD HH24:MI:SS') NOT NULL,
+    c_endDate VARCHAR2(20),
+    c_balance NUMBER(20) NOT NULL,
+    c_expiration NUMBER(20) NOT NULL,
+    c_monthly NUMBER(20) 
+);
+
+-- 적금 대출
+CREATE TABLE customer_account_sl (
+    c_code NUMBER(3) NOT NULL,
+    c_accNum VARCHAR2(13) NOT NULL,
+    c_ssn VARCHAR2(13) NOT NULL,
+    c_isClosed boolean DEFAULT false NOT NULL,
+    c_startDate VARCHAR2(20) DEFAULT TO_CHAR(sysdate, 'YYYY/MM/DD HH24:MI:SS') NOT NULL,
+    c_endDate VARCHAR2(20),
+    c_balance NUMBER(20) NOT NULL,
+    c_expiration NUMBER(20) NOT NULL,
+    c_monthly NUMBER(20) 
+);
+

@@ -31,7 +31,6 @@
 	%>
 	<script>
 		alert("<%=id%> 님 환영합니다 :) ")
-		location.href = './main.jsp';
 	</script>
 	<%
 	} else {
