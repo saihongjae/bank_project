@@ -25,6 +25,7 @@
 		%>
 		<script>
 		alert('계좌 개설을 성공하였습니다.');
+		location.href= 'main.jsp';
 		</script>
 	<%
 	} else {
