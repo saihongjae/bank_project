@@ -62,7 +62,7 @@ public class AccOpen_DAO {
 
 			// 쿼리문!
 			String sql = "INSERT INTO bank_account(ssn, account_num, pw, balance, account_type) "
-					+"VALUES (?, (SELECT MAX(account_num)+1 FROM bank_account), ?, 0, 1);";
+					+" VALUES (?, (SELECT TO_CHAR(MAX(TO_NUMBER(account_num))+1) FROM bank_account), ?, 0, 1)";
 
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, ssn);
