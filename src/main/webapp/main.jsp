@@ -13,7 +13,7 @@
 	<ul class="mainMenu">
 		<li>상품소개
 			<ul class="innerMenu">
-				<li><a href="account_opening.jsp">비대면 계좌 개설</a></li>
+				<li><a href="account_opening.jsp">입출금 계좌</a></li>
 				<li><a href="accountProduceList.jsp">예적금</a></li>
 				<li>대출</li>
 			</ul>

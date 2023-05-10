@@ -51,7 +51,7 @@ public class AccOpen_DAO {
 		return value;
 	}
 	
-	public void AccountOpening(String ssn, String pw) {
+	public void DepWithAccOpening(String ssn, String pw) {
 		Connection conn = null;
 		PreparedStatement psmt = null;
 		ResultSet rs = null;
@@ -61,9 +61,9 @@ public class AccOpen_DAO {
 			conn = DBConnectionManager.getConnection();
 
 			// 쿼리문!
-			String sql = "INSERT INTO bank_account(ssn, account_num, pw, balance, account_type) "
-					+" VALUES (?, (SELECT TO_CHAR(MAX(TO_NUMBER(account_num))+1) FROM bank_account), ?, 0, 1)";
-
+			String sql = "INSERT INTO customer_account_dn( dn_code, dn_ssn, dn_accNum, dn_pw) "
+					+"VALUES(1, ?, (SELECT MAX(dn_accNum)+1 FROM customer_account_dn), ?)";
+				
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, ssn);
 			psmt.setString(2, pw);

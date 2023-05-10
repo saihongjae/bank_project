@@ -114,23 +114,33 @@ CREATE TABLE product_list (
 
 -- 일반통장 예금
 CREATE TABLE customer_account_dn (
-    dn_code NUMBER(3) NOT NULL,
-    dn_accNum VARCHAR2(13) NOT NULL,
-    dn_pw VARCHAR2(4) NOT NULL,
-    dn_ssn VARCHAR2(13) NOT NULL,
-    dn_isClosed NUMBER(1) DEFAULT 0 NOT NULL,
+    dn_code NUMBER(3),
+    dn_ssn VARCHAR2(13),
+    dn_accNum VARCHAR2(13) PRIMARY KEY,
+    dn_pw VARCHAR2(4),
+    dn_balance NUMBER(20) DEFAULT 0,
     dn_startDate VARCHAR2(20) DEFAULT TO_CHAR(sysdate, 'YYYY/MM/DD HH24:MI:SS') NOT NULL,
     dn_endDate VARCHAR2(20),
-    dn_balance NUMBER(20) NOT NULL,
-    dn_expiration NUMBER(20),
-    dn_monthly NUMBER(20) 
+    dn_isClosed NUMBER(1),
+    dn_open_situation NUMBER(1) DEFAULT 0
 );
 
 drop table customer_account_dn;
 
-INSERT INTO bank_board( dn_code, dn_accNum, dn_pw, dn_ssn, dn_endDate, dn_balance, dn_expiration, dn_monthly)
-VALUES(1, (SELECT MAX(account_num)+1 FROM bank_account), '1234', '0104171234567', );
+SELECT * FROM customer_account_dn;
 
+INSERT INTO customer_account_dn(dn_accNum)
+VALUES('4084170000001');
+
+--TO_CHAR(ADD_MONTHS(TO_CHAR(sysdate, 'YYYY-MM-DD'), 12), 'YYYY-MM-DD')
+INSERT INTO customer_account_dn( dn_code, dn_ssn, dn_accNum, dn_pw)
+VALUES(1, '0104171234567', '4084170000001', '1123');
+
+INSERT INTO customer_account_dn( dn_code, dn_ssn, dn_accNum, dn_pw)
+VALUES(1, '0104171234567', (SELECT TO_CHAR(MAX(TO_NUMBER(dn_accNum))+1) FROM customer_account_dn), '1123');
+COMMIT;
+                    SELECT TO_CHAR(MAX(TO_NUMBER(dn_accNum))+1) FROM customer_account_dn;
+                    
 SELECT * FROM customer_account_dn;
 -- 적금 대출
 CREATE TABLE customer_account_sl (
@@ -139,8 +149,8 @@ CREATE TABLE customer_account_sl (
     sl_ssn VARCHAR2(13) NOT NULL,
     sl_isClosed NUMBER(1) DEFAULT 0 NOT NULL,
     sl_startDate VARCHAR2(20) DEFAULT TO_CHAR(sysdate, 'YYYY/MM/DD HH24:MI:SS') NOT NULL,
-    sl_endDate VARCHAR2(20),
-    sl_balance NUMBER(20) NOT NULL,
+    sl_endDate VARCHAR2(20) DEFAULT NULL,
+    sl_balance NUMBER(20) DEFAULT NULL,
     sl_expiration NUMBER(20) NOT NULL,
     sl_monthly NUMBER(20) 
 );
