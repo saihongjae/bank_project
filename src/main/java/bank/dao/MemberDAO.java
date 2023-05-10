@@ -7,8 +7,39 @@ import java.sql.SQLException;
 
 import bank.dto.MemberDTO;
 import bank.oracle.DBConnectionManager;
+import bank.oracle.PWManager;
 
 public class MemberDAO {
+		//login 
+		public boolean loginMember(String id, String pw) {
+			Connection conn = null;
+			PreparedStatement psmt = null;
+			ResultSet rs = null;
+			boolean isLoggedIn = false;
+			
+			try {
+				conn = DBConnectionManager.getConnection();
+				String sql = "SELECT * FROM bank_member"
+					+ " WHERE id = ? AND pw = ?";
+				
+				psmt = conn.prepareStatement(sql);
+				psmt.setString(1, id);
+				psmt.setString(2, pw);
+				
+				rs = psmt.executeQuery(); //쿼리를 실행!!
+				isLoggedIn = rs.next();
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+				DBConnectionManager.close(rs, psmt, conn);			
+			}
+			
+			return isLoggedIn;
+			
+		}
+	
 		// select (멤버가 존재하는지 안하는지)
 		public boolean isSignedUpBefore(String name, String ssn) {
 			Connection conn = null;
