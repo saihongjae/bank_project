@@ -1,3 +1,6 @@
+<%@page import="bank.dto.AccOpenManagementDTO"%>
+<%@page import="java.util.List"%>
+<%@page import="bank.dao.AccOpenManagementDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -24,34 +27,41 @@
 </style>
 </head>
 <body>
-	<div class="nav">
-
-    </div>
-    <div class="selectionBar">
-		
-    </div>
-    <%
-		int id = Integer.parseInt(request.getParameter("id"));
-		PersonDao personDao = new PersonDao();
-		PersonDto personDto = personDao.selectPersonInfoById(id);
-	%>
-	<h1>사용자 상세정보</h1>
 	
-	<form name='personDetailForm' action='' method="post">
-		<div class="mb-3">
-		  <label for="formGroupExampleInput" class="form-label">ID</label>
-		  <input type="hidden" class="form-control" id="formGroupExampleInput"
-		  		name="id" placeholder="Example input placeholder" value="<%=personDto.getId()%>">
-		</div>
-		<div class="mb-3">
-		  <label for="formGroupExampleInput2" class="form-label">Name</label>
-		  <input type="text" class="form-control" id="inputName"
-		  		name="name" placeholder="Another input placeholder" value="<%=personDto.getName()%>">
-		</div>
-		
-		<button id="updateBtn" type="button" class="btn btn-warning">수정</button>
-		<button id="deleteBtn" type="button" class="btn btn-danger">삭제</button>
-	</form>
+<table class="table">
+		<thead>
+			<tr>
+				<th>이름</th>
+				<th>계좌번호</th>
+				<th>통장 타입</th>
+				<th>요청시간</th>
+			</tr>
+		</thead>
+		<tbody>
+	<%
+   AccOpenManagementDAO amoDAO = new AccOpenManagementDAO();
+   List<AccOpenManagementDTO> amoList = amoDAO.OpeningRequestInfoList();
+
+		for(AccOpenManagementDTO item : amoList){
+	%>
+			<tr>
+				<form action="admin_tap_request_approved.jsp" method="post">
+					<td><%=item.getName()%></td>
+					<td><input type="text"  name="accnum"   value="<%=item.getAccnum()%>" readonly></td>
+					<td><%=item.getAccType()%></td>
+					<td><input type="text"  name="requestDate"  value="<%=item.getRequestDate()%>" readonly></td>
+					<td><button type="submit">승인</button></td>
+				</form>
+			</tr>
+	<%
+		}
+	%>
+		</tbody>	
+	</table>
+
+   
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+
     
 </body>
 </html>

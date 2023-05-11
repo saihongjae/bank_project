@@ -24,7 +24,7 @@ drop table bank_account_type;
 SELECT * FROM bank_account_type;
 
 INSERT INTO bank_account_type 
-VALUES (1,'기본');
+VALUES (1,'입출금');
 INSERT INTO bank_account_type
 VALUES (2,'예금');
 INSERT INTO bank_account_type 
@@ -119,13 +119,14 @@ CREATE TABLE customer_account_dn (
     dn_accNum VARCHAR2(13) PRIMARY KEY,
     dn_pw VARCHAR2(4),
     dn_balance NUMBER(20) DEFAULT 0,
-    dn_startDate VARCHAR2(20) DEFAULT TO_CHAR(sysdate, 'YYYY/MM/DD HH24:MI:SS') NOT NULL,
+    dn_requestDate VARCHAR2(20) DEFAULT TO_CHAR(sysdate, 'YYYY/MM/DD HH24:MI:SS') NOT NULL,
+    dn_startDate VARCHAR2(20),
     dn_endDate VARCHAR2(20),
-    dn_isClosed NUMBER(1),
+    dn_isClosed NUMBER(1) DEFAULT 0,
     dn_open_situation NUMBER(1) DEFAULT 0
 );
 
-drop table customer_account_dn;
+drop table customer_account_dn ;
 
 SELECT * FROM customer_account_dn;
 
@@ -134,14 +135,41 @@ VALUES('4084170000001');
 
 --TO_CHAR(ADD_MONTHS(TO_CHAR(sysdate, 'YYYY-MM-DD'), 12), 'YYYY-MM-DD')
 INSERT INTO customer_account_dn( dn_code, dn_ssn, dn_accNum, dn_pw)
-VALUES(1, '0104171234567', '4084170000001', '1123');
+VALUES(1, '0104171234567', '4084170000003', '1223');
 
-INSERT INTO customer_account_dn( dn_code, dn_ssn, dn_accNum, dn_pw)
-VALUES(1, '0104171234567', (SELECT TO_CHAR(MAX(TO_NUMBER(dn_accNum))+1) FROM customer_account_dn), '1123');
+INSERT INTO customer_account_dn( dn_code, dn_ssn, dn_accNum, dn_pw, dn_open_situation)
+VALUES(1, '0104171234567', (SELECT TO_CHAR(MAX(TO_NUMBER(dn_accNum))+1) FROM customer_account_dn), '1123', 0);
 COMMIT;
-                    SELECT TO_CHAR(MAX(TO_NUMBER(dn_accNum))+1) FROM customer_account_dn;
+
+SELECT TO_CHAR(MAX(TO_NUMBER(dn_accNum))+1) FROM customer_account_dn;
                     
-SELECT * FROM customer_account_dn;
+--SELECT bm.name, e.dn_ssn, dn_requestDate, e.dn_open_situation 
+--FROM(SELECT ROWNUM rownumber, dn_ssn, dn_open_situation, dn_requestDate FROM customer_account_dn) e ,bank_member bm
+--WHERE e.dn_ssn = bm.ssn;
+
+UPDATE customer_account_dn
+SET dn_open_situation = 1, dn_startdate = TO_CHAR(sysdate, 'YYYY/MM/DD HH24:MI:SS')
+WHERE dn_accnum = '4084170000009' and dn_requestdate = '2023/05/11 09:45:59';
+
+SELECT *
+FROM customer_account_dn;
+
+SELECT bm.name, e.dn_accnum, e.dn_requestDate, pb.pb_type
+FROM customer_account_dn e ,bank_member bm, bank_account_type pb
+WHERE e.dn_ssn = bm.ssn AND pb.pb_type_no = e.dn_code AND e.dn_open_situation = 0;
+
+SELECT bm.name, e.dn_ssn, e.dn_requestDate, dn_code
+FROM customer_account_dn e 
+JOIN bank_member bm 
+ON e.dn_ssn = bm.ssn
+JOIN bank_account_type pb 
+ON pb.pb_type_no = e.dn_code 
+WHERE e.dn_open_situation = 0;
+
+SELECT E.Salary AS "SecondHighestSalary"
+FROM (SELECT ROWNUM AS rownumber, Salary
+      FROM Employee) E
+WHERE E.rownumber = 2
 -- 적금 대출
 CREATE TABLE customer_account_sl (
     sl_code NUMBER(3) NOT NULL,
