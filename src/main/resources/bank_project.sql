@@ -12,6 +12,10 @@ CREATE TABLE bank_member (
 drop table bank_member;
 SELECT * FROM bank_member;
 
+select name,pw,phone,email,reg_date
+from bank_member
+; where name='이홍재';
+
 INSERT INTO bank_member(name, ssn, id, pw, email, phone)
 VALUES ('이홍재', '0104171234567', 'saihong', '12345', 'ghdwo901088@gmail.com', '01030598507');
 --------------------------------------------------------------
@@ -81,7 +85,7 @@ drop table bank_board;
 SELECT * FROM bank_board;
 
 INSERT INTO bank_board (idx, title, writer, regdate, count, content)
-VALUES (1,'글제목', '글쓴이','230511',0,'글 내용');
+VALUES (1,'글제목', '글쓴이','230511',1,'글 내용');
 
 CREATE SEQUENCE board_seq
         INCREMENT BY 1

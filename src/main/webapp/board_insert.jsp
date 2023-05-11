@@ -8,6 +8,8 @@
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.Connection"%>
 <%@page import="java.sql.Statement"%>
+<%@page import="bank.dao.BoardDAO"%>
+<%@page import="bank.dto.BoardDTO"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,6 +19,9 @@
 <body>
 	<%
 	request.setCharacterEncoding("UTF-8"); 
+		BoardDAO boardDao = new BoardDAO();
+		BoardDTO boardDto = new BoardDTO();
+
 
 	    String title = request.getParameter("title");    
 	    String writer = request.getParameter("writer"); 
@@ -29,7 +34,7 @@
 	    if (regdate == null || regdate == "") out.println("작성일 입력해주세요");
 	    else if(!Pattern.matches("^[0-9]*$", regdate))out.println("숫자로 입력해주세요");
 		
-			try {
+		try {
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 
 		String db_url = "jdbc:oracle:thin:@localhost:1521:orcl";
@@ -44,13 +49,17 @@
 		                "VALUES (board_seq, '"+title+"', '"+writer+"' , sysdate,', '1', '"+content+"')";
 		 
 		
+			String result = boardDao.accountInfo(boardDto);
 			stmt.executeUpdate(sql);
 			conn.close();
-		} catch (ClassNotFoundException e) {
+		}	
+			 catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} 
+		
+		
 			//finally {
 		//	out.print("<script>location.href='./boardList.jsp';</script>");
 //	}

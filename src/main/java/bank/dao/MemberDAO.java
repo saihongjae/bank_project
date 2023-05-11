@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javax.websocket.Session;
+
 import bank.dto.MemberDTO;
 import bank.oracle.DBConnectionManager;
 import bank.oracle.PWManager;
@@ -139,4 +141,36 @@ public class MemberDAO {
 			
 			return result;
 		}
+		
+		
+//		public int PersonInfo(MemberDTO accountInfo) {
+//
+//			Connection conn = null;
+//			PreparedStatement psmt = null;
+//			ResultSet rs = null;
+//			int result = 0;
+//			
+//			try {
+//				conn = DBConnectionManager.getConnection();
+//
+//				// 쿼리문!
+//				String sql = "SELECT name,pw,phone,email,regdate"
+//							+ "from bank_member"
+//							+ "WHERE id= ?";
+//
+//				psmt = conn.prepareStatement(sql);
+//				
+//				psmt.setString(1, accountInfo.getUserId());
+//				
+//				rs = psmt.executeQuery();
+//				
+//				System.out.println("처리결과:" + result);
+//			} catch (SQLException e) {
+//				e.printStackTrace();
+//			} finally {
+//				DBConnectionManager.close(rs, psmt, conn);
+//			}
+//			
+//			return result;
+//		}
 }

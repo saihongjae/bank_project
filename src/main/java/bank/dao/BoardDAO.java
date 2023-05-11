@@ -13,7 +13,7 @@ public class BoardDAO extends DBConnectionManager {
 
 private BoardDTO accountInfo;
 
-public int insertContentInfo() {
+public int insertBoardContent() {
 
 	Connection conn = null;
 	PreparedStatement psmt = null;
