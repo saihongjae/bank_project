@@ -16,7 +16,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="./css/board.css" rel="stylesheet" type="text/css">
 <title>게시글 조회</title>
-<%@ include file="navBar.jsp"%>
+
 <style type="text/css">
 .bb {
 	display: flex;
@@ -28,47 +28,34 @@
 	padding: 15px;
 }
 </style>
-<div>
-	<h3 class="tit_cont">게시글 리스트</h3>
-	<div>
+</head>
+<body>
+	<%@ include file="navBar.jsp"%>
+
+	<h3 class="tit_cont">문의 내역</h3>
 		<ul id="localNav" class="tab_cont">
 			<li id="lnb_Ask" class=""><a href="./q_board.jsp" role="tab"
 				aria-selected="true" class="link_tab">등록하기</a></li>
 			<li id="lnb_MyHistory" class="on"><a href="#" role="tab"
 				aria-selected="false" class="link_tab">조회하기</a></li>
 		</ul>
-	</div>
-</head>
-<body>
-	<%
-	request.setCharacterEncoding("UTF-8");
+
+		<%
+	BoardDAO boardDAO = new BoardDAO(); //DAO 메소드를 불러오기 위한 선행조건
+   List<BoardDTO> questionList = boardDAO.QuestionInfoList(userID); 
+//DTO 필드 모양의 배열(List) 타입 생성자(questionList)에 로그인된 아이디(userID)의 검색값을 전부 저장 
+		//		한 사이클 당 item 필드에 SELECT해서 저장한 값을 넣고 출력(questionList배열 수 만큼 실행)
+		for(BoardDTO item : questionList){
 	%>
-
+			<tr>
+				<a href="" method="post">
+					<td><%=item.getTitle()%></td>
+					<td><%=item.getQuastDate()%></td>
+				</a>
+			</tr><br>
 	<%
-	int idx = 1;
-	 
-    String title = request.getParameter("title");
- 
-    String writer = request.getParameter("writer");
- 
-   String regdate = rs.getString("SYSDATE");
-
-    String content = request.getParameter("content");
+		}
 	%>
-		<table>
-		<tr>
-				<th>제목</th>
-
-				<th>작성자</th>
-				
-				<th>날짜</th>
-
-		</tr>
-		<tr>
-				<td><%=title %></td>
-				<td><%=writer %></td>
-				<td><%=content %>
-	<%-- 			<td><%=regdate %></td>--%>
 
 			</tr>
 			</table>

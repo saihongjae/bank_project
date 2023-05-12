@@ -21,6 +21,7 @@
 
 		<body>
 		<%
+		request.setCharacterEncoding("UTF-8");
 			String userID = null;
 			if (session.getAttribute("id") != null) { // null이 아니면 로그인한 것
 				userID = (String)session.getAttribute("id");

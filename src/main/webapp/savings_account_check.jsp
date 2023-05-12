@@ -15,22 +15,23 @@
 	AccOpen_DAO dao = new AccOpen_DAO();
 	
 	dto.setName(request.getParameter("name"));
-	dto.setSsn(request.getParameter("ssn"));
-	dto.setPw(request.getParameter("pw"));
+	dto.setDn_ssn(request.getParameter("dn_ssn"));
+	dto.setDn_pw(request.getParameter("dn_pw"));
 	
 	
 	
-	if(dao.Identification(dto.getName(), dto.getSsn()) == 1){
-		dao.AccountOpening(request.getParameter("ssn"), request.getParameter("pw"));
+	if(dao.Identification(dto.getName(), dto.getDn_ssn()) == 1){
+		dao.DepWithAccOpening(dto.getDn_ssn(), dto.getDn_pw());
 		%>
 		<script>
-		alert('계좌 개설을 성공하였습니다.');
+		alert('계좌 개설 요청을 성공하였습니다.');
+		location.href= 'main.jsp';
 		</script>
 	<%
 	} else {
 	%>
 	<script>
-	alert('계좌 개설을 실패하였습니다.');
+	alert('계좌 개설 요청을 실패하였습니다.');
 	location.href= 'savings_account.jsp';
 	</script>
 <%}

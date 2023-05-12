@@ -1,13 +1,23 @@
 package bank.dto;
 
 public class BoardDTO {
+	String id;
 	String title;
 	String content;
-	int idx;
-	String writer;
-	String regdate;
-	int count;
+	String quastDate;
 	
+	public String getQuastDate() {
+		return quastDate;
+	}
+	public void setQuastDate(String quastDate) {
+		this.quastDate = quastDate;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
 	public String getTitle() {
 		return title;
 	}
@@ -20,36 +30,10 @@ public class BoardDTO {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public int getIdx() {
-		return idx;
-	}
-	public void setIdx(int idx) {
-		this.idx = idx;
-	}
-	public String getWriter() {
-		return writer;
-	}
-	public void setWriter(String writer) {
-		this.writer = writer;
-	}
-	public String getRegdate() {
-		return regdate;
-	}
-	public void setRegdate(String regdate) {
-		this.regdate = regdate;
-	}
-	public int getCount() {
-		return count;
-	}
-	public void setCount(int count) {
-		this.count = count;
-	}
 	
+
+
 	
-	@Override
-	public String toString() {
-		return "AccountDTO [idx=" + idx + ", title=" + title + ", content=" + content + ", writer=" + writer + ","
-				+ " regdate=" + regdate + ", count=" + count + "]";
-	}
+
 
 }

@@ -24,7 +24,7 @@ drop table bank_account_type;
 SELECT * FROM bank_account_type;
 
 INSERT INTO bank_account_type 
-VALUES (1,'기본');
+VALUES (1,'입출금');
 INSERT INTO bank_account_type
 VALUES (2,'예금');
 INSERT INTO bank_account_type 
@@ -70,25 +70,23 @@ INSERT INTO bank_manager
 VALUES ('이홍재', 'king_saihong', '1234');
 ----------------------------------------------
 CREATE TABLE bank_board (
+    id VARCHAR2(20) NOT NULL,
     title VARCHAR2(200) NOT NULL,
-    writer VARCHAR2(20) NOT NULL,
-    regdate VARCHAR2(20) NOT NULL, --DEFAULT TO_CHAR(sysdate, 'YYYY/MM/DD HH24:MI:SS') NOT NULL,
-    content VARCHAR2(1000) NOT NULL
+    content VARCHAR2(1000) NOT NULL,
+    question_date VARCHAR2(20) DEFAULT TO_CHAR(sysdate, 'YYYY/MM/DD HH24:MI:SS'),
+    answer VARCHAR2(1000) DEFAULT null,
+    answer_date VARCHAR2(20) DEFAULT null
 );
 drop table bank_board;
-SELECT * FROM bank_board;
 
-INSERT INTO bank_board (title, writer, regdate, content)
-VALUES ('글제목', '글쓴이',sysdate,'글 내용');
+SELECT * FROM bank_board ;
 
-CREATE SEQUENCE board_seq
-        INCREMENT BY 1
-        START WITH 1
-        MINVALUE 1
-        MAXVALUE 9999
-        NOCYCLE
-        NOCACHE
-        NOORDER;
+SELECT * FROM bank_board WHERE answer_date IS NULL ORDER BY question_date DESC;
+
+INSERT INTO bank_board (id, title, content)
+VALUES ('asdfasd', 'ㄴ미아ㅓㄹ', 'ㄴ미아ㅓ리ㅏㄴㅇ');
+
+drop SEQUENCE board_seq;
 -------------------(봉인)------------------------------
 --CREATE TABLE bank_loan (
 --    branch_name VARCHAR2(20) NOT NULL,
@@ -122,28 +120,71 @@ CREATE TABLE product_list (
 
 -- 일반통장 예금
 CREATE TABLE customer_account_dn (
-    c_code NUMBER(3) NOT NULL,
-    c_accNum VARCHAR2(13) NOT NULL,
-    c_pw VARCHAR2(4) NOT NULL,
-    c_ssn VARCHAR2(13) NOT NULL,
-    c_isClosed boolean DEFAULT false NOT NULL,
-    c_startDate VARCHAR2(20) DEFAULT TO_CHAR(sysdate, 'YYYY/MM/DD HH24:MI:SS') NOT NULL,
-    c_endDate VARCHAR2(20),
-    c_balance NUMBER(20) NOT NULL,
-    c_expiration NUMBER(20) NOT NULL,
-    c_monthly NUMBER(20) 
+    dn_code NUMBER(3),
+    dn_ssn VARCHAR2(13),
+    dn_accNum VARCHAR2(13) PRIMARY KEY,
+    dn_pw VARCHAR2(4),
+    dn_balance NUMBER(20) DEFAULT 0,
+    dn_requestDate VARCHAR2(20) DEFAULT TO_CHAR(sysdate, 'YYYY/MM/DD HH24:MI:SS') NOT NULL,
+    dn_startDate VARCHAR2(20),
+    dn_endDate VARCHAR2(20),
+    dn_isClosed NUMBER(1) DEFAULT 0,
+    dn_open_situation NUMBER(1) DEFAULT 0
 );
 
+drop table customer_account_dn ;
+
+SELECT * FROM customer_account_dn;
+
+INSERT INTO customer_account_dn(dn_accNum)
+VALUES('4084170000001');
+
+--TO_CHAR(ADD_MONTHS(TO_CHAR(sysdate, 'YYYY-MM-DD'), 12), 'YYYY-MM-DD')
+INSERT INTO customer_account_dn( dn_code, dn_ssn, dn_accNum, dn_pw)
+VALUES(1, '0104171234567', '4084170000003', '1223');
+
+INSERT INTO customer_account_dn( dn_code, dn_ssn, dn_accNum, dn_pw)
+VALUES(1, '0104171234567', (SELECT TO_CHAR(MAX(TO_NUMBER(dn_accNum))+1) FROM customer_account_dn), '2395');
+COMMIT;
+
+SELECT TO_CHAR(MAX(TO_NUMBER(dn_accNum))+1) FROM customer_account_dn;
+                    
+--SELECT bm.name, e.dn_ssn, dn_requestDate, e.dn_open_situation 
+--FROM(SELECT ROWNUM rownumber, dn_ssn, dn_open_situation, dn_requestDate FROM customer_account_dn) e ,bank_member bm
+--WHERE e.dn_ssn = bm.ssn;
+
+UPDATE customer_account_dn
+SET dn_open_situation = 1, dn_startdate = TO_CHAR(sysdate, 'YYYY/MM/DD HH24:MI:SS')
+WHERE dn_accnum = '4084170000009' and dn_requestdate = '2023/05/11 09:45:59';
+
+SELECT *
+FROM customer_account_dn;
+
+SELECT bm.name, e.dn_accnum, e.dn_requestDate, pb.pb_type
+FROM customer_account_dn e ,bank_member bm, bank_account_type pb
+WHERE e.dn_ssn = bm.ssn AND pb.pb_type_no = e.dn_code AND e.dn_open_situation = 0;
+
+SELECT bm.name, e.dn_ssn, e.dn_requestDate, dn_code
+FROM customer_account_dn e 
+JOIN bank_member bm 
+ON e.dn_ssn = bm.ssn
+JOIN bank_account_type pb 
+ON pb.pb_type_no = e.dn_code 
+WHERE e.dn_open_situation = 0;
+
+SELECT E.Salary AS "SecondHighestSalary"
+FROM (SELECT ROWNUM AS rownumber, Salary
+      FROM Employee) E
+WHERE E.rownumber = 2
 -- 적금 대출
 CREATE TABLE customer_account_sl (
-    c_code NUMBER(3) NOT NULL,
-    c_accNum VARCHAR2(13) NOT NULL,
-    c_ssn VARCHAR2(13) NOT NULL,
-    c_isClosed boolean DEFAULT false NOT NULL,
-    c_startDate VARCHAR2(20) DEFAULT TO_CHAR(sysdate, 'YYYY/MM/DD HH24:MI:SS') NOT NULL,
-    c_endDate VARCHAR2(20),
-    c_balance NUMBER(20) NOT NULL,
-    c_expiration NUMBER(20) NOT NULL,
-    c_monthly NUMBER(20) 
+    sl_code NUMBER(3) NOT NULL,
+    sl_accNum VARCHAR2(13) NOT NULL,
+    sl_ssn VARCHAR2(13) NOT NULL,
+    sl_isClosed NUMBER(1) DEFAULT 0 NOT NULL,
+    sl_startDate VARCHAR2(20) DEFAULT TO_CHAR(sysdate, 'YYYY/MM/DD HH24:MI:SS') NOT NULL,
+    sl_endDate VARCHAR2(20) DEFAULT NULL,
+    sl_balance NUMBER(20) DEFAULT NULL,
+    sl_expiration NUMBER(20) NOT NULL,
+    sl_monthly NUMBER(20) 
 );
-

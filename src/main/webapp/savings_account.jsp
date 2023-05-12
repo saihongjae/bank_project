@@ -12,9 +12,9 @@
 
     <input type="text"  id="name"  name="name"  placeholder="이름">
     <br>
-    <input type="text"  id="ssn"  name="ssn" placeholder="주민번호">
+    <input type="text"  id="dn_ssn"  name="dn_ssn" placeholder="주민번호">
     <br>
-    <input type="text" id="pw"  name="pw" placeholder="계좌 비밀번호">
+    <input type="text" id="dn_pw"  name="dn_pw" placeholder="계좌 비밀번호">
 
     <input type="submit" value="확인">
 </form>
