@@ -137,8 +137,8 @@ VALUES('4084170000001');
 INSERT INTO customer_account_dn( dn_code, dn_ssn, dn_accNum, dn_pw)
 VALUES(1, '0104171234567', '4084170000003', '1223');
 
-INSERT INTO customer_account_dn( dn_code, dn_ssn, dn_accNum, dn_pw, dn_open_situation)
-VALUES(1, '0104171234567', (SELECT TO_CHAR(MAX(TO_NUMBER(dn_accNum))+1) FROM customer_account_dn), '1123', 0);
+INSERT INTO customer_account_dn( dn_code, dn_ssn, dn_accNum, dn_pw)
+VALUES(1, '0104171234567', (SELECT TO_CHAR(MAX(TO_NUMBER(dn_accNum))+1) FROM customer_account_dn), '2395');
 COMMIT;
 
 SELECT TO_CHAR(MAX(TO_NUMBER(dn_accNum))+1) FROM customer_account_dn;

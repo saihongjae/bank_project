@@ -1,6 +1,7 @@
+
 <%@page import="bank.dto.AccOpenManagementDTO"%>
-<%@page import="java.util.List"%>
 <%@page import="bank.dao.AccOpenManagementDAO"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -9,11 +10,23 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-    .nav {
-        width: 100%;
-        height: 110px;
+	*{
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	}
+
+    
+    table{
+    width: 100%;
         border: solid 1px;
     }
+    
+    .sub{
+    width: auto;
+    
+    }
+    
     .selectionBar {
         width: 100%;
         height: 54px;
@@ -27,8 +40,9 @@
 </style>
 </head>
 <body>
-	
-<table class="table">
+
+<%@ include file="admin_navbar.jsp"%>
+		<table class="container">
 		<thead>
 			<tr>
 				<th>이름</th>
@@ -47,9 +61,9 @@
 			<tr>
 				<form action="admin_tap_request_approved.jsp" method="post">
 					<td><%=item.getName()%></td>
-					<td><input type="text"  name="accnum"   value="<%=item.getAccnum()%>" readonly></td>
+					<td><input type="text"  class="sub"  name="accnum"   value="<%=item.getAccnum()%>" readonly></td>
 					<td><%=item.getAccType()%></td>
-					<td><input type="text"  name="requestDate"  value="<%=item.getRequestDate()%>" readonly></td>
+					<td><input type="text"  class="sub" name="requestDate"  value="<%=item.getRequestDate()%>" readonly></td>
 					<td><button type="submit">승인</button></td>
 				</form>
 			</tr>
@@ -58,6 +72,8 @@
 	%>
 		</tbody>	
 	</table>
+</div>
+
 
    
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
