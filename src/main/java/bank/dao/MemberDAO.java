@@ -70,6 +70,39 @@ public class MemberDAO {
 		return isSignedUp;
 	}
 
+	public MemberDTO selectMember(String id) {
+		Connection conn = null;
+		PreparedStatement psmt = null;
+		ResultSet rs = null;
+		MemberDTO memberDto = null;
+		
+		try {
+			conn = DBConnectionManager.getConnection();
+			String sql = "SELECT * FROM bank_member"
+				+ " WHERE id = ?";
+			
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, id);
+
+			rs = psmt.executeQuery(); //쿼리를 실행!!
+			
+			if (rs.next()) {
+				memberDto = new MemberDTO();
+				memberDto.setName(rs.getString("name"));
+				memberDto.setSsn(rs.getString("ssn"));
+			}
+
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			DBConnectionManager.close(rs, psmt, conn);			
+		}
+		
+		return memberDto;
+	}
+	
 	// insert
 	public int insertPersonInfo(MemberDTO accountInfo) {
 		Connection conn = null;

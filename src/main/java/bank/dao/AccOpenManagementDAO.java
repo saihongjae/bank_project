@@ -22,9 +22,9 @@ public class AccOpenManagementDAO {
 			conn = DBConnectionManager.getConnection();
 
 			// 쿼리문!
-			String sql = "SELECT bm.name, e.dn_accnum, e.dn_requestDate, pb.pb_type "
-					+ "FROM customer_account_dn e ,bank_member bm, bank_account_type pb "
-					+ "WHERE e.dn_ssn = bm.ssn AND e.dn_code = pb.pb_type_no AND e.dn_open_situation = 0";
+			String sql = "SELECT bm.name, e.ac_accNum, e.ac_requestDate, pb.pb_type "
+					+ "FROM account_common e ,bank_member bm, bank_account_type pb "
+					+ "WHERE e.ac_ssn = bm.ssn AND e.ac_code = pb.pb_type_no AND e.ac_open_situation = 0";
 
 			psmt = conn.prepareStatement(sql);
 			
@@ -36,9 +36,9 @@ public class AccOpenManagementDAO {
 				AccOpenManagementDTO AccOpenManagementDTO = new AccOpenManagementDTO();
 				
 				AccOpenManagementDTO.setName(rs.getString("name"));
-				AccOpenManagementDTO.setAccnum(rs.getString("dn_accnum"));
+				AccOpenManagementDTO.setAccnum(rs.getString("ac_accNum"));
 				AccOpenManagementDTO.setAccType(rs.getString("pb_type"));
-				AccOpenManagementDTO.setRequestDate(rs.getString("dn_requestDate"));
+				AccOpenManagementDTO.setRequestDate(rs.getString("ac_requestDate"));
 
 				aomInfoList.add(AccOpenManagementDTO);
 			}
