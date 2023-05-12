@@ -39,8 +39,8 @@
 	%>
 		<form action="./board_insert.jsp" method="post" onsubmit="return formCheck();">
 			제목 : <input type="text" name="title" required><br> 
-			작성자 : <input type="text" name="writer" required><br> 
-			날짜 : <input type="text" name="regdate" required><br> 
+			작성자 : <input type="text" name="writer" required><br>			 
+			문의내용 : <textarea name="content"></textarea><br>
 				<input type="submit" value="등록">
 		</form>
 

@@ -30,10 +30,7 @@
 	    
 	    if (title == null || title == "") out.println("제목을 작성해주세요");
 	    if (writer == null || writer == "") out.println("작성자 입력해주세요");
-	    
-	    if (regdate == null || regdate == "") out.println("작성일 입력해주세요");
-	    else if(!Pattern.matches("^[0-9]*$", regdate))out.println("숫자로 입력해주세요");
-		
+
 		try {
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 
@@ -45,8 +42,8 @@
 		Statement stmt = conn.createStatement();     
 		 
 		 String sql = "INSERT INTO bank_board "+			 
-		                "(idx, title, writer, regdate, count, content) "+			 
-		                "VALUES (board_seq, '"+title+"', '"+writer+"' , sysdate,', '1', '"+content+"')";
+		                "(title, writer, regdate, content) "+			 
+		                " VALUES ("+title+"', '"+writer+"' , sysdate,' , '"+content+"')";
 		 
 		
 			String result = boardDao.accountInfo(boardDto);

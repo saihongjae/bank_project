@@ -6,15 +6,11 @@ CREATE TABLE bank_member (
     pw VARCHAR2(30) NOT NULL,
     email VARCHAR2(50) NOT NULL,
     phone VARCHAR2(11) NOT NULL,
-    reg_date VARCHAR2(20) DEFAULT TO_CHAR(sysdate, 'YYYY/MM/DD HH24:MI:SS') NOT NULL
+    reg_date VARCHAR2(20) DEFAULT TO_CHAR(sysdate, 'YYYY/MM/DD') NOT NULL
 );
 
 drop table bank_member;
 SELECT * FROM bank_member;
-
-select name,pw,phone,email,reg_date
-from bank_member
-; where name='이홍재';
 
 INSERT INTO bank_member(name, ssn, id, pw, email, phone)
 VALUES ('이홍재', '0104171234567', 'saihong', '12345', 'ghdwo901088@gmail.com', '01030598507');
@@ -74,18 +70,16 @@ INSERT INTO bank_manager
 VALUES ('이홍재', 'king_saihong', '1234');
 ----------------------------------------------
 CREATE TABLE bank_board (
-    idx NUMBER NOT NULL PRIMARY KEY,
     title VARCHAR2(200) NOT NULL,
     writer VARCHAR2(20) NOT NULL,
     regdate VARCHAR2(20) NOT NULL, --DEFAULT TO_CHAR(sysdate, 'YYYY/MM/DD HH24:MI:SS') NOT NULL,
-    count NUMBER NOT NULL,
-    content CLOB NOT NULL
+    content VARCHAR2(1000) NOT NULL
 );
 drop table bank_board;
 SELECT * FROM bank_board;
 
-INSERT INTO bank_board (idx, title, writer, regdate, count, content)
-VALUES (1,'글제목', '글쓴이','230511',1,'글 내용');
+INSERT INTO bank_board (title, writer, regdate, content)
+VALUES ('글제목', '글쓴이',sysdate,'글 내용');
 
 CREATE SEQUENCE board_seq
         INCREMENT BY 1

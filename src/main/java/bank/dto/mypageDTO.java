@@ -7,9 +7,10 @@ public class mypageDTO {
 	String userId;
 	String pw;
 	String email;
+	//int index = email.indexOf("@");
 	String phone;
 	String regdate;
-	
+
 	public String getName() {
 		return name;
 	}
@@ -22,7 +23,7 @@ public class mypageDTO {
 	public void setSsn(String ssn) {
 		this.ssn = ssn;
 	}
-	
+
 	public String getUserId() {
 		return userId;
 	}
@@ -35,12 +36,14 @@ public class mypageDTO {
 	public void setPw(String pw) {
 		this.pw = pw;
 	}
+
 	public String getEmail() {
 		return email;
 	}
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
 	public String getPhone() {
 		return phone;
 	}
@@ -55,5 +58,7 @@ public class mypageDTO {
 		this.regdate = regdate;
 	}
 
-	}
+
+
+}
 

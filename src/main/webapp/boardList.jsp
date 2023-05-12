@@ -51,35 +51,24 @@
  
     String writer = request.getParameter("writer");
  
-    String regdate = request.getParameter("regdate");
- 
-    int count = 10000;
- 
+   String regdate = rs.getString("SYSDATE");
+
     String content = request.getParameter("content");
 	%>
 		<table>
 		<tr>
-				<th>번호</th>
-
 				<th>제목</th>
 
 				<th>작성자</th>
-
+				
 				<th>날짜</th>
-
-				<th>조회수</th>
 
 		</tr>
 		<tr>
-				<td><%=idx %></td>
-
 				<td><%=title %></td>
-
 				<td><%=writer %></td>
-
-				<td><%=regdate %></td>
-
-				<td><%=count %></td>
+				<td><%=content %>
+	<%-- 			<td><%=regdate %></td>--%>
 
 			</tr>
 			</table>
