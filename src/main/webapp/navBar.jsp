@@ -38,7 +38,7 @@
 							<%
 								if (userID != null) { // 로그인 된 상태
 							%>
-							<li class="nav-item">
+							<li class="nav-item nav-log">
 								<a class="nav-link" href="./main_logout.jsp">로그아웃</a>
 							</li>
 							<%

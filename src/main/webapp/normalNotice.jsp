@@ -1,51 +1,45 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@page import="bank.dto.MemberDTO"%>
+<%@page import="bank.dao.MemberDAO"%>
 <!DOCTYPE html>
 <html>
 
 <head>
 <meta charset="UTF-8">
+<link href="./css/commonNotice.css" rel="stylesheet" type="text/css">
 <title>Insert title here</title>
-<style>
-
-.text {
-	height: 230px;
-	border: 1px solid black;
-	background-color: white;
-	white-space: pre-line;
-	overflow-y: scroll;
-	margin: 30px 50px;
-}
-
-.consent_check {
-	width: 100%;
-	display: flex;
-	justify-content: center;
-	margin: 20px 50px;
-}
-.consent_box {
-	margin: 0px 50px;
-}
-
-input {
-	
-}
-</style>
 </head>
 
 <body>
+	<%
+		if (session.getAttribute("id") == null) { // null이 아니면 로그인한 것
+			session.setAttribute("loc", request.getServletPath()); %>
+		<script>
+			alert("로그인이 필요한 페이지입니다");
+			location.href="main_login.jsp";
+		</script>
+	<%
+	return;
+	}
 
+	MemberDAO memberDao = new MemberDAO();
+	MemberDTO memInfo = memberDao.selectMember((String) session.getAttribute("id"));
+	String memName = memInfo.getName();
+	String memSsn = memInfo.getSsn();
+	%>
 	<%@ include file="navBar.jsp"%>
-
+	<h3>삼조뱅크 입출금통장</h3>
+	<form name="savingCreateForm" action="createNormal_proc.jsp">
 	<div style="color: red; margin-left: 50px; margin-bottom: -20px">*필수</div>
-		<div class="text">
-			제 1장 공통 제1조(약관의 목적) 이 약관은 고객이 미래에셋증권주식회사(이하 "회사"라 한다)와 다음 각 호에 필요한
+	<div class="text">
+		<p>		제 1장 공통 제1조(약관의 목적) 이 약관은 고객이 미래에셋증권주식회사(이하 "회사"라 한다)와 다음 각 호에 필요한
 			사항을 정함을 목적으로 한다. 1. 고객이 회사와 거래하기 위해 모든 거래의 기본이 되는 계좌를 개설함에 있어 고객과
 			회사간의 권리, 의무관계 등 필요한 사항 2. 고객이 실명확인업무대행계약을 체결한 금융기관(이하 "제휴은행" 이라 한다)을
 			통해 실명확인을 거쳐 회사의 증권계좌를 개설하여 회사가 제공하는 서비스를 이용함에 있어 회사와 고객간의 서비스 이용에 관한
 			제반사항 등 필요한 사항 3. 자본시장과 금융투자에 관한 법률 제4조에서 정한 채무증권, 수익증권, 투자계약증권,
 			파생결합증권 및 환매조건부 채권매매 등
-			<별첨>에서 정한 증권 등의 거래만으로 한정하는 금융상품 계좌의 개설에 필요한 사항 제2조(용어의 정의) ①
+			&#60;별첨&#62;에서 정한 증권 등의 거래만으로 한정하는 금융상품 계좌의 개설에 필요한 사항 제2조(용어의 정의) ①
 			종합계좌 : 제도적으로 각각 운영해야하는 상품을(선물옵션 거래 계좌 및 한도 상품 등) 제외한 당사의 매매가능한 개별상품을
 			종합적으로 관리 할 수 있는 계좌를 말한다. ② "개별상품"이라 함은 종합계좌 내에서 매매거래를 할 수 있는 각각의 상품을
 			말한다. ③ 제휴은행 : 회사가 증권계좌의 개설대행 등을 위하여 업무제휴 계약을 맺은 금융기관 또는 입출금 업무등과 관련하여
@@ -98,11 +92,11 @@ input {
 			통한 거래가 가능하다. ④ 제휴카드 : 타 금융기관과 제휴하여 연계카드의 기능 및 신용/체크카드 등의 부가 기능을 하나로
 			통합시킨 카드로서 사용등록 및 결제는 다음의 각 호에 따른다. 1. 제휴카드를 발급 받은 고객은 제휴금융기관이나 회사의
 			영업점을 통하여 사용등록을 하여야 하며 사용등록을 하지 않을 경우 회사 계좌 잔액 및 잔량의 출금 및 출고가 불가능하다.
-			2. 회사는 <별첨>에서 정한 시간에 결제대상 계좌에 인출가능금액으로 남은 예수금을 제휴카드 결제대금으로 사용할 수
+			2. 회사는 &#60;별첨&#62;에서 정한 시간에 결제대상 계좌에 인출가능금액으로 남은 예수금을 제휴카드 결제대금으로 사용할 수
 			있다. ⑤ 통장 : 거래내역이 기장되는 거래매체로서 회사 영업점을 통한 거래 및 회사 자동화기기를 이용한 거래가 가능하다.
 			⑥ 모바일통장 : 모바일 앱을 통해, 인증번호를 생성하여 거래하는 서비스 매체이며, 창구출금 또는 제휴 되어 있는
 			자동화기기에서 이용이 가능하다. 제10조(현금 및 증권 등의 출납) ① 고객이 계좌의 자산을 인출하고자 하는 경우 소정의
-			신청서에 등록한 거래인감 등을 제시하고 <별첨>에서 정한 거래매체를 영업점에 제시해야 한다. 단, 별도의 약정을
+			신청서에 등록한 거래인감 등을 제시하고 &#60;별첨&#62;에서 정한 거래매체를 영업점에 제시해야 한다. 단, 별도의 약정을
 			체결한 고객의 경우에는 거래매체 및 거래인감 등이 없이도 회사가 정한 절차에 의하여 인출이 가능하다. ② 회사는 고객이
 			제출한 거래매체 및 거래인감 등이 회사에 등록된 정보와 일치하였을 경우 인출요구한 자산을 고객에게 지급하며 필요한 경우
 			추가로 실명확인증표를 요구할 수 있다. ③ 회사는 고객이 사이버 및 유선 한도를 신청한 경우, 그 신청한 금액을 요청 한도로
@@ -155,71 +149,51 @@ input {
 			손해를 배상하여야 한다. 단, 전자금융거래시 고객의 고의나 중대한 과실이 있는 경우 등은 전자금융거래 이용에 관한
 			기본약관에서 정한 바에 따른다. ③ 제1항에도 불구하고 전자금융거래법 등 관련 법령에 고객에게 유리하게 적용될 수 있는
 			규정이 있는 경우에는 그 법령을 우선 적용한다. 제22조(불가항력으로 인한 면책) 회사는 천재지변, 사변 이에 준하는
-			불가항력의 사유로 인하여 서비스를 제공할 수 없는 경우와 지연되는 경우 이에 대한 책임을 지지 아니한다.
-			</p>
+			불가항력의 사유로 인하여 서비스를 제공할 수 없는 경우와 지연되는 경우 이에 대한 책임을 지지 아니한다.  </p>
+	</div>
+	<div class="consent_box">
+		<input type="checkbox" name="chkbox1" class="consent1" required>동의
+	</div>
+	<div style="color: red; margin-left: 50px; margin-bottom: -20px">*필수</div>
+	<p class="text">제2장 제휴금융기관 증권계좌 개설서비스 제23조(특약) ① 제휴금융기관 증권계좌개설 서비스를 이용할 수 있는 고객은 내국인
+		개인고객으로 한정한다. ② 회사는 제휴금융기관 증권계좌개설 서비스에 의해 개설된 계좌에 대해서는 회사가 실명을 재확인하기
+		전까지는 일부거래를 제한할 수 있다. 제24조(제휴금융기관 증권계좌개설 서비스의 신청 및 해지) ① 제휴금융기관 증권계좌개설
+		서비스의 계약기간은 계좌개설일로부터 계좌의 폐쇄시까지로 한다. ② 제휴금융기관 증권계좌개설 서비스는 고객이 제휴은행의
+		영업점에서 회사가 정한 소정의 신청서에 필요한 사항을 기재하고 서비스 이용을 신청하면, 실명확인을 받은 사실이 제휴은행으로부터
+		회사에 통보되어 회사가 이를 승낙함으로써 성립한다. ③ 고객이 증권계좌를 폐쇄하고자 할 경우 회사 또는 제휴은행을 방문하여
+		신청하여야 한다. 제25조(은행이체) ① 제휴은행에서 증권계좌를 개설한 고객은 증권계좌와 일대일로 연계된 제휴은행 계좌를
+		통하여 거래자금의 입금과 출금이 가능하다. ② 은행이체 거래방법은 다음 각호와 같다. 1. 은행이체 가능시간은 회사가 정하여
+		영업점 또는 전자적 장치 등을 통하여 게시하며, 변경시 영업점 또는 전자적 장치 등을 통하여 공지한다. 2. 제휴은행계좌와
+		증권계좌간의 이체시 발생하는 수수료는 회사가 부담한다. 단,
+		&#60;별첨&#62;에서 일정한 기준을 정하여 고객에게 이체수수료를 부담하게 하는 경우 회사는 이와 관련된 이체수수료 징수기준을
+		시행일 1개월 전 고객에게 직접 통지하여야 하며, 이 경우 고객이 시행일 이전까지 이에 서면 등의 방법으로 동의하지 않는다는
+		의사 표명을 한 경우 은행이체서비스를 해지할 수 있다. 3. 은행이체 가능시간 내에서의 이체거래시 출금계좌의 인출가능금액
+		부족, 출금사고계좌의 등록의 사유로 이체가 실행되지 아니한 경우 이체거래신청의 효력이 자동으로 상실되며, 금융결제원 전산망
+		장애등의 사정으로 이체가 불가능할 경우에는 장애복구 후 입출금 처리된다. 단, 지체없이 해당사정을 고객에게 통지하여야 한다.</p>
+	<div class="consent_box">
+		<input type="checkbox" name="chkbox2" class="consent2" required>동의
+	</div>
+		<label>이름 <input type="text" id="name" name="name"
+			class="form-control" placeholder="이름" readOnly value="<%=memName%>">
+		</label> <br> <label>주민번호 <input type="text" class="form-control"
+			required name="ssn1" id="inputSsn1" placeholder="주민번호 앞자리"
+			autoComplete="false" readOnly value="<%=memSsn.substring(0, 6)%>">
+			- <input type="password" class="form-control" required name="ssn2"
+			id="inputSsn2" placeholder="주민번호 뒷자리" autoComplete="false" readOnly
+			value="<%=memSsn.substring(6, 13)%>">
+		</label> <br /> <label> 신규 비밀번호 <input type="password" id="pw1"
+			name="pw1" placeholder="신규계좌 비밀번호" required>
+		</label> <br /> <label> 신규 비밀번호 확인 <input type="password" id="pw2"
+			name="pw2" placeholder="신규계좌 비밀번호 확인" required>
+		</label>
+		<p class="warningText1 text-danger" style="display: none;">비밀번호가
+			서로 일치하지 않습니다.</p>
+		<div>
+			<button type="submit" class="ok">개설신청</button>
+			<button type="button" class="cancelBtn">취소</button>
 		</div>
-		<div class="consent_check">
-			<div class="consent_box">
-				<input type="checkbox" name="" class="consent1">동의
-			</div>
-			<div class="consent_box">
-				<input type="checkbox" >비동의
-			</div>
-		</div>
-
-		<div style="color: red; margin-left: 50px; margin-bottom: -20px">*필수</div>
-		<div class="text">
-			제2장 제휴금융기관 증권계좌 개설서비스 제23조(특약) ① 제휴금융기관 증권계좌개설 서비스를 이용할 수 있는 고객은 내국인
-			개인고객으로 한정한다. ② 회사는 제휴금융기관 증권계좌개설 서비스에 의해 개설된 계좌에 대해서는 회사가 실명을 재확인하기
-			전까지는 일부거래를 제한할 수 있다. 제24조(제휴금융기관 증권계좌개설 서비스의 신청 및 해지) ① 제휴금융기관 증권계좌개설
-			서비스의 계약기간은 계좌개설일로부터 계좌의 폐쇄시까지로 한다. ② 제휴금융기관 증권계좌개설 서비스는 고객이 제휴은행의
-			영업점에서 회사가 정한 소정의 신청서에 필요한 사항을 기재하고 서비스 이용을 신청하면, 실명확인을 받은 사실이
-			제휴은행으로부터 회사에 통보되어 회사가 이를 승낙함으로써 성립한다. ③ 고객이 증권계좌를 폐쇄하고자 할 경우 회사 또는
-			제휴은행을 방문하여 신청하여야 한다. 제25조(은행이체) ① 제휴은행에서 증권계좌를 개설한 고객은 증권계좌와 일대일로 연계된
-			제휴은행 계좌를 통하여 거래자금의 입금과 출금이 가능하다. ② 은행이체 거래방법은 다음 각호와 같다. 1. 은행이체
-			가능시간은 회사가 정하여 영업점 또는 전자적 장치 등을 통하여 게시하며, 변경시 영업점 또는 전자적 장치 등을 통하여
-			공지한다. 2. 제휴은행계좌와 증권계좌간의 이체시 발생하는 수수료는 회사가 부담한다. 단,
-			<별첨>에서 일정한 기준을 정하여 고객에게 이체수수료를 부담하게 하는 경우 회사는 이와 관련된 이체수수료 징수기준을
-			시행일 1개월 전 고객에게 직접 통지하여야 하며, 이 경우 고객이 시행일 이전까지 이에 서면 등의 방법으로 동의하지 않는다는
-			의사 표명을 한 경우 은행이체서비스를 해지할 수 있다. 3. 은행이체 가능시간 내에서의 이체거래시 출금계좌의 인출가능금액
-			부족, 출금사고계좌의 등록의 사유로 이체가 실행되지 아니한 경우 이체거래신청의 효력이 자동으로 상실되며, 금융결제원 전산망
-			장애등의 사정으로 이체가 불가능할 경우에는 장애복구 후 입출금 처리된다. 단, 지체없이 해당사정을 고객에게 통지하여야 한다.
-			
-			
-		</div>
-		<div class="consent_check">
-			<div class="consent_box">
-				<input type="checkbox" name=""  class="consent2">동의
-			</div>
-			<div class="consent_box">
-				<input type="checkbox" >비동의
-			</div>
-		</div>
-
-		<div class="consent_check">
-			<br>
-			
-				<button class="ok" >확인</button>
-				<button>취소</button>
-			
-		</div>
-
-    <script>
-        document.querySelector(".ok").addEventListener("click", function(){
-            const consent1 = document.querySelector(".consent1");
-            const consent2 = document.querySelector(".consent2");
-            
-            if(consent1.checked){
-            	  if(consent2.checked){
-            		  location.replace('savings_account.jsp');
-            	  } else {
-            		  alert("필수 항목의 동의가 필요합니다.");
-            	  }
-            } else {
-            	alert("필수 항목의 동의가 필요합니다.");
-        }
-        });
-    </script>
+	</form>
+<script type="text/javascript" src="./javascript/normalNotice.js"></script>
 </body>
 
 </html>

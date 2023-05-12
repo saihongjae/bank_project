@@ -50,7 +50,6 @@
 				<script>
 					alert("회원가입에 실패하였습니다..");
 					history.back(); // 메인이나 가입 페이지로 재연결
-					
 				</script>
 			<% 
 			}

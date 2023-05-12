@@ -35,9 +35,5 @@
 			<tr><td colspan="2" align="center"><input type="submit" value="로그인하기"></td></tr>
 		</table>
 	</form>
-
-
-
-
 </body>
 </html>

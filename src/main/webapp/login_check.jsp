@@ -1,10 +1,10 @@
-<%@page import="bank.dto.Admin_DTO"%>
-<%@page import="bank.dao.Admin_DAO"%>
 <%@page import="org.apache.catalina.connector.Response"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.Connection"%>
+<%@page import="bank.dao.Admin_DAO"%>
+<%@page import="bank.dto.Admin_DTO"%>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -16,7 +16,7 @@
 </head>
 <body>
 <%
-Admin_DAO dao = new Admin_DAO();
+	Admin_DAO dao = new Admin_DAO();
 	Admin_DTO dto = new Admin_DTO();
 
 	dto.setAdmin_id(request.getParameter("id"));

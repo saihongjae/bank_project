@@ -9,10 +9,14 @@ function noSpaceForm(obj) { // 공백사용못하게
         return false;
     }
 }
-		
-form.addEventListener('submit', (e)=>{
+
+function checkVal() {
 	if (form.name.value.trim() == "") return false;
 	if (form.pw.value !== form.pw2.value) return false;
+}
+		
+form.addEventListener('submit', (e)=>{
+	if (!checkVal()) e.preventDefault();
 })
 
 form.addEventListener('keydown',(e)=>{

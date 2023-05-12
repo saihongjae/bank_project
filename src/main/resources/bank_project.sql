@@ -44,6 +44,7 @@ CREATE TABLE bank_account (
 drop table bank_account;
 SELECT * FROM bank_account;
 
+
 INSERT INTO bank_account(ssn, account_num, pw, balance, account_type)
 VALUES (?, (SELECT TO_CHAR(MAX(TO_NUMBER(account_num))+1) FROM bank_account), ?, 0, 1);
 
@@ -96,10 +97,12 @@ VALUES ('saihong', '제목', '내용');
 CREATE TABLE product_list (
     p_name VARCHAR2(50) PRIMARY KEY, 
     p_code NUMBER(3) NOT NULL,
-    p_term NUMBER(2) NOT NULL,
     p_rate NUMBER(2, 2) NOT NULL
 );
 
+INSERT INTO product_list VALUES("삼조 S드림 정기예금", 2, 2.90);
+INSERT INTO product_list VALUES("삼조뱅크 자유적금", 3, 3.80);
+INSERT INTO product_list VALUES("삼편한 직장인대출S", 4, 3.59);
 
 
 -- 상품코드 code -- 예금인지 적금인지 + 대출 / 예적대
@@ -109,33 +112,42 @@ CREATE TABLE product_list (
 -- 시작일 startDate
 -- 만기일 endDate (시작일 + 상품 기간)
 -- 잔액(한도) balance
--- 만기금액 expiration
 -- 월적금액 monthly
 
--- 일반통장 예금
-CREATE TABLE customer_account_dn (
-    c_code NUMBER(3) NOT NULL,
-    c_accNum VARCHAR2(13) NOT NULL,
-    c_pw VARCHAR2(4) NOT NULL,
-    c_ssn VARCHAR2(13) NOT NULL,
-    c_isClosed boolean DEFAULT false NOT NULL,
-    c_startDate VARCHAR2(20) DEFAULT TO_CHAR(sysdate, 'YYYY/MM/DD HH24:MI:SS') NOT NULL,
-    c_endDate VARCHAR2(20),
-    c_balance NUMBER(20) NOT NULL,
-    c_expiration NUMBER(20) NOT NULL,
-    c_monthly NUMBER(20) 
+-- 일반 입출금
+-- (1, '2348293748234234', '1234', '8402921238221')
+-- 일반 1
+-- 예금 2
+-- 적금 3
+-- 대출 4
+-- 일반통장 공통
+CREATE TABLE account_common (
+    ac_code NUMBER(3) NOT NULL,
+    ac_accNum VARCHAR2(13) PRIMARY KEY,
+    ac_pw VARCHAR2(4) NOT NULL,
+    ac_ssn VARCHAR2(13) NOT NULL,
+    ac_isClosed NUMBER(1) DEFAULT 0 NOT NULL,
+    ac_requestDate VARCHAR2(20) DEFAULT TO_CHAR(sysdate, 'YYYY/MM/DD HH24:MI:SS') NOT NULL,
+    ac_startDate VARCHAR2(20) DEFAULT NULL, 
+    ac_endDate VARCHAR2(20) DEFAULT NULL,
+    ac_balance NUMBER(20) DEFAULT 0
 );
 
--- 적금 대출
-CREATE TABLE customer_account_sl (
-    c_code NUMBER(3) NOT NULL,
-    c_accNum VARCHAR2(13) NOT NULL,
-    c_ssn VARCHAR2(13) NOT NULL,
-    c_isClosed boolean DEFAULT false NOT NULL,
-    c_startDate VARCHAR2(20) DEFAULT TO_CHAR(sysdate, 'YYYY/MM/DD HH24:MI:SS') NOT NULL,
-    c_endDate VARCHAR2(20),
-    c_balance NUMBER(20) NOT NULL,
-    c_expiration NUMBER(20) NOT NULL,
-    c_monthly NUMBER(20) 
+INSERT INTO account_common (ac_code, ac_accNum, ac_pw, ac_ssn)
+VALUES (2, '3017920000001', '1234', '8502921238221');
+
+--예금 적금 대출
+CREATE TABLE customer_account_dsl (
+    dsl_accNum VARCHAR2(13) PRIMARY KEY,
+    dsl_monthly NUMBER(20) DEFAULT NULL,
+    dsl_open_situation NUMBER(1) DEFAULT 0,
+    dsl_term NUMBER(2) NOT NULL,
+    dsl_regularDate NUMBER(2) DEFAULT NULL
 );
+
+DROP TABLE customer_account_dsl;
+SELECT * FROM customer_account_dsl;
+
+SELECT * FROM account_common;
+DROP TABLE account_common;
 
