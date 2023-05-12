@@ -70,27 +70,23 @@ INSERT INTO bank_manager
 VALUES ('이홍재', 'king_saihong', '1234');
 ----------------------------------------------
 CREATE TABLE bank_board (
-    idx NUMBER NOT NULL PRIMARY KEY,
+    id VARCHAR2(20) NOT NULL,
     title VARCHAR2(200) NOT NULL,
-    writer VARCHAR2(20) NOT NULL,
-    regdate VARCHAR2(20) NOT NULL, --DEFAULT TO_CHAR(sysdate, 'YYYY/MM/DD HH24:MI:SS') NOT NULL,
-    count NUMBER NOT NULL,
-    content CLOB NOT NULL
+    content VARCHAR2(1000) NOT NULL,
+    question_date VARCHAR2(20) DEFAULT TO_CHAR(sysdate, 'YYYY/MM/DD HH24:MI:SS'),
+    answer VARCHAR2(1000) DEFAULT null,
+    answer_date VARCHAR2(20) DEFAULT null
 );
 drop table bank_board;
-SELECT * FROM bank_board;
 
-INSERT INTO bank_board (idx, title, writer, regdate, count, content)
-VALUES (1,'글제목', '글쓴이','230511',0,'글 내용');
+SELECT * FROM bank_board WHERE id = ;
 
-CREATE SEQUENCE board_seq
-        INCREMENT BY 1
-        START WITH 1
-        MINVALUE 1
-        MAXVALUE 9999
-        NOCYCLE
-        NOCACHE
-        NOORDER;
+SELECT * FROM bank_board WHERE answer_date IS NULL ORDER BY question_date DESC;
+
+INSERT INTO bank_board (id, title, content)
+VALUES ('asdfasd', 'ㄴ미아ㅓㄹ', 'ㄴ미아ㅓ리ㅏㄴㅇ');
+
+drop SEQUENCE board_seq;
 -------------------(봉인)------------------------------
 --CREATE TABLE bank_loan (
 --    branch_name VARCHAR2(20) NOT NULL,

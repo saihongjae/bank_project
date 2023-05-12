@@ -10,8 +10,8 @@
 			<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
 				integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
 				crossorigin="anonymous">
+				
 		</head>
-
 		<body>
 		<%
 			String userID = null;
@@ -31,24 +31,7 @@
 						<ul class="navbar-nav">
 							<li class="nav-item">
 
-							</li>
-							<%
-								if (userID != null) { // 로그인 된 상태
-							%>
-							<li class="nav-item">
-								<a class="nav-link" href="./main_logout.jsp">로그아웃</a>
-							</li>
-							<%
-								} else { // 로그인 해라
-							%>
-							<li class="nav-item">
-								<a class="nav-link" href="./main_login.jsp">로그인</a>
-							</li>
-							<% } %>
-						</ul>
-						<% if (userID != null) { %>
-							<p><%=userID %>님 환영합니다 :)</p>
-						<% } %>
+						
 					</div>
 
 					<div style="width: 100%; display: flex; justify-content: flex-end;">
