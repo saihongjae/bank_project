@@ -4,72 +4,43 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import bank.oracle.PWManager;
+
+import javax.websocket.Session;
 
 import bank.dto.MemberDTO;
 import bank.oracle.DBConnectionManager;
 
 public class MemberDAO {
-	//login 
-	public MemberDTO selectMember(String id) {
-		Connection conn = null;
-		PreparedStatement psmt = null;
-		ResultSet rs = null;
-		MemberDTO memberDto = null;
-
-		try {
-			conn = DBConnectionManager.getConnection();
-			String sql = "SELECT * FROM bank_member"
-					+ " WHERE id = ?";
-
-			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, id);
-
-			rs = psmt.executeQuery(); //쿼리를 실행!!
-			while (rs.next()) {
-				memberDto = new MemberDTO();
-				memberDto.setName(rs.getString("name"));
-				memberDto.setSsn(rs.getString("ssn"));
-			}
-
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-			DBConnectionManager.close(rs, psmt, conn);			
-		}
-
-		return memberDto;
-
-	}
-	//login 
-	public boolean loginMember(String id, String pw) {
-		Connection conn = null;
-		PreparedStatement psmt = null;
-		ResultSet rs = null;
-		boolean isLoggedIn = false;
-
-		try {
-			conn = DBConnectionManager.getConnection();
-			String sql = "SELECT * FROM bank_member"
+		//login 
+		public boolean loginMember(String id, String pw) {
+			Connection conn = null;
+			PreparedStatement psmt = null;
+			ResultSet rs = null;
+			boolean isLoggedIn = false;
+			
+			try {
+				conn = DBConnectionManager.getConnection();
+				String sql = "SELECT * FROM bank_member"
 					+ " WHERE id = ? AND pw = ?";
+				
+				psmt = conn.prepareStatement(sql);
+				psmt.setString(1, id);
+				psmt.setString(2, pw);
 
-			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, id);
-			psmt.setString(2, pw);
-
-			rs = psmt.executeQuery(); //쿼리를 실행!!
-			isLoggedIn = rs.next();
-
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-			DBConnectionManager.close(rs, psmt, conn);			
+	
+				rs = psmt.executeQuery(); //쿼리를 실행!!
+				isLoggedIn = rs.next();
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+				DBConnectionManager.close(rs, psmt, conn);			
+			}
+			
+			return isLoggedIn;
 		}
-
-		return isLoggedIn;
-
-	}
 
 	// select (멤버가 존재하는지 안하는지)
 	public boolean isSignedUpBefore(String name, String ssn) {
@@ -101,7 +72,6 @@ public class MemberDAO {
 
 	// insert
 	public int insertPersonInfo(MemberDTO accountInfo) {
-
 		Connection conn = null;
 		PreparedStatement psmt = null;
 		ResultSet rs = null;
@@ -127,12 +97,11 @@ public class MemberDAO {
 
 			System.out.println("처리결과:" + result);
 		} catch (SQLException e) {
-			//				 TODO Auto-generated catch block
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			DBConnectionManager.close(rs, psmt, conn);
 		}
-
 		return result;
 	}
 }

@@ -6,7 +6,7 @@ CREATE TABLE bank_member (
     pw VARCHAR2(30) NOT NULL,
     email VARCHAR2(50) NOT NULL,
     phone VARCHAR2(11) NOT NULL,
-    reg_date VARCHAR2(20) DEFAULT TO_CHAR(sysdate, 'YYYY/MM/DD HH24:MI:SS') NOT NULL
+    reg_date VARCHAR2(20) DEFAULT TO_CHAR(sysdate, 'YYYY/MM/DD') NOT NULL
 );
 
 drop table bank_member;
@@ -24,7 +24,7 @@ drop table bank_account_type;
 SELECT * FROM bank_account_type;
 
 INSERT INTO bank_account_type 
-VALUES (1,'기본');
+VALUES (1,'입출금');
 INSERT INTO bank_account_type
 VALUES (2,'예금');
 INSERT INTO bank_account_type 
@@ -71,17 +71,23 @@ INSERT INTO bank_manager
 VALUES ('이홍재', 'king_saihong', '1234');
 ----------------------------------------------
 CREATE TABLE bank_board (
-    id VARCHAR2(20) PRIMARY KEY,
-    title VARCHAR2(60) NOT NULL,
-    contents VARCHAR2(1000) NOT NULL,
-    reg_date VARCHAR2(20) DEFAULT TO_CHAR(sysdate, 'YYYY/MM/DD HH24:MI:SS') NOT NULL
+    id VARCHAR2(20) NOT NULL,
+    title VARCHAR2(200) NOT NULL,
+    content VARCHAR2(1000) NOT NULL,
+    question_date VARCHAR2(20) DEFAULT TO_CHAR(sysdate, 'YYYY/MM/DD HH24:MI:SS'),
+    answer VARCHAR2(1000) DEFAULT null,
+    answer_date VARCHAR2(20) DEFAULT null
 );
-
 drop table bank_board;
-SELECT * FROM bank_board;
 
-INSERT INTO bank_board(id, title, contents)
-VALUES ('saihong', '제목', '내용');
+SELECT * FROM bank_board ;
+
+SELECT * FROM bank_board WHERE answer_date IS NULL ORDER BY question_date DESC;
+
+INSERT INTO bank_board (id, title, content)
+VALUES ('asdfasd', 'ㄴ미아ㅓㄹ', 'ㄴ미아ㅓ리ㅏㄴㅇ');
+
+drop SEQUENCE board_seq;
 -------------------(봉인)------------------------------
 --CREATE TABLE bank_loan (
 --    branch_name VARCHAR2(20) NOT NULL,
@@ -150,4 +156,3 @@ SELECT * FROM customer_account_dsl;
 
 SELECT * FROM account_common;
 DROP TABLE account_common;
-

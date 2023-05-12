@@ -1,20 +1,16 @@
 package bank.dto;
-public class MemberDTO {
+
+public class mypageDTO {
 	String session;
 	String name;
 	String ssn;	
-	String id;
-	public String getId() {
-		return id;
-	}
-	public void setId(String id) {
-		this.id = id;
-	}
+	String userId;
 	String pw;
 	String email;
+	//int index = email.indexOf("@");
 	String phone;
 	String regdate;
-	
+
 	public String getName() {
 		return name;
 	}
@@ -28,18 +24,26 @@ public class MemberDTO {
 		this.ssn = ssn;
 	}
 
+	public String getUserId() {
+		return userId;
+	}
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
 	public String getPw() {
 		return pw;
 	}
 	public void setPw(String pw) {
 		this.pw = pw;
 	}
+
 	public String getEmail() {
 		return email;
 	}
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
 	public String getPhone() {
 		return phone;
 	}
@@ -54,5 +58,7 @@ public class MemberDTO {
 		this.regdate = regdate;
 	}
 
-	}
+
+
+}
 
