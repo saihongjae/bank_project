@@ -11,8 +11,10 @@
 				integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
 				crossorigin="anonymous">
 				<style>
-					#mp{
-				
+				#mp{
+					list-style: none;
+					position: relative; 
+					left : 50%
 					}
 				</style>
 		</head>
@@ -57,8 +59,9 @@
 						<% if (userID != null) { %>
 							<p><%=userID %>님 환영합니다 :)</p>
 						 
-							<li class="nav-item">
-								<a class="nav-link" href="./myPage.jsp">마이페이지</a>
+							<li class="nav-item" id="mp">
+								<a class="nav-link" href="./myPage.jsp">
+								<img src="./imgs/profileIcon.png" width="60px" height="60px"></a>
 							</li>
 							<%} %>
 					</div>
