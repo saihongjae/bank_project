@@ -8,8 +8,42 @@ import java.sql.SQLException;
 import bank.dto.MemberDTO;
 import bank.oracle.DBConnectionManager;
 import bank.oracle.PWManager;
+import sample.dto.PersonDto;
 
 public class MemberDAO {
+	
+	public PersonDto selectPersonInfoById(int id) {
+		Connection conn = null;
+		PreparedStatement psmt = null;
+		ResultSet rs = null;
+		PersonDto personDto = null;
+
+		try {
+			conn = DBConnectionManager.getConnection();
+
+			String sql = "select * from t_person_info"
+					+" WHERE id = ?";
+
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, id);
+
+			rs = psmt.executeQuery(); 
+
+			if(rs.next()) {
+				personDto = new PersonDto();
+
+				personDto.setId(rs.getInt("id"));
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBConnectionManager.close(rs, psmt, conn);			
+		}
+
+		return personDto;
+	}
+	//-------------------
 		//login 
 		public boolean loginMember(String id, String pw) {
 			Connection conn = null;
@@ -25,7 +59,8 @@ public class MemberDAO {
 				psmt = conn.prepareStatement(sql);
 				psmt.setString(1, id);
 				psmt.setString(2, pw);
-				
+
+	
 				rs = psmt.executeQuery(); //쿼리를 실행!!
 				isLoggedIn = rs.next();
 				

@@ -33,7 +33,7 @@
 		<li>고객센터
 			<ul class="innerMenu">
 				<li>자주하는 질문</li>
-				<li>1대 1 문의</li>
+				<li><a href="./boardContent.jsp">1대 1 문의</a></li>
 				<li>답변 확인</li>
 			</ul>
 		</li>
