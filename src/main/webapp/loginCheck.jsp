@@ -35,7 +35,7 @@
 		if ("<%= loc %>" != "") { 
 			location.href = "<%= loc %>";
 		} else {
-			location.href = "main.jsp";
+			location.href = "./main.jsp";
 		}
 	</script>
 	<% } else { %>

@@ -30,7 +30,6 @@ function checkFormValidate() {
 }
 
 form.addEventListener('submit', (e)=>{
-	console.log("왜ㅜㅜ");
 	if (!checkFormValidate()) e.preventDefault();
 });
 
@@ -71,14 +70,14 @@ form.monthly.addEventListener('input', ()=>{
 
 calculBtn.addEventListener('click', ()=>{
 	resultBlock.style.display = "block";
-	form.principal.value = Number(form.term.value) * Number(form.monthly.value);
-	form.interest.value = Number(form.principal.value) * (38/1000);
+	form.principal.value = (Number(form.term.value) * Number(form.monthly.value)).toLocaleString();
+	form.interest.value = (Number(form.principal.value.replaceAll(",","")) * (38/1000)).toLocaleString();
 });
 
 cancelBtn.addEventListener('click', ()=>{
 	let isCanceled = confirm("통장 개설을 취소하시겠습니까? 입력된 정보가 초기화 될 수 있습니다");
 	if (isCanceled) {
-		location.href = "main.jsp";
+		location.href = "./main.jsp";
 		form.reset();
 	}
 });

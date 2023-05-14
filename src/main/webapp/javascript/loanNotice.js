@@ -30,14 +30,14 @@ document.querySelector(".calculBtn").addEventListener('click', ()=>{
 	const interest = (359 / 10000);
 	const term = form.term.value;
 	
-	document.querySelector(".totalPrincipal").textContent = Number(principal) + Math.floor(principal * interest);
+	document.querySelector(".totalPrincipal").value = (Number(principal) + Math.floor(principal * interest)).toLocaleString();
 	form.monthly2.value = Math.floor(Number(principal) / term) + Math.floor(principal * interest / term);
-	document.querySelector(".totalInterest").textContent = Math.floor(principal * interest);
+	document.querySelector(".totalInterest").value = (Math.floor(principal * interest)).toLocaleString();
 	
 	tableTerm.textContent = term;
-	tableMoney.textContent = form.monthly2.value;
-	tablePrincipal.textContent = Math.floor(Number(principal) / term);
-	tableInterest.textContent = Math.floor(principal * interest / term);
+	tableMoney.textContent = Number(form.monthly2.value).toLocaleString() + "원";
+	tablePrincipal.textContent = (Math.floor(Number(principal) / term)).toLocaleString() + "원";
+	tableInterest.textContent = (Math.floor(principal * interest / term)).toLocaleString() + "원";
 });
 
 document.querySelectorAll(".moneyBtns button").forEach((btn)=>{

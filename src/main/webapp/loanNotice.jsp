@@ -29,11 +29,17 @@
 	String memSsn = memInfo.getSsn();
 	%>
 	<%@ include file="navBar.jsp"%>
+	<div class="noticeWrapper">
 	<h3>삼편한 직장인대출S</h3>
 	<form name="savingCreateForm" action="createLoan_proc.jsp">
-		<div style="color: red; margin-left: 50px; margin-bottom: -20px">*필수</div>
-		<div class="text">
-			<p>① 제 1 조의 대출금리는 대출기간 시작일 현재 기준금리 및 가산금리에 의해 결정되며, 변동금리에 의한
+	<div class="consent_box">
+		<span style="color: red;">*필수</span>
+		<span>삼편한 직장인대출S 특약 (1)</span>
+		<label>
+		<input type="checkbox" name="chkbox1" class="consent1" required> 동의
+		</label>
+	</div>
+			<p class="text">① 제 1 조의 대출금리는 대출기간 시작일 현재 기준금리 및 가산금리에 의해 결정되며, 변동금리에 의한
 				대출금리는 매 금리변동주기가 도래하는 날에 변 경하여 적용합니다. ② 「고정금리」 대출은 은행에서 고시하는 금리를 적용하여
 				은행여신거래기본약관 제 3 조 제 3 항에 따른 부득이한 경우를 제외하고는 대출기간 종료일까 지 동일한 금리를 적용합니다.
 				③ 「변동금리」 대출은 기준금리의 변동에 따라 대출금리가 변경되는 여신을 말하며, 기준금리는 다음 각 호와 같이
@@ -91,13 +97,14 @@
 				전에 회수하는 경우 3. 채무자의 사망 또는 천재지변에 의한 경우 4. 기타 은행이 정하는 경우 제 6 조 인지세의 부담
 				① 이 약정서 작성에 따른 인지세는 각 50%씩 본인과 은행이 부담합니다. ② 제 1 항에 의하여 본인이 부담하기로 한
 				인지세를 은행이 대신 지급한 경우에는 은행여신거래기본약관 제 4 조에 준하여 곧 갚기로 합니다.</p>
-		</div>
-		<div class="consent_box">
-			<input type="checkbox" name="chkbox1" class="consent1" required>동의
-		</div>
-		<div style="color: red; margin-left: 50px; margin-bottom: -20px">*필수</div>
-		<div class="text">
-			<p>제 7 조 담보권 설정 ① 이 약정에 의한 채무를 담보하기 위하여 제 1 조에 표시된 (근)질권의 목적인 예금
+	<div class="consent_box">
+		<span style="color: red;">*필수</span>
+		<span>삼편한 직장인대출S 특약 (2)</span>
+		<label>
+		<input type="checkbox" name="chkbox1" class="consent1" required> 동의
+		</label>
+	</div>
+			<p class="text">제 7 조 담보권 설정 ① 이 약정에 의한 채무를 담보하기 위하여 제 1 조에 표시된 (근)질권의 목적인 예금
 				등에 질권을 설정하기로 합니다. ② 제 1 항의 질권의 효력은 원금ㆍ수익권(이 계약 이후에 적립되는 금액을 포함합니다)과
 				이에 부수하는 이자ㆍ수익의 수익권, 특별장려금, 법정장려금 등 에 미칩니다. ③ 예금 등이
 				기간연장ㆍ개서ㆍ갱신ㆍ분할ㆍ병합ㆍ증액ㆍ감액 또는 이자 원가된 경우에도 그 위에 질권의 효력이 미침을 승인하며, 그 목적인
@@ -134,45 +141,42 @@
 				시작일부터 대출기간 종료일까지 적용됩니다. 2. 본인이 대출 계약 체결 시 제 1 항에 따른 금리 우대 항목을 선택하지
 				않을 경우, 자동으로 우대 금리가 적용되지는 않습니다. 3. 대출 계약을 철회하거나 약정 기일 전 해지한 경우, 대출
 				재신청 시에는 제 1 항의 금리 우대 항목이 부활하여 적용되지 않습니다.</p>
-		</div>
-		<div class="consent_box">
-			<input type="checkbox" name="chkbox2" class="consent2" required>동의
-		</div>
 		<label>이름 <input type="text" id="name" name="name"
 			class="form-control" placeholder="이름" readOnly value="<%=memName%>">
 		</label> 
-		<br> 
-		<label>주민번호 <input type="text" class="form-control"
+		<div class="ssnInput">
+		<label style="display: block;">주민번호</label>
+		 <input type="text" class="form-control"
 			required name="ssn1" id="inputSsn1" placeholder="주민번호 앞자리"
-			autoComplete="false" readOnly value="<%=memSsn.substring(0, 6)%>">
-			- <input type="password" class="form-control" required name="ssn2"
+			autoComplete="false" readOnly value="<%=memSsn.substring(0, 6)%>"><input type="password" class="form-control" required name="ssn2"
 			id="inputSsn2" placeholder="주민번호 뒷자리" autoComplete="false" readOnly
 			value="<%=memSsn.substring(6, 13)%>">
-		</label> 
+		</div>
 		<br />
 		<label> 상환방법 <input type="text" id="way" name="way"
 			class="form-control" placeholder="이름" readOnly value="원리금균등상환">
 		</label> 
 		<br />
-		<button type="button" class="checkLimitBtn"  >한도조회</button>
-		<div class="limitWrapper" style="display: none">
+		<button type="button" class="checkLimitBtn btn btn-outline-danger">한도조회</button>
+		<div class="limitWrapper" style="display: none;">
 		<input type="hidden" id="pw1"
 			name="pw1" placeholder="신규계좌 비밀번호" required maxLength="4" value="0000">
 	 	<input type="hidden" id="pw2"
 			name="pw2" placeholder="신규계좌 비밀번호 확인" required maxlength="4" value="0000">
-		<p><%=memName %>님의 한도는 <span>1</span> 억원 입니다.</p>
-	 	<label> 대출 금액 입력 <input type="number" min="1000000"
-			name="monthly" max="100000000" required/> 원
-		</label>
+			<p class="p-3 text-info-emphasis bg-info-subtle border border-info-subtle rounded-3" style="margin-top: 20px;">
+ 			<%=memName %>님의 한도는 <span style="font-size: 22px; font-weight: bolder;">1 억원</span> 입니다.
+			</p>
+		<label style="width: 100%; margin-bottom: 10px;"> 대출 금액 입력 <input type="number" min="1000000"
+			name="monthly" max="100000000" class="form-control" required /> </label>
 		<div class="moneyBtns">
-			<button type="button" data-money="100000">+10만원</button>
-			<button type="button" data-money="1000000">+100만원</button>
-			<button type="button" data-money="5000000">+500만원</button>
-			<button type="button" data-money="10000000">+1000만원</button>
+			<button type="button" data-money="100000" class="btn btn-secondary">+10만원</button>
+			<button type="button" data-money="1000000" class="btn btn-secondary">+100만원</button>
+			<button type="button" data-money="5000000" class="btn btn-secondary">+500만원</button>
+			<button type="button" data-money="10000000" class="btn btn-secondary">+1000만원</button>
 		</div>
 		<p class="warningText2 text-danger" style="display: none;">최대
 			1억원까지 대출이 가능합니다.</p>
-		<label>
+		<label style="width: 100%;">
 			기간 선택 
 			<select class="form-select" name="term"
 				aria-label="saving term selector">
@@ -183,26 +187,38 @@
 				<option value="60">60개월</option>
 			</select> 
 		</label>
-		<div>
+		<label style="width: 100%;">
 			정기 출금일 <select class="form-select" name="regular" aria-label="saving term selector">
 				<option value="1">1일</option>
 				<option value="8">8일</option>
 				<option value="15">15일</option>
 				<option value="22">22일</option>
 			</select>
+		</label>
+		<button type="button" class="calculBtn btn btn-outline-success">대출 납입 계산하기</button>
 		</div>
-		<button type="button" class="calculBtn">대출납입계산하기</button>
+		<div class="resultWrapper" style="display: none;">
+		<div class="aboveBtns" style="display: flex;">
+			<div class="leftWing" style="display: block;">
+				<p class="text1">연 <span>3.59</span> %</p>
+				<p class="text1">
+					<span class="totalTerm">12</span>개월 만기
+				</p>
+			</div>
+			<div class="rightWing">
+			<label>총 납입 금액<input type="text" class="totalPrincipal" value="만기예상원금" name="principal" readOnly /></label> 
+			<label>총 이자<input type="text" class="totalInterest" value="(세전)만기예상이자" name="interest" readOnly /></label>
+			<input type="hidden" name="monthly2" value= "2548880" />
+			</div>
+		
 		</div>
-		<div class="resultWrapper" style="display: none">
-		<p>총 납입금액 : <span class="totalPrincipal"></span>원 (총 이자 : <span class="totalInterest">1077000</span>원)</p>
-		<input type="hidden" name="monthly2" value= "2548880" />
-		<table>
+		<table class="table">
 			<thead>
 			<tr>
-				<th>총 회차</th>
-				<th>1회 납입금액</th>
-				<th>원금</th>
-				<th>이자</th>
+				<th scope="col">총 회차</th>
+				<th scope="col">1회 납입금액</th>
+				<th scope="col">원금</th>
+				<th scope="col">이자</th>
 			</tr>
 			</thead>
 			<tbody>
@@ -213,13 +229,14 @@
 				<td class="totalInterest2">(30000000 * 0.0359 / 12)</td>
 			</tr>
 			</tbody>
-		</table>
-			<div>
-				<button type="submit" class="ok">개설신청</button>
-				<button type="button">취소</button>
+		</table>	
+		<div class="submitBtns">
+			<button type="submit" class="ok btn btn-success">대출 신청</button>
+			<button type="button" class="btn btn-danger cancelBtn">취소</button>
 			</div>
 		</div>
 	</form>
+	</div>
 	<script type="text/javascript" src="./javascript/loanNotice.js"></script>
 </body>
 

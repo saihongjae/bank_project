@@ -9,6 +9,16 @@
 </head>
 <body>
 <%@ include file="navBar.jsp"%>
+<%
+request.setCharacterEncoding("UTF-8");
+if (userID != null) { // null이 아니면 로그인한 것 %>
+<script>
+	alert("이미 가입이 완료된 회원입니다.");
+	location.href="./main.jsp"
+</script>
+<% 
+return;
+} %>
 	<h1>회원가입 폼</h1>
 	<form name="memberAddForm" action="signUpMember_proc.jsp" method="post">
 	<div>

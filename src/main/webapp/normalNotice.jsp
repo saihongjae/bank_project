@@ -29,11 +29,18 @@
 	String memSsn = memInfo.getSsn();
 	%>
 	<%@ include file="navBar.jsp"%>
+	<div class="noticeWrapper">
 	<h3>삼조뱅크 입출금통장</h3>
 	<form name="savingCreateForm" action="createNormal_proc.jsp">
-	<div style="color: red; margin-left: 50px; margin-bottom: -20px">*필수</div>
-	<div class="text">
-		<p>		제 1장 공통 제1조(약관의 목적) 이 약관은 고객이 미래에셋증권주식회사(이하 "회사"라 한다)와 다음 각 호에 필요한
+	
+	<div class="consent_box">
+		<span style="color: red;">*필수</span>
+		<span>삼조뱅크 입출금통장 특약 (1)</span>
+		<label>
+		<input type="checkbox" name="chkbox1" class="consent1" required> 동의
+		</label>
+	</div>
+		<p class="text">		제 1장 공통 제1조(약관의 목적) 이 약관은 고객이 미래에셋증권주식회사(이하 "회사"라 한다)와 다음 각 호에 필요한
 			사항을 정함을 목적으로 한다. 1. 고객이 회사와 거래하기 위해 모든 거래의 기본이 되는 계좌를 개설함에 있어 고객과
 			회사간의 권리, 의무관계 등 필요한 사항 2. 고객이 실명확인업무대행계약을 체결한 금융기관(이하 "제휴은행" 이라 한다)을
 			통해 실명확인을 거쳐 회사의 증권계좌를 개설하여 회사가 제공하는 서비스를 이용함에 있어 회사와 고객간의 서비스 이용에 관한
@@ -150,11 +157,14 @@
 			기본약관에서 정한 바에 따른다. ③ 제1항에도 불구하고 전자금융거래법 등 관련 법령에 고객에게 유리하게 적용될 수 있는
 			규정이 있는 경우에는 그 법령을 우선 적용한다. 제22조(불가항력으로 인한 면책) 회사는 천재지변, 사변 이에 준하는
 			불가항력의 사유로 인하여 서비스를 제공할 수 없는 경우와 지연되는 경우 이에 대한 책임을 지지 아니한다.  </p>
-	</div>
+
 	<div class="consent_box">
-		<input type="checkbox" name="chkbox1" class="consent1" required>동의
+		<span style="color: red;">*필수</span>
+		<span>삼조뱅크 입출금통장 특약 (2)</span>
+		<label>
+		<input type="checkbox" name="chkbox1" class="consent1" required> 동의
+		</label>
 	</div>
-	<div style="color: red; margin-left: 50px; margin-bottom: -20px">*필수</div>
 	<p class="text">제2장 제휴금융기관 증권계좌 개설서비스 제23조(특약) ① 제휴금융기관 증권계좌개설 서비스를 이용할 수 있는 고객은 내국인
 		개인고객으로 한정한다. ② 회사는 제휴금융기관 증권계좌개설 서비스에 의해 개설된 계좌에 대해서는 회사가 실명을 재확인하기
 		전까지는 일부거래를 제한할 수 있다. 제24조(제휴금융기관 증권계좌개설 서비스의 신청 및 해지) ① 제휴금융기관 증권계좌개설
@@ -170,29 +180,32 @@
 		의사 표명을 한 경우 은행이체서비스를 해지할 수 있다. 3. 은행이체 가능시간 내에서의 이체거래시 출금계좌의 인출가능금액
 		부족, 출금사고계좌의 등록의 사유로 이체가 실행되지 아니한 경우 이체거래신청의 효력이 자동으로 상실되며, 금융결제원 전산망
 		장애등의 사정으로 이체가 불가능할 경우에는 장애복구 후 입출금 처리된다. 단, 지체없이 해당사정을 고객에게 통지하여야 한다.</p>
-	<div class="consent_box">
-		<input type="checkbox" name="chkbox2" class="consent2" required>동의
-	</div>
 		<label>이름 <input type="text" id="name" name="name"
 			class="form-control" placeholder="이름" readOnly value="<%=memName%>">
-		</label> <br> <label>주민번호 <input type="text" class="form-control"
+		</label> <br> 
+		<div class="ssnInput">
+		<label style="display: block;">주민번호</label>
+		 <input type="text" class="form-control"
 			required name="ssn1" id="inputSsn1" placeholder="주민번호 앞자리"
-			autoComplete="false" readOnly value="<%=memSsn.substring(0, 6)%>">
-			- <input type="password" class="form-control" required name="ssn2"
+			autoComplete="false" readOnly value="<%=memSsn.substring(0, 6)%>"><input type="password" class="form-control" required name="ssn2"
 			id="inputSsn2" placeholder="주민번호 뒷자리" autoComplete="false" readOnly
 			value="<%=memSsn.substring(6, 13)%>">
-		</label> <br /> <label> 신규 비밀번호 <input type="password" id="pw1"
-			name="pw1" placeholder="신규계좌 비밀번호" required>
-		</label> <br /> <label> 신규 비밀번호 확인 <input type="password" id="pw2"
-			name="pw2" placeholder="신규계좌 비밀번호 확인" required>
+		</div>
+		<div class="pwInput">
+		<label> 신규 비밀번호 <input type="password" id="pw1"
+			name="pw1" placeholder="신규계좌 비밀번호" required class="form-control" maxLength="4">
+		</label><label> 신규 비밀번호 확인 <input type="password" id="pw2"
+			name="pw2" placeholder="신규계좌 비밀번호 확인" required class="form-control" maxLength="4">
 		</label>
+		</div>
 		<p class="warningText1 text-danger" style="display: none;">비밀번호가
 			서로 일치하지 않습니다.</p>
-		<div>
-			<button type="submit" class="ok">개설신청</button>
-			<button type="button" class="cancelBtn">취소</button>
+		<div class="submitBtns">
+			<button type="submit" class="ok btn btn-success">개설신청</button>
+			<button type="button" class="btn btn-danger cancelBtn">취소</button>
 		</div>
 	</form>
+	</div>
 <script type="text/javascript" src="./javascript/normalNotice.js"></script>
 </body>
 

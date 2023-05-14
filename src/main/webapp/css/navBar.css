@@ -1,0 +1,48 @@
+@charset "UTF-8";
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Pretendard-Regular';
+}
+
+#mp {
+	list-style: none;
+	position: absolute;
+	right: 0;
+	top: -10px;
+}
+
+#mp .myPageTxt {
+	display: none;
+}
+
+@font-face {
+	font-family: 'Pretendard-Regular';
+	src:
+		url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff')
+		format('woff');
+	font-style: normal;
+}
+
+
+
+a {
+	text-decoration: none;
+}
+
+@media screen and (max-width: 992px) {
+	#mp {
+		position:relative;
+		top: 0;
+	}
+	
+	#mp img {
+	display: none;
+	}
+	
+	#mp .myPageTxt {
+	display: block;
+}
+}

@@ -1,11 +1,18 @@
-@charset "EUC-KR";
+@charset "UTF-8";
+
+.noticeWrapper {
+	margin: 30px 80px;
+}
+
+.noticeWrapper h3 {
+	font-size: 26px;
+}
 
 .text {
 	height: 230px;
 	border: 1px solid black;
 	background-color: white;
 	overflow-y: scroll;
-	margin: 30px 50px;
 }
 
 .consent_check {
@@ -15,17 +22,140 @@
 	margin: 20px 50px;
 }
 
-.consent_box {
-	margin: 0px 50px;
-}
-
 .warningText {
 	display: none;
 	color: red;
+}
+
+.consent_box {
+	position: relative;
+	font-size: 20px;
+	margin-bottom: 10px;
+}
+
+.consent_box span {
+	font-weight: bolder;
+}
+
+.consent_box label {
+	position: absolute;
+	right: 0px;
+}
+
+.consent_box input[type="checkbox"] {
+	width: 25px;
+	height: 25px;
+	position: relative;
+	top: 7px;
+}
+
+.consent_box label:has(input[type="checkbox"]:checked)::after {
+	content: "✓";
+	display: block;
+	width: 25px;
+	height: 25px;
+	border-radius: 5px;
+	position: absolute;
+	background-color: #198754;
+	color: white;
+	text-align: center;
+	top: 7px;
+	left: 0px;
+	line-height: 25px;
+}
+
+.ssnInput input {
+	width: 50%;
+	display:inline-block;
+}
+
+.pwInput {
+	margin-top: 10px;
+}
+
+.pwInput label {
+	width: 50%;
+}
+
+.calculBtn {
+	margin-top: 10px;
+}
+
+.resultWrapper p {
+	margin: 0;
+}
+
+.resultWrapper .aboveBtns {
+	font-size: 24px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.leftWing .text1 span {
+	color: #198754;
+	font-size: 34px;
+	font-weight: bolder;
+}
+
+.rightWing {
+	background-color: #ecf0f3;
+	padding: 10px;
+	position: relative;
+}
+
+.rightWing label {
+	display: block;
+}
+
+.rightWing label:first-child::after {
+	display: block;
+	content: "";
+	width: 100%;
+	height: 1px;
+	background-color: #d9d9d9;
+	position: relative;
+}
+
+.rightWing input {
+	text-align: right;
+	width: 100%;
+	border: none;
+	background: none;
+	position: relative;
+}
+
+.rightWing input:focus {
+	border: none;
+	outline: none;
+}
+
+.submitBtns {
+	text-align:center;
+	margin-top: 20px;
+}
+
+.checkLimitBtn {
+	text-align: center;
+	margin: 10px auto;
 }
 
 input::-webkit-inner-spin-button {
   appearance: none;
   -moz-appearance: none;
   -webkit-appearance: none;
+}
+
+@media screen and (max-width: 992px) {
+	.resultWrapper .aboveBtns {
+		flex-direction: column;
+	}
+	
+	.leftWing p {
+		display: inline-block;
+	}
+	
+	.rightWing {
+		width: 100%;
+	}
 }

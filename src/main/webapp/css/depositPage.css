@@ -1,8 +1,18 @@
 @charset "UTF-8";
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+.productWrapper {
+	text-align: center;
+}
+.productWrapper .underTxts {
+	vertical-align: center;
+}
+
+.productWrapper .underTxts dl {
+	display: inline-block;
+	width: 300px;
+	height: 300px;
+	border-radius: 50%;
+	border: 1px solid black;
+	padding: 20px;
 }
 

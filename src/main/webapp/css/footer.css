@@ -1,0 +1,96 @@
+@charset "EUC-KR";
+
+.footer {
+	width: 100%;
+    display: flex; 
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+    border-top: 1px solid rgba(0, 0, 0, .11);
+    margin-top: 100px;
+    box-shadow: rgba(0, 0, 0, 0.08) 0px 6px 5px 6px;
+    color: #828385;
+    background-color: #eee;
+    list-style: none;
+}
+
+.footer ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	margin-bottom: 10px;
+}
+
+
+.footer .footBottom {
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+    width: 80%;
+    max-width: 1280px;
+    padding: 0 30px;
+    margin-bottom: 10px;
+}
+
+.footer ul {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.footer .noticeLists li{
+	position: relative;
+	margin-right: 5px;
+	cursor: pointer;
+}
+
+.footer .noticeLists li:hover {
+	text-decoration: underline;
+}
+
+.footer .snsBtns li {
+    display: inline-block;
+}
+
+.footer .snsBtns li button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    color: white;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.youtubeBtn {
+    background-color: #D40A18;
+}
+
+.fbBtn {
+    background-color: #3A5195;
+}
+
+.twitterBtn {
+    background-color: #00A8FF;
+}
+
+.instaBtn {
+    background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+
+}
+
+.footerBottom {	
+	display: flex;
+	width: 100%;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+	margin: 0;
+}
+
+
+

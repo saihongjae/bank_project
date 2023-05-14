@@ -2,6 +2,7 @@ const form = document.savingCreateForm;
 const resultBlock = document.querySelector(".resultWrapper");
 const warningTxt = document.querySelector(".warningText2");
 const calculBtn = document.querySelector(".calculBtn");
+const cancelBtn = document.querySelector(".cancelBtn");
 
 function checkFormValidate() {
 	const consent1 = document.querySelector(".consent1");
@@ -36,10 +37,21 @@ document.querySelectorAll(".moneyBtns button").forEach((btn)=>{
 		totalMoneyInput.value = Number(totalMoneyInput.value) + Number(e.currentTarget.dataset.money);
 		resultBlock.style.display = "none";
 		calculBtn.removeAttribute("disabled");
-		if (totalMoneyInput.value > 100000000 || totalMoneyInput.value < 1000000) {
+		console.log(totalMoneyInput);
+		if (totalMoneyInput.value < 1000000) {
+			warningTxt.textContent = "최소 100만원 이상 예금이 가능합니다.";
 			warningTxt.style.display = "block";
 			calculBtn.setAttribute("disabled", true);
-		}
+			return;
+		} 
+		
+		if (totalMoneyInput.value > 100000000) {
+			warningTxt.textContent = "최대 예금 금액은 1억원입니다.";
+			warningTxt.style.display = "block";
+			calculBtn.setAttribute("disabled", true);
+			return;
+		} 
+		warningTxt.style.display = "none";
 	});
 });
 
@@ -66,6 +78,14 @@ form.monthly.addEventListener('input', ()=>{
 
 calculBtn.addEventListener('click', ()=>{
 	resultBlock.style.display = "block";
-	form.principal.value = Number(form.term.value) * Number(form.monthly.value);
-	form.interest.value = Number(form.principal.value) * (29/1000);
+	form.principal.value = (Number(form.term.value) * Number(form.monthly.value)).toLocaleString();
+	form.interest.value = (Number(form.principal.value.replaceAll(",","")) * (29/1000)).toLocaleString();
+});
+
+cancelBtn.addEventListener('click', ()=>{
+	let isCanceled = confirm("통장 개설을 취소하시겠습니까? 입력된 정보가 초기화 될 수 있습니다");
+	if (isCanceled) {
+		location.href = "./main.jsp";
+		form.reset();
+	}
 });
