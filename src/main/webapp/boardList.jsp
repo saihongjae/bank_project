@@ -36,7 +36,7 @@
 		<ul id="localNav" class="tab_cont">
 			<li id="lnb_Ask" class=""><a href="./q_board.jsp" role="tab"
 				aria-selected="true" class="link_tab">등록하기</a></li>
-			<li id="lnb_MyHistory" class="on"><a href="#" role="tab"
+			<li id="lnb_MyHistory" class="on"><a href="" role="tab"
 				aria-selected="false" class="link_tab">조회하기</a></li>
 		</ul>
 
@@ -44,21 +44,22 @@
 	BoardDAO boardDAO = new BoardDAO(); //DAO 메소드를 불러오기 위한 선행조건
    List<BoardDTO> questionList = boardDAO.QuestionInfoList(userID); 
 //DTO 필드 모양의 배열(List) 타입 생성자(questionList)에 로그인된 아이디(userID)의 검색값을 전부 저장 
-		//		한 사이클 당 item 필드에 SELECT해서 저장한 값을 넣고 출력(questionList배열 수 만큼 실행)
+//한 사이클 당 item 필드에 SELECT해서 저장한 값을 넣고 출력(questionList배열 수 만큼 실행)
 		for(BoardDTO item : questionList){
 	%>
+		<a href="./board_detail.jsp" method="post">
+			<table>
 			<tr>
-				<a href="" method="post">
-					<td><%=item.getTitle()%></td>
-					<td><%=item.getQuastDate()%></td>
-				</a>
-			</tr><br>
+				<td><%=item.getTitle()%></td>
+				
+			</tr></table>
+	</a>
+	
 	<%
 		}
 	%>
 
-			</tr>
-			</table>
+			
 			
 			
 			

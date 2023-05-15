@@ -28,7 +28,7 @@
 		<h3 class="tit_cont">1:1 문의</h3>
 		<div>
 			<ul id="localNav" class="tab_cont">
-				<li id="lnb_Ask" class="on"><a href="#" role="tab"
+				<li id="lnb_Ask" class="on"><a href="" role="tab"
 					aria-selected="true" class="link_tab">등록하기</a></li>
 				<li id="lnb_MyHistory" class=""><a href="./boardList.jsp"
 					role="tab" aria-selected="false" class="link_tab">조회하기</a></li>
