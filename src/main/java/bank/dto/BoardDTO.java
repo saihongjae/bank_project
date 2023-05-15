@@ -5,7 +5,14 @@ public class BoardDTO {
 	String title;
 	String content;
 	String quastDate;
+	int bno;
 	
+	public int getBno() {
+		return bno;
+	}
+	public void setBno(int bno) {
+		this.bno = bno;
+	}
 	public String getQuastDate() {
 		return quastDate;
 	}

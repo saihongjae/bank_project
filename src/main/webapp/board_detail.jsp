@@ -1,0 +1,70 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@page import="java.beans.Statement"%>
+<%@page import="java.sql.Connection"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.SQLException"%>
+<%@ page import="java.util.*"%>
+<%@page import="bank.dao.BoardDAO"%>
+<%@page import="bank.dto.BoardDTO"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<%@ include file="navBar.jsp"%>
+	<%
+	request.setCharacterEncoding("UTF-8");
+	%>
+
+	<%
+	BoardDAO boardDAO = new BoardDAO();
+	List<BoardDTO> questionList = boardDAO.QuestionInfoList(userID);
+
+	for (BoardDTO item : questionList) {
+	%>
+
+	<form name='board_detail' action='' method="post">
+		<div class=middle>
+			<table class="table table-hover">
+
+					<tr>
+					<th>제목 :</th>
+					<td><%=item.getTitle()%></td>
+				</tr>
+
+				<tr>
+					<th>내용 :</th>
+					<td><%=item.getContent()%></td>
+				</tr>
+
+				<tr>
+					<th>작성일 :</th>
+					<td><%=item.getQuastDate()%></td>
+				</tr>
+			</table>
+		</div>
+	</form>
+	<%}	%>
+	<button id="deleteBtn" type="button" class="btn btn-danger">삭제</button>
+	<button id="cancleBtn" type="button" onclick="location.href='./boardList.jsp';"
+	class="btn btn-warning">취소</button>
+	<script>	
+
+	document.getElementById('deleteBtn').addEventListener('click', ()=>{
+		let form = document.board_detail;
+		if(confirm('삭제하시겠습니까?')){
+			form.action = 'delete_board.jsp';
+			form.submit();
+		}
+	});
+	</script>
+
+
+
+</body>
+</html>

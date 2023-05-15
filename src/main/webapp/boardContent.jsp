@@ -21,7 +21,7 @@
 		<div>
 			<ul id="localNav" class="tab_cont">
 			<%	if (userID != null) { %>
-				<li id="lnb_Ask" class="on"><a href="./q_board.jsp" role="tab"
+				<li id="lnb_Ask"><a href="./q_board.jsp" role="tab"
 					aria-selected="true" class="link_tab">등록하기</a></li>
 			<%	} else {%> 
 				<script>alert("로그인 하세요.")</script>	

@@ -34,13 +34,13 @@
 			<table class="table table-hover">
 
 				<tr>
-					<p>
-						<strong>아이디 : <%=userID%></strong>
-					</p>
+				<th>아이디 </th>
+					<td><%=userID%></td>
+					
 				</tr>
 
 				<tr>
-					<th>이름 :</th>
+					<th>이름 </th>
 					<td><%=mypageDto.getName()%></td>
 				</tr>
 				
@@ -53,7 +53,7 @@
 				</tr>--%>
 
 				<tr>
-					<th>전화번호 :</th>
+					<th>전화번호 </th>
 					<td>
 					<input type="text" class="form-control" id="inputPhone"
 						name="phone" placeholder="변경된 전화번호" maxLength="11"
@@ -62,7 +62,7 @@
 				</tr>
 				
 				<tr>
-					<th>Email :</th>
+					<th>Email </th>
 					<td>
 				<input type="text" class="form-control" required 
 						name="emailId" id="inputEmail" placeholder="변경된 이메일아이디" 

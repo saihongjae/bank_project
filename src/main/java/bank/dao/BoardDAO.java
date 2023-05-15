@@ -80,6 +80,37 @@ public List<BoardDTO> QuestionInfoList(String id) {
 		DBConnectionManager.close(rs, psmt, conn);			
 	}
 	
-	return questionInfoList;
+	return questionInfoList;	
 }
+//===============================================
+//delete
+public int deleteBoardList(String id) {
+
+	Connection conn = null;
+	PreparedStatement psmt = null;
+	ResultSet rs = null;
+	int result = 0;
+
+	try {
+		conn = DBConnectionManager.getConnection();
+
+		// 쿼리문!
+		String sql = " DELETE FROM bank_board WHERE id = ? ";
+
+		psmt = conn.prepareStatement(sql);
+		psmt.setString(1, id);
+
+		result = psmt.executeUpdate();
+
+		System.out.println("처리결과:" + result);
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} finally {
+		DBConnectionManager.close(rs, psmt, conn);
+	}
+
+	return result;
+}
+
 }

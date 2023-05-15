@@ -74,7 +74,7 @@ CREATE TABLE bank_board (
     id VARCHAR2(20) NOT NULL,
     title VARCHAR2(200) NOT NULL,
     content VARCHAR2(1000) NOT NULL,
-    question_date VARCHAR2(20) DEFAULT TO_CHAR(sysdate, 'YYYY/MM/DD HH24:MI:SS'),
+    question_date VARCHAR2(20) DEFAULT TO_CHAR(sysdate, 'YYYY/MM/DD HH24:MI'),
     answer VARCHAR2(1000) DEFAULT null,
     answer_date VARCHAR2(20) DEFAULT null
 );
