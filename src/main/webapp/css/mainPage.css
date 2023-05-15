@@ -1,5 +1,14 @@
 @charset "UTF-8";
 
+a {
+	text-decoration: none;
+	color: black;
+}
+
+a:visited {
+	color: black;
+}
+
 .mainMenu {
 	position:absolute;
 	z-index: 2;
@@ -13,7 +22,6 @@
 
 .mainMenu li {
 	width: 100%;
-	padding: 15px 0;
 	font-size: 20px;
 	font-weight: bold;
 	text-align: center;
@@ -21,9 +29,10 @@
 	text-decoration: none;
 }
 
-.mainMenu li:hover .mainMenu a {
-	text-decoration: underline;
+.mainMenu li a {
+	text-decoration: none;
 }
+
 
 .mainMenu ul {
 	width: 100%;
@@ -39,6 +48,11 @@
 	font-weight: normal;
 	padding: 15px 0;
 }
+
+.innerMenu li:hover {
+	text-decoration: underline;
+}
+
 
 .mainMenu:hover .innerMenu {
 	height: 100%;

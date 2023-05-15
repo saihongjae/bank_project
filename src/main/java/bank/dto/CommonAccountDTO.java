@@ -5,7 +5,7 @@ public class CommonAccountDTO {
 	String accNum;
 	String pw;
 	String ssn;
-	String balance = "0";
+	String balance;
 	
 	public String getCode() {
 		return code;

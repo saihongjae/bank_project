@@ -30,7 +30,10 @@ document.querySelector(".calculBtn").addEventListener('click', ()=>{
 	const interest = (359 / 10000);
 	const term = form.term.value;
 	
+	// 총 값아야 할 돈
 	document.querySelector(".totalPrincipal").value = (Number(principal) + Math.floor(principal * interest)).toLocaleString();
+	
+	// 한달에 원금+이자 합쳐서 얼마씩 내야하나
 	form.monthly2.value = Math.floor(Number(principal) / term) + Math.floor(principal * interest / term);
 	document.querySelector(".totalInterest").value = (Math.floor(principal * interest)).toLocaleString();
 	

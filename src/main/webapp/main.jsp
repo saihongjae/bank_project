@@ -15,7 +15,7 @@
 	<ul class="mainMenu">
 		<li>상품소개
 			<ul class="innerMenu">
-				<li><a href="normalProduce.jsp">입출금통장</a></li>
+				<li><a href="normalNotice.jsp">입출금통장</a></li>
 				<li><a href="depositProduce.jsp">예금</a></li>
 				<li><a href="savingProduce.jsp">적금</a></li>
 				<li><a href="loanProduce.jsp">대출</a></li>

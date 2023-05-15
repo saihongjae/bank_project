@@ -27,7 +27,9 @@
 		%>
 		<nav class="navbar navbar-expand-lg bg-body-tertiary">
 		<div class="container-fluid">
-			<a class="navbar-brand" href="main.jsp">삼조은행</a>
+			<a class="navbar-brand" href="./main.jsp">
+				<img src="./imgs/samjo-bank-low-resolution-logo-color-on-transparent-background (1).png" width="60px" height="60px"/>
+			</a>
 			<button class="navbar-toggler" type="button"
 				data-bs-toggle="collapse" data-bs-target="#navbarNav"
 				aria-controls="navbarNav" aria-expanded="false"

@@ -19,6 +19,8 @@ if (userID != null) { // null이 아니면 로그인한 것 %>
 <% 
 return;
 } %>
+
+	<div class="signUpWrapper">
 	<h1>회원가입 폼</h1>
 	<form name="memberAddForm" action="signUpMember_proc.jsp" method="post">
 	<div>
@@ -75,7 +77,9 @@ return;
 	<button id="signUpBtn" type="submit">회원가입</button>
 	<button id="cancelBtn" type="button">취소</button>
 	</form>
+	</div>
 	<script type="text/javascript" src="./javascript/signUp.js"></script>
+		<%@ include file="./footer.jsp"%>
 </body>
 </html>
 

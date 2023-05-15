@@ -146,6 +146,7 @@
 		</div>
 	</form>
 	</div>
+		<%@ include file="./footer.jsp"%>
 	<script type="text/javascript" src="./javascript/depositNotice.js"></script>
 </body>
 

@@ -25,6 +25,7 @@
 			commonAccountDto.setPw(pw);
 			commonAccountDto.setSsn(ssn);
 			commonAccountDto.setCode("3");
+			commonAccountDto.setBalance("0");
 			
 			CommonDslDAO commonDslDao = new CommonDslDAO();
 			CommonDslDTO commonDslDto = new CommonDslDTO();
@@ -35,7 +36,7 @@
 			commonDslDto.setRegularDate(regularDate);
 			
 			int result = commonAccountDao.insertSavingAccount(commonAccountDto);
-			int result2 = commonDslDao.insertDepositInfo(commonDslDto);
+			int result2 = commonDslDao.insertSavingLoanInfo(commonDslDto);
 
 			if (result == result2) { 
 		// 추가 성공

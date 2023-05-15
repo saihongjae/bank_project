@@ -34,6 +34,7 @@
 			commonDslDto.setCode("2");
 			commonDslDto.setRegularDate(regularDate);
 			
+			
 			int result = commonAccountDao.insertSavingAccount(commonAccountDto);
 			int result2 = commonDslDao.insertDepositInfo(commonDslDto);
 			

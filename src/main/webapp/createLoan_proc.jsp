@@ -19,6 +19,7 @@
 			String monthly2 = request.getParameter("monthly2");
 			String term = request.getParameter("term");
 			String regularDate = request.getParameter("regular");	
+			String principal = request.getParameter("principal");
 
 			CommonAccountDAO commonAccountDao = new CommonAccountDAO();
 			CommonAccountDTO commonAccountDto = new CommonAccountDTO();
@@ -26,7 +27,7 @@
 			commonAccountDto.setPw(pw);
 			commonAccountDto.setSsn(ssn);
 			commonAccountDto.setCode("4");
-			commonAccountDto.setBalance(monthly);
+			commonAccountDto.setBalance(principal.replaceAll(",", ""));
 			
 			CommonDslDAO commonDslDao = new CommonDslDAO();
 			CommonDslDTO commonDslDto = new CommonDslDTO();
@@ -37,7 +38,7 @@
 			commonDslDto.setRegularDate(regularDate);
 			
 			int result = commonAccountDao.insertSavingAccount(commonAccountDto);
-			int result2 = commonDslDao.insertDepositInfo(commonDslDto);
+			int result2 = commonDslDao.insertSavingLoanInfo(commonDslDto);
 			
 			if (result == result2) { 
 		// 추가 성공
