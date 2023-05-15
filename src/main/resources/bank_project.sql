@@ -71,6 +71,7 @@ INSERT INTO bank_manager
 VALUES ('이홍재', 'king_saihong', '1234');
 ----------------------------------------------
 CREATE TABLE bank_board (
+    bno NUMBER(2) NOT NULL,
     id VARCHAR2(20) NOT NULL,
     title VARCHAR2(200) NOT NULL,
     content VARCHAR2(1000) NOT NULL,
@@ -80,12 +81,20 @@ CREATE TABLE bank_board (
 );
 drop table bank_board;
 
+INSERT INTO bank_board (bno, id, title, content)
+VALUES ((SELECT NVL(MAX(bno)+1, 1) FROM bank_board), 'dfdf', 'dsfdf', 'wew');
+
+
+(SELECT NVL(MAX(bno)+1, 1) FROM bank_board);
+
 SELECT * FROM bank_board ;
 
 SELECT * FROM bank_board WHERE answer_date IS NULL ORDER BY question_date DESC;
 
-INSERT INTO bank_board (id, title, content)
-VALUES ('asdfasd', 'ㄴ미아ㅓㄹ', 'ㄴ미아ㅓ리ㅏㄴㅇ');
+CREATE 
+
+INSERT INTO bank_board (bno, id, title, content)
+VALUES (count,'7777', 'ㄴ미아ㅓㄹ', 'ㄴ미아ㅓ리ㅏㄴㅇ');
 
 drop SEQUENCE board_seq;
 -------------------(봉인)------------------------------
@@ -156,3 +165,4 @@ SELECT * FROM customer_account_dsl;
 
 SELECT * FROM account_common;
 DROP TABLE account_common;
+

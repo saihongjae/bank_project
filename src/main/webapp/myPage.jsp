@@ -44,14 +44,6 @@
 					<td><%=mypageDto.getName()%></td>
 				</tr>
 				
-				<%--<tr>
-				<th>비밀번호 :</th>				
-			 	<td>
-					<input type="text" class="form-control" id="inputPW"
-					name="pw" value="<%=mypageDto.getPw()%>">
-				</td> 
-				</tr>--%>
-
 				<tr>
 					<th>전화번호 </th>
 					<td>

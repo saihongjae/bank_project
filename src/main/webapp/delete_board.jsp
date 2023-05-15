@@ -21,11 +21,12 @@
 		
 		BoardDAO boardDao = new BoardDAO();
 		String id = (String)session.getAttribute("id");
+		String bno = request.getParameter("bno");
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
 
 		
-	int result = boardDao.deleteBoardList(id);
+	int result = boardDao.deleteBoardList(bno);
 		
 		if(result == 1){
 			//삭제성공

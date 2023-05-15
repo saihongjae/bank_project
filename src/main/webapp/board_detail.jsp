@@ -19,52 +19,49 @@
 	<%@ include file="navBar.jsp"%>
 	<%
 	request.setCharacterEncoding("UTF-8");
-	%>
+	
 
-	<%
+
+	
 	BoardDAO boardDAO = new BoardDAO();
-	List<BoardDTO> questionList = boardDAO.QuestionInfoList(userID);
-
-	for (BoardDTO item : questionList) {
-	%>
+	BoardDTO boardDTO = new BoardDTO();
+	String bno = request.getParameter("bno");
+	List<BoardDTO> view = boardDAO.view(bno);
+	
+	for (BoardDTO item : view) { %>
 
 	<form name='board_detail' action='' method="post">
 		<div class=middle>
 			<table class="table table-hover">
-
-					<tr>
+				<tr>
 					<th>제목 :</th>
-					<td><%=item.getTitle()%></td>
+					<td><%= item.getTitle() %></td>
 				</tr>
 
 				<tr>
 					<th>내용 :</th>
-					<td><%=item.getContent()%></td>
+					<td><%= item.getContent() %></td>
 				</tr>
 
 				<tr>
 					<th>작성일 :</th>
-					<td><%=item.getQuastDate()%></td>
+					<td><%= item.getQuastDate() %></td>
 				</tr>
 			</table>
 		</div>
 	</form>
-	<%}	%>
+	<% } %>
 	<button id="deleteBtn" type="button" class="btn btn-danger">삭제</button>
 	<button id="cancleBtn" type="button" onclick="location.href='./boardList.jsp';"
 	class="btn btn-warning">취소</button>
 	<script>	
-
 	document.getElementById('deleteBtn').addEventListener('click', ()=>{
 		let form = document.board_detail;
 		if(confirm('삭제하시겠습니까?')){
-			form.action = 'delete_board.jsp';
+			form.action = 'delete_board.jsp?bno=<%=bno%>';
 			form.submit();
 		}
 	});
 	</script>
-
-
-
 </body>
 </html>

@@ -33,59 +33,44 @@
 	<%@ include file="navBar.jsp"%>
 
 	<h3 class="tit_cont">문의 내역</h3>
-		<ul id="localNav" class="tab_cont">
-			<li id="lnb_Ask" class=""><a href="./q_board.jsp" role="tab"
-				aria-selected="true" class="link_tab">등록하기</a></li>
-			<li id="lnb_MyHistory" class="on"><a href="" role="tab"
-				aria-selected="false" class="link_tab">조회하기</a></li>
-		</ul>
+	<ul id="localNav" class="tab_cont">
+		<li id="lnb_Ask" class=""><a href="./q_board.jsp" role="tab"
+			aria-selected="true" class="link_tab">등록하기</a></li>
+		<li id="lnb_MyHistory" class="on"><a href="" role="tab"
+			aria-selected="false" class="link_tab">조회하기</a></li>
+	</ul>
 
-		<%
+	<%
 	BoardDAO boardDAO = new BoardDAO(); //DAO 메소드를 불러오기 위한 선행조건
-   List<BoardDTO> questionList = boardDAO.QuestionInfoList(userID); 
+	
+   List<BoardDTO> questionList = boardDAO.Write(userID); 
 //DTO 필드 모양의 배열(List) 타입 생성자(questionList)에 로그인된 아이디(userID)의 검색값을 전부 저장 
 //한 사이클 당 item 필드에 SELECT해서 저장한 값을 넣고 출력(questionList배열 수 만큼 실행)
 		for(BoardDTO item : questionList){
 	%>
-		<a href="./board_detail.jsp" method="post">
-			<table>
+	<a href="./board_detail.jsp?bno=<%=item.getBno()%>" method="post">
+		<table class="table table-hover">
 			<tr>
+				<td><%=item.getBno()%>.</td>
 				<td><%=item.getTitle()%></td>
-				
-			</tr></table>
+
+			</tr>
+		</table>
 	</a>
-	
 	<%
 		}
 	%>
-
-			
-			
-			
-			
-			
-			
-		
-	
-			
-	
-
-
-
-
-		<ul class="bb">
-			<li class="aa"><a href="#">&laquo;</a></li>
-			<%-- 유니코드 &laquo = << --%>
-			<li class="aa"><a class="w3-green" href="./boardList.jsp">1</a></li>
-			<li class="aa"><a href="#">2</a></li>
-			<li class="aa"><a href="#">3</a></li>
-			<li class="aa"><a href="#">4</a></li>
-			<li class="aa"><a href="#">5</a></li>
-			<li class="aa"><a href="#">&raquo;</a></li>
-			<%-- 유니코드 &raquo = >>--%>
-		</ul>
-
-
-		</form>
+	<ul class="bb">
+		<li class="aa"><a href="#">&laquo;</a></li>
+		<%-- 유니코드 &laquo = << --%>
+		<li class="aa"><a class="w3-green" href="./boardList.jsp">1</a></li>
+		<li class="aa"><a href="#">2</a></li>
+		<li class="aa"><a href="#">3</a></li>
+		<li class="aa"><a href="#">4</a></li>
+		<li class="aa"><a href="#">5</a></li>
+		<li class="aa"><a href="#">&raquo;</a></li>
+		<%-- 유니코드 &raquo = >>--%>
+	</ul>
+	<%@ include file="./footer.jsp"%>
 </body>
 </html>

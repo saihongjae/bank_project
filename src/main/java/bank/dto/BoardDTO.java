@@ -6,7 +6,8 @@ public class BoardDTO {
 	String content;
 	String quastDate;
 	int bno;
-	
+	//public static int lastIndex = 1;
+		
 	public int getBno() {
 		return bno;
 	}
@@ -38,9 +39,4 @@ public class BoardDTO {
 		this.content = content;
 	}
 	
-
-
-	
-
-
 }

@@ -1,5 +1,4 @@
 package bank.dao;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -22,8 +21,8 @@ public int insertContentInfo(BoardDTO boardDTO) {
 		conn = DBConnectionManager.getConnection();
 
 		// 쿼리문!
-		String sql = "INSERT INTO bank_board (id, title, content) "
-				+ "VALUES (?, ?, ?)";
+		String sql = "INSERT INTO bank_board (bno, id, title, content) "
+				+ "VALUES ((SELECT NVL(MAX(bno)+1, 1) FROM bank_board), ?, ?, ?)";
 
 		psmt = conn.prepareStatement(sql);
 
@@ -40,12 +39,55 @@ public int insertContentInfo(BoardDTO boardDTO) {
 	}
 	return value;
 }
-
-public List<BoardDTO> QuestionInfoList(String id) {
+//=------------
+public List<BoardDTO> view(String bno) {
 	Connection conn = null;
 	PreparedStatement psmt = null;
 	ResultSet rs = null;
-	List<BoardDTO> questionInfoList = null;
+	List<BoardDTO> view = null;
+	//select 한개 단일
+	try {
+		conn = DBConnectionManager.getConnection();
+
+		// 쿼리문!
+		String sql = "SELECT * FROM bank_board WHERE bno = ?";
+
+		psmt = conn.prepareStatement(sql);
+		psmt.setString(1, bno);
+		
+		rs = psmt.executeQuery(); //쿼리를 실행!!
+		
+		view = new ArrayList<BoardDTO>();
+		
+		while(rs.next()) {//executeQuery에는 반복문rs.next()없이 set을 하면 값이 안들어갔던걸로 알아요
+			BoardDTO boardDTO = new BoardDTO();
+			
+			boardDTO.setBno(rs.getInt("bno"));
+			boardDTO.setId(rs.getString("id"));
+			boardDTO.setTitle(rs.getString("title"));
+			boardDTO.setContent(rs.getString("content"));
+			boardDTO.setQuastDate(rs.getString("question_date"));
+
+			view.add(boardDTO);
+		}
+		
+		// DB에 쿼리문 실행
+		// 쿼리 결과를 반환 -> 활용
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} finally {
+		DBConnectionManager.close(rs, psmt, conn);			
+	}
+	
+	return view;	
+}
+//--------------------------------------------------
+public List<BoardDTO> Write(String id) {
+	Connection conn = null;
+	PreparedStatement psmt = null;
+	ResultSet rs = null;
+	List<BoardDTO> write = null;
 	//select 한개 단일
 	try {
 		conn = DBConnectionManager.getConnection();
@@ -58,17 +100,18 @@ public List<BoardDTO> QuestionInfoList(String id) {
 		
 		rs = psmt.executeQuery(); //쿼리를 실행!!
 		
-		questionInfoList = new ArrayList<BoardDTO>();
+		write = new ArrayList<BoardDTO>();
 		
 		while(rs.next()) {//executeQuery에는 반복문rs.next()없이 set을 하면 값이 안들어갔던걸로 알아요
 			BoardDTO boardDTO = new BoardDTO();
 			
+			boardDTO.setBno(rs.getInt("bno"));
 			boardDTO.setId(rs.getString("id"));
 			boardDTO.setTitle(rs.getString("title"));
 			boardDTO.setContent(rs.getString("content"));
 			boardDTO.setQuastDate(rs.getString("question_date"));
 
-			questionInfoList.add(boardDTO);
+			write.add(boardDTO);
 		}
 		
 		// DB에 쿼리문 실행
@@ -80,11 +123,11 @@ public List<BoardDTO> QuestionInfoList(String id) {
 		DBConnectionManager.close(rs, psmt, conn);			
 	}
 	
-	return questionInfoList;	
+	return write;	
 }
 //===============================================
 //delete
-public int deleteBoardList(String id) {
+public int deleteBoardList(String bno) {
 
 	Connection conn = null;
 	PreparedStatement psmt = null;
@@ -95,10 +138,11 @@ public int deleteBoardList(String id) {
 		conn = DBConnectionManager.getConnection();
 
 		// 쿼리문!
-		String sql = " DELETE FROM bank_board WHERE id = ? ";
+		String sql = "DELETE FROM bank_board "
+					+ " WHERE bno = ? " ;
 
 		psmt = conn.prepareStatement(sql);
-		psmt.setString(1, id);
+		psmt.setString(1, bno);
 
 		result = psmt.executeUpdate();
 
@@ -111,6 +155,7 @@ public int deleteBoardList(String id) {
 	}
 
 	return result;
-}
+}	
+
 
 }
