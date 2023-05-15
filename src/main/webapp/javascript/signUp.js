@@ -13,6 +13,7 @@ function noSpaceForm(obj) { // 공백사용못하게
 function checkVal() {
 	if (form.name.value.trim() == "") return false;
 	if (form.pw.value !== form.pw2.value) return false;
+	return true;
 }
 		
 form.addEventListener('submit', (e)=>{

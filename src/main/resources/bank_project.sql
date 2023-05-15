@@ -87,7 +87,14 @@ SELECT * FROM bank_board WHERE answer_date IS NULL ORDER BY question_date DESC;
 INSERT INTO bank_board (id, title, content)
 VALUES ('asdfasd', 'ㄴ미아ㅓㄹ', 'ㄴ미아ㅓ리ㅏㄴㅇ');
 
-drop SEQUENCE board_seq;
+SELECT * FROM bank_board 
+WHERE id = 'saihong' AND title = 'alksdjf' AND content = '2023/05/15 10:13:53';
+
+
+
+UPDATE bank_board
+SET answer = ?, answer_date = TO_CHAR(sysdate, 'YYYY/MM/DD HH24:MI:SS')
+WHERE id = ? AND title = ? AND content = ?;
 -------------------(봉인)------------------------------
 --CREATE TABLE bank_loan (
 --    branch_name VARCHAR2(20) NOT NULL,
@@ -103,12 +110,14 @@ drop SEQUENCE board_seq;
 CREATE TABLE product_list (
     p_name VARCHAR2(50) PRIMARY KEY, 
     p_code NUMBER(3) NOT NULL,
-    p_rate NUMBER(2, 2) NOT NULL
+    p_rate NUMBER(3, 2) NOT NULL
 );
 
-INSERT INTO product_list VALUES("삼조 S드림 정기예금", 2, 2.90);
-INSERT INTO product_list VALUES("삼조뱅크 자유적금", 3, 3.80);
-INSERT INTO product_list VALUES("삼편한 직장인대출S", 4, 3.59);
+drop table product_list;
+
+INSERT INTO product_list VALUES('삼조 S드림 정기예금', 2, 2.90);
+INSERT INTO product_list VALUES('삼조뱅크 자유적금', 3, 3.80);
+INSERT INTO product_list VALUES('삼편한 직장인대출S', 4, 3.59);
 
 
 -- 상품코드 code -- 예금인지 적금인지 + 대출 / 예적대
@@ -136,8 +145,13 @@ CREATE TABLE account_common (
     ac_requestDate VARCHAR2(20) DEFAULT TO_CHAR(sysdate, 'YYYY/MM/DD HH24:MI:SS') NOT NULL,
     ac_startDate VARCHAR2(20) DEFAULT NULL, 
     ac_endDate VARCHAR2(20) DEFAULT NULL,
-    ac_balance NUMBER(20) DEFAULT 0
+    ac_balance NUMBER(20) DEFAULT 0,
+    ac_open_situation NUMBER(1) DEFAULT 0
 );
+
+drop table account_common;
+
+select * from account_common;
 
 INSERT INTO account_common (ac_code, ac_accNum, ac_pw, ac_ssn)
 VALUES (2, '3017920000001', '1234', '8502921238221');
@@ -146,7 +160,6 @@ VALUES (2, '3017920000001', '1234', '8502921238221');
 CREATE TABLE customer_account_dsl (
     dsl_accNum VARCHAR2(13) PRIMARY KEY,
     dsl_monthly NUMBER(20) DEFAULT NULL,
-    dsl_open_situation NUMBER(1) DEFAULT 0,
     dsl_term NUMBER(2) NOT NULL,
     dsl_regularDate NUMBER(2) DEFAULT NULL
 );
@@ -156,3 +169,4 @@ SELECT * FROM customer_account_dsl;
 
 SELECT * FROM account_common;
 DROP TABLE account_common;
+
