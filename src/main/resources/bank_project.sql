@@ -31,32 +31,6 @@ INSERT INTO bank_account_type
 VALUES (3,'적금');
 INSERT INTO bank_account_type 
 VALUES (4,'대출');
------------------------------------------------------------------
-CREATE TABLE bank_account (
-    ssn VARCHAR2(13) NOT NULL,
-    account_num VARCHAR2(13) PRIMARY KEY,
-    pw NUMBER(4) NOT NULL,
-    balance NUMBER(20) NOT NULL,
-    account_type NUMBER(3) NOT NULL,
-    reg_date VARCHAR2(20) DEFAULT TO_CHAR(sysdate, 'YYYY/MM/DD HH24:MI:SS') NOT NULL
-);
-
-drop table bank_account;
-SELECT * FROM bank_account;
-
-
-INSERT INTO bank_account(ssn, account_num, pw, balance, account_type)
-VALUES (?, (SELECT TO_CHAR(MAX(TO_NUMBER(account_num))+1) FROM bank_account), ?, 0, 1);
-
-SELECT TO_CHAR(MAX(account_num)+1) FROM bank_account;
-
-SELECT MAX(account_num)+1 FROM bank_account;
-                    
-INSERT INTO bank_account(ssn, account_num, pw, balance, account_type) 
-VALUES ('0104171234567','4084170000001', '1234', 5000000, 1);
-
-INSERT INTO bank_account(ssn, account_num, pw, balance, account_type) 
-VALUES ('0104171234567', (SELECT MAX(account_num)+1 FROM bank_account), '1234', 0, 1);
 ----------------------------------------------------------------
 CREATE TABLE bank_manager (
     m_name VARCHAR(10) NOT NULL,
@@ -88,7 +62,7 @@ INSERT INTO bank_board (id, title, content)
 VALUES ('asdfasd', 'ㄴ미아ㅓㄹ', 'ㄴ미아ㅓ리ㅏㄴㅇ');
 
 SELECT * FROM bank_board 
-WHERE id = 'saihong' AND title = 'alksdjf' AND content = '2023/05/15 10:13:53';
+WHERE id = 'saihong' AND title = 'alksdjf' AND question_date = '2023/05/15 10:13:53';
 
 
 
@@ -151,7 +125,8 @@ CREATE TABLE account_common (
 
 drop table account_common;
 
-select * from account_common;
+select * from account_common ac, bank_member bm
+where ac.ac_ssn=bm.ssn and ac_code!=3 and ac_open_situation=1 and bm.id = ?;
 
 INSERT INTO account_common (ac_code, ac_accNum, ac_pw, ac_ssn)
 VALUES (2, '3017920000001', '1234', '8502921238221');
