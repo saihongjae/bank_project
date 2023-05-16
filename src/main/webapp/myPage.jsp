@@ -83,16 +83,18 @@
 		if(inputPhone.value == "" || (inputPhone.value.length != 11)){
 			alert('전화번호를 바르게 입력해주세요');
 			inputPhone.focus();
+			return;
 		}
 		if(inputEmail.value == ""){
 			alert('이메일을 바르게 입력해주세요');
 			inputPhone.focus();
-		}else {
-			if(confirm('수정하시겠습니까?')){
-				form.action = 'updateProfile.jsp';
-				form.submit();
-			}				
+			return;
 		}
+		
+		if(confirm('수정하시겠습니까?')){
+			form.action = 'updateProfile.jsp';
+			form.submit();
+		}				
 	});
 	</script>
 </body>

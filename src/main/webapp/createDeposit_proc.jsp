@@ -25,11 +25,11 @@
 			commonAccountDto.setPw(pw);
 			commonAccountDto.setSsn(ssn);
 			commonAccountDto.setCode("2");
+			commonAccountDto.setBalance(monthly);
 			
 			CommonDslDAO commonDslDao = new CommonDslDAO();
 			CommonDslDTO commonDslDto = new CommonDslDTO();
 			
-			commonDslDto.setMonthly(pw);
 			commonDslDto.setTerm(term);
 			commonDslDto.setCode("2");
 			commonDslDto.setRegularDate(regularDate);

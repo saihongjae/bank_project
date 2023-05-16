@@ -15,6 +15,7 @@ RequestApproved_DTO dto = new RequestApproved_DTO();
 
 	dto.setAccnum(request.getParameter("accnum"));
 	dto.setRequestDate(request.getParameter("requestDate"));
+	dto.setAccType(request.getParameter("requestDate"));
 	
 	int successCheck = dao.RequestApproved(dto.getAccnum(), dto.getRequestDate());
 	

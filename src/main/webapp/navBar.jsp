@@ -7,7 +7,7 @@
 
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>삼조은행</title>
 <link href="./css/navBar.css" rel="stylesheet" type="text/css">
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"

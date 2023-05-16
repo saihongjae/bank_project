@@ -156,6 +156,7 @@
 		</div>
 	</form>
 	</div>
+	<%@ include file="./footer.jsp"%>
 	<script type="text/javascript" src="./javascript/savingNotice2.js"></script>
 </body>
 

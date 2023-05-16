@@ -31,32 +31,6 @@ INSERT INTO bank_account_type
 VALUES (3,'적금');
 INSERT INTO bank_account_type 
 VALUES (4,'대출');
------------------------------------------------------------------
-CREATE TABLE bank_account (
-    ssn VARCHAR2(13) NOT NULL,
-    account_num VARCHAR2(13) PRIMARY KEY,
-    pw NUMBER(4) NOT NULL,
-    balance NUMBER(20) NOT NULL,
-    account_type NUMBER(3) NOT NULL,
-    reg_date VARCHAR2(20) DEFAULT TO_CHAR(sysdate, 'YYYY/MM/DD HH24:MI:SS') NOT NULL
-);
-
-drop table bank_account;
-SELECT * FROM bank_account;
-
-
-INSERT INTO bank_account(ssn, account_num, pw, balance, account_type)
-VALUES (?, (SELECT TO_CHAR(MAX(TO_NUMBER(account_num))+1) FROM bank_account), ?, 0, 1);
-
-SELECT TO_CHAR(MAX(account_num)+1) FROM bank_account;
-
-SELECT MAX(account_num)+1 FROM bank_account;
-                    
-INSERT INTO bank_account(ssn, account_num, pw, balance, account_type) 
-VALUES ('0104171234567','4084170000001', '1234', 5000000, 1);
-
-INSERT INTO bank_account(ssn, account_num, pw, balance, account_type) 
-VALUES ('0104171234567', (SELECT MAX(account_num)+1 FROM bank_account), '1234', 0, 1);
 ----------------------------------------------------------------
 CREATE TABLE bank_manager (
     m_name VARCHAR(10) NOT NULL,
@@ -75,34 +49,14 @@ CREATE TABLE bank_board (
     id VARCHAR2(20) NOT NULL,
     title VARCHAR2(200) NOT NULL,
     content VARCHAR2(1000) NOT NULL,
-    question_date VARCHAR2(20) DEFAULT TO_CHAR(sysdate, 'YYYY/MM/DD HH24:MI'),
+    question_date VARCHAR2(20) DEFAULT TO_CHAR(sysdate, 'YYYY/MM/DD HH24:MI:SS'),
     answer VARCHAR2(1000) DEFAULT null,
     answer_date VARCHAR2(20) DEFAULT null
 );
-drop table bank_board;
-
-INSERT INTO bank_board (bno, id, title, content)
-VALUES ((SELECT NVL(MAX(bno)+1, 1) FROM bank_board), 'dfdf', 'dsfdf', 'wew');
-
-
-(SELECT NVL(MAX(bno)+1, 1) FROM bank_board);
 
 SELECT * FROM bank_board ;
+drop table bank_board;
 
-SELECT * FROM bank_board WHERE answer_date IS NULL ORDER BY question_date DESC;
-
-CREATE 
-
-INSERT INTO bank_board (bno, id, title, content)
-VALUES (count,'7777', 'ㄴ미아ㅓㄹ', 'ㄴ미아ㅓ리ㅏㄴㅇ');
-
-drop SEQUENCE board_seq;
--------------------(봉인)------------------------------
---CREATE TABLE bank_loan (
---    branch_name VARCHAR2(20) NOT NULL,
---    loan_number VARCHAR2(20) PRIMARY KEY,
---   loan_cost NUMBER(20) NOT NULL
---);
 --------------------------------
 --상품명 p_name
 --상품코드 p_code
@@ -112,12 +66,14 @@ drop SEQUENCE board_seq;
 CREATE TABLE product_list (
     p_name VARCHAR2(50) PRIMARY KEY, 
     p_code NUMBER(3) NOT NULL,
-    p_rate NUMBER(2, 2) NOT NULL
+    p_rate NUMBER(3, 2) NOT NULL
 );
 
-INSERT INTO product_list VALUES("삼조 S드림 정기예금", 2, 2.90);
-INSERT INTO product_list VALUES("삼조뱅크 자유적금", 3, 3.80);
-INSERT INTO product_list VALUES("삼편한 직장인대출S", 4, 3.59);
+drop table product_list;
+
+INSERT INTO product_list VALUES('삼조 S드림 정기예금', 2, 2.90);
+INSERT INTO product_list VALUES('삼조뱅크 자유적금', 3, 3.80);
+INSERT INTO product_list VALUES('삼편한 직장인대출S', 4, 3.59);
 
 
 -- 상품코드 code -- 예금인지 적금인지 + 대출 / 예적대
@@ -145,24 +101,28 @@ CREATE TABLE account_common (
     ac_requestDate VARCHAR2(20) DEFAULT TO_CHAR(sysdate, 'YYYY/MM/DD HH24:MI:SS') NOT NULL,
     ac_startDate VARCHAR2(20) DEFAULT NULL, 
     ac_endDate VARCHAR2(20) DEFAULT NULL,
-    ac_balance NUMBER(20) DEFAULT 0
+    ac_balance NUMBER(20) DEFAULT 0,
+    ac_open_situation NUMBER(1) DEFAULT 0
 );
 
-INSERT INTO account_common (ac_code, ac_accNum, ac_pw, ac_ssn)
-VALUES (2, '3017920000001', '1234', '8502921238221');
+SELECT * FROM account_common;
+drop table account_common;
 
 --예금 적금 대출
 CREATE TABLE customer_account_dsl (
     dsl_accNum VARCHAR2(13) PRIMARY KEY,
     dsl_monthly NUMBER(20) DEFAULT NULL,
-    dsl_open_situation NUMBER(1) DEFAULT 0,
     dsl_term NUMBER(2) NOT NULL,
     dsl_regularDate NUMBER(2) DEFAULT NULL
 );
 
-DROP TABLE customer_account_dsl;
 SELECT * FROM customer_account_dsl;
+DROP TABLE customer_account_dsl;
 
-SELECT * FROM account_common;
-DROP TABLE account_common;
+SELECT bm.name, e.ac_accNum, e.ac_requestDate, pb.pb_type FROM account_common e ,bank_member bm, bank_account_type pb
+WHERE e.ac_ssn = bm.ssn AND e.ac_code = pb.pb_type_no AND e.ac_open_situation = 1;
 
+SELECT e.ac_accNum, e.ac_balance, e.ac_startDate, e.ac_endDate, pb.pb_type, ca.dsl_term, ca.dsl_monthly
+FROM account_common e, bank_member bm, bank_account_type pb, customer_account_dsl ca
+WHERE e.ac_ssn = bm.ssn AND e.ac_code = pb.pb_type_no AND e.ac_open_situation = 1
+AND bm.id = 'happyjh' AND ca.dsl_accnum = e.ac_accNum;

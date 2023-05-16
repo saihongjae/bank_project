@@ -61,8 +61,8 @@
 			<tr>
 				<form action="admin_tap_request_approved.jsp" method="post">
 					<td><%=item.getName()%></td>
-					<td><input type="text"  class="sub"  name="accnum"   value="<%=item.getAccnum()%>" readonly></td>
-					<td><%=item.getAccType()%></td>
+					<td><input type="text" class="sub" name="accnum" value="<%=item.getAccnum()%>" readonly></td>
+					<td><input type="hidden" class="sub" name="type" value="<%=item.getAccType()%>" readonly></td>
 					<td><input type="text"  class="sub" name="requestDate"  value="<%=item.getRequestDate()%>" readonly></td>
 					<td><button type="submit">승인</button></td>
 				</form>
@@ -72,12 +72,6 @@
 	%>
 		</tbody>	
 	</table>
-</div>
-
-
-   
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-
-    
 </body>
 </html>

@@ -206,7 +206,8 @@
 		</div>
 	</form>
 	</div>
-<script type="text/javascript" src="./javascript/normalNotice.js"></script>
+	<%@ include file="./footer.jsp"%>
+	<script type="text/javascript" src="./javascript/normalNotice.js"></script>
 </body>
 
 </html>
