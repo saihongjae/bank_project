@@ -147,6 +147,13 @@ CREATE TABLE customer_account_dsl (
 DROP TABLE customer_account_dsl;
 SELECT * FROM customer_account_dsl;
 
-SELECT * FROM account_common;
+SELECT * FROM bank_member;
 DROP TABLE account_common;
 
+SELECT * FROM account_common;
+
+
+
+UPDATE account_common
+SET ac_balance = (SELECT ac_balance-? FROM account_common WHERE ac_accnum = ?)
+WHERE ac_accNum = ?
