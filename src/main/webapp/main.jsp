@@ -29,7 +29,7 @@
 		</li>
 		<li>사회공헌
 			<ul class="innerMenu">
-				<li>후원하기</li>
+				<li><a href="./imgs/QR.jpg" target="_blank">후원하기</li>
 				<li>후원내역</li>
 			</ul>
 		</li>
