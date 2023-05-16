@@ -6,7 +6,8 @@ public class BoardDTO {
 	String content;
 	String quastDate;
 	int bno;
-	//public static int lastIndex = 1;
+	String answer;
+	String answer_date;
 		
 	public int getBno() {
 		return bno;
@@ -37,6 +38,18 @@ public class BoardDTO {
 	}
 	public void setContent(String content) {
 		this.content = content;
+	}
+	public String getAnswer() {
+		return answer;
+	}
+	public void setAnswer(String answer) {
+		this.answer = answer;
+	}
+	public String getAnswer_date() {
+		return answer_date;
+	}
+	public void setAnswer_date(String answer_date) {
+		this.answer_date = answer_date;
 	}
 	
 }

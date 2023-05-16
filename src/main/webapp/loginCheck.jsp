@@ -39,9 +39,9 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.all.min.js">
 	<script>
 		Swal.fire("<%=id%> 님 환영합니다 :) ");
 		if ("<%=loc%>" != "") { 
-			setTimeout("location.href = '<%=loc%>'",3000);
+			setTimeout("location.href = '<%=loc%>'",1000);
 		} else {
-			setTimeout("location.href = './main.jsp'",3000);
+			setTimeout("location.href = './main.jsp'",1000);
 		}
 	</script>
 	<%

@@ -29,15 +29,14 @@
 		</li>
 		<li>사회공헌
 			<ul class="innerMenu">
-				<li><a href="./imgs/QR.jpg" target="_blank">후원하기</li>
+				<li><a href="./imgs/QR.jpg" target="_blank">후원하기</a></li>
 				<li>후원내역</li>
 			</ul>
 		</li>
 		<li>고객센터
 			<ul class="innerMenu">
-				<li>자주하는 질문</li>
+				<li><a href="https://www.shinhan.com/hpe/" target="_blank">자주하는 질문</a></li>
 				<li><a href="./boardContent.jsp">1대 1 문의</a></li>
-				<li>답변 확인</li>
 			</ul>
 		</li>
 	</ul>

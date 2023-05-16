@@ -67,7 +67,6 @@ public List<BoardDTO> view(String bno) {
 			boardDTO.setTitle(rs.getString("title"));
 			boardDTO.setContent(rs.getString("content"));
 			boardDTO.setQuastDate(rs.getString("question_date"));
-
 			view.add(boardDTO);
 		}
 		
@@ -81,6 +80,47 @@ public List<BoardDTO> view(String bno) {
 	}
 	
 	return view;	
+}
+//-------------------------------------------
+public List<BoardDTO> viewAsk(String bno) {
+	Connection conn = null;
+	PreparedStatement psmt = null;
+	ResultSet rs = null;
+	List<BoardDTO> viewASk = null;
+	//select 한개 단일
+	try {
+		conn = DBConnectionManager.getConnection();
+
+		// 쿼리문!
+		String sql = "SELECT * FROM bank_board WHERE bno = ?";
+
+		psmt = conn.prepareStatement(sql);
+		psmt.setString(1, bno);
+		
+		rs = psmt.executeQuery(); //쿼리를 실행!!
+		
+		viewASk = new ArrayList<BoardDTO>();
+		
+		while(rs.next()) {//executeQuery에는 반복문rs.next()없이 set을 하면 값이 안들어갔던걸로 알아요
+			BoardDTO boardDTO = new BoardDTO();
+			
+			boardDTO.setBno(rs.getInt("bno"));
+			boardDTO.setAnswer(rs.getString("answer"));
+			boardDTO.setAnswer_date(rs.getString("answer_date"));
+			
+			viewASk.add(boardDTO);
+		}
+		
+		// DB에 쿼리문 실행
+		// 쿼리 결과를 반환 -> 활용
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} finally {
+		DBConnectionManager.close(rs, psmt, conn);			
+	}
+	
+	return viewASk;	
 }
 //--------------------------------------------------
 public List<BoardDTO> Write(String id) {
@@ -110,7 +150,6 @@ public List<BoardDTO> Write(String id) {
 			boardDTO.setTitle(rs.getString("title"));
 			boardDTO.setContent(rs.getString("content"));
 			boardDTO.setQuastDate(rs.getString("question_date"));
-
 			write.add(boardDTO);
 		}
 		
