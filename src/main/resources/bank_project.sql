@@ -124,6 +124,11 @@ CREATE TABLE account_common (
 );
 
 drop table account_common;
+select * from account_common;
+
+UPDATE account_common
+SET ac_balance = 20000
+WHERE ac_accNum = 3017920000001;
 
 select * from account_common ac, bank_member bm
 where ac.ac_ssn=bm.ssn and ac_code!=3 and ac_open_situation=1 and bm.id = ?;

@@ -12,14 +12,11 @@
 <%
 accountTransferDAO dao = new accountTransferDAO();
 accountTransferDTO dto = new accountTransferDTO();
-
-	
-	String bal = dao.checkBalance(request.getParameter("accnum"));
-	dto.setBalance(bal);
-	
+dto.setAccnum(request.getParameter("selectAccNum"));
+dto.setBalance(dao.checkBalance(dto.getAccnum()));
 %>
-			  <script>
-				location.replace('admin_tap.jsp');
-			</script>
+<script>
+location.href="accountTransfer.jsp";
+</script> 
 </body>
 </html>
