@@ -32,7 +32,7 @@
 		loc=((String)session.getAttribute("loc")).substring(1); } %>
 	<script>
 		alert("<%=id%> 님 환영합니다 :) ");
-		if ("<%= loc %>" != "") { 
+		if ("<%= loc %>" != '') { 
 			location.href = "<%= loc %>";
 		} else {
 			location.href = "./main.jsp";

@@ -36,7 +36,6 @@
 		</div>
 		<div>
 			<div class="module_content">
-				<h4 class="screen_out">접수하기</h4>
 				<p class="desc_login">
 					고객님의 금융관련 상담 및 문의사항에 대한<br>해결을 위해 최선을 다하겠습니다.
 				</p>
