@@ -7,6 +7,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.min.css" rel="stylesheet">
+<script src="
+https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.all.min.js
+"></script>
 <title>Insert title here</title>
 </head>
 <body>
@@ -24,15 +28,21 @@
 		dao.DepWithAccOpening(dto.getDn_ssn(), dto.getDn_pw());
 		%>
 		<script>
-		alert('계좌 개설 요청을 성공하였습니다.');
-		location.href= 'main.jsp';
+		Swal.fire({
+			  icon: 'success',
+			  title: '계좌 개설 요청을 성공하였습니다.'
+			})
+			setTimeout("location.href = 'main.jsp'",1000);
 		</script>
 	<%
 	} else {
 	%>
 	<script>
-	alert('계좌 개설 요청을 실패하였습니다.');
-	location.href= 'savings_account.jsp';
+	Swal.fire({
+		  icon: 'error',
+		  title: '계좌 개설 요청을 실패하였습니다.'
+		})
+		setTimeout("location.href= 'savings_account.jsp'",3000);
 	</script>
 <%}
 	

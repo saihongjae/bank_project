@@ -7,6 +7,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.min.css" rel="stylesheet">
+<script src="
+https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.all.min.js
+"></script>
 <title>Insert title here</title>
 </head>
 <body>
@@ -18,32 +22,36 @@
 
 
 	<%
-		
-		BoardDAO boardDao = new BoardDAO();
-		String id = (String)session.getAttribute("id");
-		String bno = request.getParameter("bno");
-		String title = request.getParameter("title");
-		String content = request.getParameter("content");
+	BoardDAO boardDao = new BoardDAO();
+	String id = (String) session.getAttribute("id");
+	String bno = request.getParameter("bno");
+	String title = request.getParameter("title");
+	String content = request.getParameter("content");
 
-		
 	int result = boardDao.deleteBoardList(bno);
-		
-		if(result == 1){
-			//삭제성공
+
+	if (result == 1) {
+		//삭제성공
 	%>
 	<script>
-			alert('삭제 성공');
-			location.href = './boardList.jsp'; 
+		Swal.fire({
+			  icon: 'success',
+			  title: '삭제 성공'
+			})
+		setTimeout("location.href = './boardList.jsp'",1000);
 		</script>
 	<%
-		} else {
+	} else {
 	%>
 	<script>
-				alert('삭제실패..');
-				location.href = './board_detail.jsp?id=<%=id%>';
-			</script>
+		Swal.fire({
+			  icon: 'error',
+			  title: '삭제실패..'
+			})
+		setTimeout("location.href = './board_detail.jsp?id=<%=id%>'",1000);
+	</script>
 	<%
-		}
+	}
 	%>
 
 

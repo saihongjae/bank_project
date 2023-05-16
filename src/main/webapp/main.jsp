@@ -12,7 +12,7 @@
 
 <body>
 	<%@ include file="navBar.jsp"%>
-	<ul class="mainMenu bg-body-tertiary" >
+	<ul class="mainMenu" >
 		<li>상품소개
 			<ul class="innerMenu">
 				<li><a href="normalNotice.jsp">입출금통장</a></li>

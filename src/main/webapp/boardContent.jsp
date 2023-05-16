@@ -24,7 +24,12 @@
 				<li id="lnb_Ask"><a href="./q_board.jsp" role="tab"
 					aria-selected="true" class="link_tab">등록하기</a></li>
 			<%	} else {%> 
-				<script>alert("로그인 하세요.")</script>	
+				<script>
+				Swal.fire({
+					  icon: 'info',
+					  title: "로그인 후 이용 가능합니다."
+					})
+				</script>	
 			<%	} %>
 			<%	if (userID != null) { %>
 				<li id="lnb_MyHistory"><a href="./boardList.jsp" role="tab"
