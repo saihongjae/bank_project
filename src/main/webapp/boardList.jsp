@@ -39,27 +39,35 @@
 		<li id="lnb_MyHistory" class="on"><a href="" role="tab"
 			aria-selected="false" class="link_tab">조회하기</a></li>
 	</ul>
-
+	<table class="table table-hover">
 	<%
+	BoardDTO boardDTO = new BoardDTO();
 	BoardDAO boardDAO = new BoardDAO(); //DAO 메소드를 불러오기 위한 선행조건
+	//boolean isAnswer = BoardDAO.isAnswerComplete(answer);
 	
-   List<BoardDTO> questionList = boardDAO.Write(userID); 
+    List<BoardDTO> questionList = boardDAO.Write(userID); 
 //DTO 필드 모양의 배열(List) 타입 생성자(questionList)에 로그인된 아이디(userID)의 검색값을 전부 저장 
 //한 사이클 당 item 필드에 SELECT해서 저장한 값을 넣고 출력(questionList배열 수 만큼 실행)
 		for(BoardDTO item : questionList){
 	%>
-	<a href="./board_detail.jsp?bno=<%=item.getBno()%>" method="post">
-		<table class="table table-hover">
 			<tr>
-				<td><%=item.getBno()%>.</td>
-				<td><%=item.getTitle()%></td>
-
+				<td style="text-align: left; background-color: beige; width: 80px;"><%=item.getBno()%>.</td>
+				<td><a href="./board_detail.jsp?bno=<%=item.getBno()%>" method="post"><%=item.getTitle()%></td></a>
+				<td style="text-align: right">
+				<%if(item.getAnswer() == "" || item.getAnswer() == null){				
+				%>
+				<td>문의완료</td>
+				<%} else{ %>
+				<td>답변완료</td>
+				<%}%>
+			
+				
+				</td>
 			</tr>
-		</table>
-	</a>
 	<%
 		}
-	%>
+	%>	
+	</table>
 	<ul class="bb">
 		<li class="aa"><a href="#">&laquo;</a></li>
 		<%-- 유니코드 &laquo = << --%>

@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import bank.dto.BoardDTO;
+import bank.dto.MemberDTO;
 import bank.oracle.DBConnectionManager;
 
 public class BoardDAO extends DBConnectionManager {
@@ -67,6 +68,7 @@ public List<BoardDTO> view(String bno) {
 			boardDTO.setTitle(rs.getString("title"));
 			boardDTO.setContent(rs.getString("content"));
 			boardDTO.setQuastDate(rs.getString("question_date"));
+			boardDTO.setAnswer(rs.getString("answer"));
 			view.add(boardDTO);
 		}
 		
@@ -149,6 +151,7 @@ public List<BoardDTO> Write(String id) {
 			boardDTO.setId(rs.getString("id"));
 			boardDTO.setTitle(rs.getString("title"));
 			boardDTO.setContent(rs.getString("content"));
+			boardDTO.setAnswer(rs.getString("answer"));
 			boardDTO.setQuastDate(rs.getString("question_date"));
 			write.add(boardDTO);
 		}
@@ -164,8 +167,34 @@ public List<BoardDTO> Write(String id) {
 	
 	return write;	
 }
-//===============================================
-//delete
+//--------------답변 유무
+public boolean isAnswerComplete(String answer) { // 답변이 존재하는지?
+	Connection conn = null;
+	PreparedStatement psmt = null;
+	ResultSet rs = null;
+	boolean isAnswer = false;
+
+	try {
+		conn = DBConnectionManager.getConnection();
+		String sql = "SELECT * FROM bank_board"
+				+ "WHERE answer is NOT NULL";
+
+		psmt = conn.prepareStatement(sql);
+		psmt.setString(1, answer);
+
+		rs = psmt.executeQuery(); //쿼리를 실행!!
+		isAnswer = rs.next();
+
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} finally {
+		DBConnectionManager.close(rs, psmt, conn);			
+	}
+	return isAnswer;
+}
+
+//------------------------delete
 public int deleteBoardList(String bno) {
 
 	Connection conn = null;

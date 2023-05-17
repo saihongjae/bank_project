@@ -59,6 +59,10 @@ SELECT * FROM bank_board ;
 
 SELECT * FROM bank_board WHERE answer_date IS NULL ORDER BY question_date DESC;
 
+SELECT * FROM bank_board
+WHERE answer is NOT NULL;
+
+
 insert into bank_board (bno, id, title, content, answer, answer_date)
 VALUES(7,'today','제목', '내용', '답변은??', sysdate);
 
