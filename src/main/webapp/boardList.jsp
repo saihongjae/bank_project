@@ -56,9 +56,9 @@
 				<td style="text-align: right">
 				<%if(item.getAnswer() == "" || item.getAnswer() == null){				
 				%>
-				<td>문의완료</td>
+				<td style="color:red;">처리 중</td>
 				<%} else{ %>
-				<td>답변완료</td>
+				<td style="color:blue;">답변 완료</td>
 				<%}%>
 			
 				
