@@ -15,8 +15,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="./css/board.css" rel="stylesheet" type="text/css">
-<title>게시글 조회</title>
-
+<link rel="shortcut icon" type="image⁄x-icon" href="./imgs/bank.png">
+<title>삼조은행</title>
 <style type="text/css">
 .bb {
 	display: flex;

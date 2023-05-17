@@ -4,7 +4,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<link rel="shortcut icon" type="image⁄x-icon" href="./imgs/bank.png">
+<title>삼조은행</title>
 <style>
 	*{
 		margin: 0;
@@ -47,6 +48,6 @@
 	</div>
 	</form>
 
-
+<%@ include file="./footer.jsp"%>
 </body>
 </html>

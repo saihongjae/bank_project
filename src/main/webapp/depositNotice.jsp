@@ -10,9 +10,8 @@
 https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.all.min.js
 "></script>
 <link href="./css/commonNotice.css" rel="stylesheet" type="text/css">
-<title>Insert title here</title>
-<link href="./css/commonNotice.css" rel="stylesheet" type="text/css">
-<title>Insert title here</title>
+<link rel="shortcut icon" type="image⁄x-icon" href="./imgs/bank.png">
+<title>삼조은행</title>
 </head>
 <body>
 	<%
@@ -155,6 +154,8 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.all.min.js
 	</div>
 	<%@ include file="./footer.jsp"%>
 	<script type="text/javascript" src="./javascript/depositNotice.js"></script>
+		<%@ include file="./footer.jsp"%>
+	
 </body>
 
 </html>

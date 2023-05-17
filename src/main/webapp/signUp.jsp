@@ -5,7 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <link href="./css/signUp.css" rel="stylesheet" type="text/css">
-<title>Insert title here</title>
+<link rel="shortcut icon" type="image⁄x-icon" href="./imgs/bank.png">
+<title>삼조은행</title>
 <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.min.css" rel="stylesheet">
 <script src="
 https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.all.min.js

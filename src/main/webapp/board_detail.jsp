@@ -13,7 +13,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<link rel="shortcut icon" type="image⁄x-icon" href="./imgs/bank.png">
+<title>삼조은행</title>
 </head>
 <body>
 	<%@ include file="navBar.jsp"%>
@@ -84,5 +85,6 @@
 		form.submit(); 
 	});
 	</script>
+	<%@ include file="./footer.jsp"%>
 </body>
 </html>

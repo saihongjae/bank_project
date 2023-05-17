@@ -6,8 +6,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
+<link rel="shortcut icon" type="image⁄x-icon" href="./imgs/bank.png">
+<link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.all.min.js"></script>
+<title>삼조은행</title></head>
 <body>
 	<%@ include file="navBar.jsp"%>
 	<% 
@@ -15,8 +17,11 @@
 	if (session.getAttribute("id")==null) { // null이 아니면 로그인한 것
 		%>
 	<script>
-		alert("로그인 후 시도하세요.");
-		location.href = "main_login.jsp";
+	 Swal.fire({
+		  icon: 'warning',
+		  title: "로그인 후 시도하세요."
+		})
+	  setTimeout("location.href = 'main_login.jsp'",1000);
 		</script>
 	<%
 		}
@@ -83,7 +88,7 @@
 		}
 	}
 	});
-		
+	<%@ include file="./footer.jsp"%>		
 </script>
 </body>
 </html>
