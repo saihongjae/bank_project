@@ -16,7 +16,13 @@
 <head>
 <meta charset="UTF-8">
 <title>profile</title>
-
+<link
+	href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.min.css"
+	rel="stylesheet">
+<script
+	src="
+https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.all.min.js">
+</script>
 </head>
 <body>
 	<%@ include file="navBar.jsp"%>
@@ -34,38 +40,34 @@
 			<table class="table table-hover">
 
 				<tr>
-				<th>아이디 </th>
+					<th>아이디</th>
 					<td><%=userID%></td>
-					
+
 				</tr>
 
 				<tr>
-					<th>이름 </th>
+					<th>이름</th>
 					<td><%=mypageDto.getName()%></td>
 				</tr>
-				
+
 				<tr>
-					<th>전화번호 </th>
-					<td>
-					<input type="text" class="form-control" id="inputPhone"
-						name="phone" placeholder="변경된 전화번호" maxLength="11"
-						value="<%=mypageDto.getPhone()%>">
-					</td>
+					<th>전화번호</th>
+					<td><input type="text" class="form-control" id="inputPhone"
+						name="phone" placeholder="변경된 전화번호" required maxLength="11"
+						value="<%=mypageDto.getPhone()%>"></td>
 				</tr>
-				
+
 				<tr>
-					<th>Email </th>
-					<td>
-				<input type="text" class="form-control" required 
-						name="emailId" id="inputEmail" placeholder="변경된 이메일아이디" 
-						value="<%=email.substring(0, email.indexOf('@'))%>" >
-					<span>@</span>
-				<input type="text" class="form-control" required
-						name="emailAddr" id="inputEmailAddr" placeholder="도메인 직접 입력해주세요" 
-						value="<%=email.substring(email.indexOf('@')+1)%>" pattern="[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$">
-					</td>
+					<th>Email</th>
+					<td><input type="text" class="form-control" required
+						name="emailId" id="inputEmail" placeholder="변경된 이메일아이디" required
+						value="<%=email.substring(0, email.indexOf('@'))%>"> <span>@</span>
+						<input type="text" class="form-control" required name="emailAddr"
+						id="inputEmailAddr" placeholder="도메인 직접 입력해주세요" required
+						value="<%=email.substring(email.indexOf('@') + 1)%>"
+						pattern="[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"></td>
 				</tr>
-				
+
 				<tr>
 					<th>가입날짜 :</th>
 					<td><%=mypageDto.getRegdate()%></td>
@@ -76,25 +78,50 @@
 	<button id="updateBtn" type="button" class="btn btn-warning">수정</button>
 
 	<script>	
+	
 		document.getElementById('updateBtn').addEventListener('click', ()=>{
 		let form = document.memberProfileForm;
 		
 		let inputPhone = document.getElementById('inputPhone');
 		if(inputPhone.value == "" || (inputPhone.value.length != 11)){
-			alert('전화번호를 바르게 입력해주세요');
+			Swal.fire({
+				  icon: 'warning',
+				  text: '전화번호를 바르게 입력해주세요'
+				})
 			inputPhone.focus();
 			return;
 		}
+		let inputEmail = document.getElementById('inputEmail');
 		if(inputEmail.value == ""){
-			alert('이메일을 바르게 입력해주세요');
-			inputPhone.focus();
+			Swal.fire({
+				  icon: 'warning',
+				  text: '이메일 아이디를 바르게 입력해주세요'
+				})
+			inputEmail.focus();
+			return;
+		}
+		if(inputEmailAddr.value == ""){
+			Swal.fire({
+				  icon: 'warning',
+				  text: '이메일 주소를 바르게 입력해주세요'
+				})
+			inputEmailAddr.focus();
 			return;
 		}
 		
-		if(confirm('수정하시겠습니까?')){
-			form.action = 'updateProfile.jsp';
-			form.submit();
-		}				
+		Swal.fire({ 
+			  title: '수정하시겠습니까?',
+			  icon: 'question',
+			  showCancelButton: true,
+			  confirmButtonColor: '#3085d6',
+			  cancelButtonColor: '#d33',
+			  confirmButtonText: 'Yes'
+			}).then((result) => {
+				  if(result.isConfirmed){
+					  form.action = './updateProfile.jsp';
+					  form.submit();
+				  }
+				 })  
 	});
 	</script>
 </body>

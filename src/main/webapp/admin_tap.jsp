@@ -16,27 +16,11 @@
 	text-align: center;
 	}
 
-    
     table{
     width: 100%;
         border: solid 1px;
     }
     
-    .sub{
-    width: auto;
-    
-    }
-    
-    .selectionBar {
-        width: 100%;
-        height: 54px;
-        border: solid 1px;
-    }
-    
-    .request {
-    border: solid 1px;
-    display: flex;
-    }
 </style>
 </head>
 <body>

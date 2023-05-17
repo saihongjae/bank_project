@@ -8,6 +8,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.min.css" rel="stylesheet">
+<script src="
+https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.all.min.js
+"></script>
 <title>Insert title here</title>
 </head>
 <body>
@@ -29,15 +33,21 @@
 		
 		if(result == 1){%>
 		<script>
-				alert('수정 성공');
-				location.href = './myPage.jsp?phone=<%=phone%>';
+		Swal.fire({
+			  icon: 'success',
+			  title: "수정 성공"
+			})
+			setTimeout("location.href = './myPage.jsp?phone=<%=phone%>'",1000);
 		</script>
 	<%
 		} else {
 	%>
 		<script>
-			alert('수정실패..');
-			location.href = './myPage.jsp?phone=<%=phone%>';
+		Swal.fire({
+			  icon: 'error',
+			  title: "수정실패..."
+			})
+			setTimeout("location.href = './myPage.jsp?phone=<%=phone%>'",1000);
 		</script>
 	<%
 		}

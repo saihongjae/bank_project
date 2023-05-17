@@ -6,6 +6,10 @@
 <meta charset="UTF-8">
 <link href="./css/signUp.css" rel="stylesheet" type="text/css">
 <title>Insert title here</title>
+<link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.min.css" rel="stylesheet">
+<script src="
+https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.all.min.js
+"></script>
 </head>
 <body>
 <%@ include file="navBar.jsp"%>
@@ -13,8 +17,12 @@
 request.setCharacterEncoding("UTF-8");
 if (userID != null) { // null이 아니면 로그인한 것 %>
 <script>
-	alert("이미 가입이 완료된 회원입니다.");
-	location.href="./main.jsp"
+	Swal.fire({
+	  icon: 'info',
+	  title: "이미 가입이 완료된 회원입니다."
+	})
+	setTimeout("location.href='./main.jsp'",3000);
+
 </script>
 <% 
 return;

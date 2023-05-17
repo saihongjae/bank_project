@@ -13,8 +13,11 @@
 		session.invalidate();
 	%>
 	<script>
-		alert("로그아웃 되었습니다");
-		location.href="main.jsp";
+	Swal.fire({
+		  icon: 'success',
+		  title: "로그아웃 되었습니다"
+		})
+		setTimeout("location.href = './main.jsp'",1000);
 	</script>
 </body>
 </html>

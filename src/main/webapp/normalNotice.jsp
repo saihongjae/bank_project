@@ -4,10 +4,13 @@
 <%@page import="bank.dao.MemberDAO"%>
 <!DOCTYPE html>
 <html>
-
 <head>
 <meta charset="UTF-8">
 <link href="./css/commonNotice.css" rel="stylesheet" type="text/css">
+<link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.min.css" rel="stylesheet">
+<script src="
+https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.all.min.js">
+</script>
 <title>Insert title here</title>
 </head>
 
@@ -16,8 +19,11 @@
 		if (session.getAttribute("id") == null) { // null이 아니면 로그인한 것
 			session.setAttribute("loc", request.getServletPath()); %>
 		<script>
-			alert("로그인이 필요한 페이지입니다");
-			location.href="main_login.jsp";
+		Swal.fire({
+			  icon: 'warning',
+			  title: "로그인이 필요한 페이지입니다"
+			})
+			setTimeout("location.href = 'main_login.jsp'",1000);
 		</script>
 	<%
 	return;

@@ -13,6 +13,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.min.css" rel="stylesheet">
+<script src="
+https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.all.min.js
+"></script>
 </head>
 <body>
 <%
@@ -27,15 +31,21 @@
 		if (LoginCheckValue == 1) {
 %>
 			  <script>
-				alert("로그인 성공");
-				location.replace('admin_tap.jsp');
+			  Swal.fire({
+				  icon: 'success',
+				  title: "로그인 성공"
+				})
+			  setTimeout("location.replace('admin_tap.jsp')",1000);
 			</script>
 			<%
 		} else if (LoginCheckValue == 2) {
 			%>
 			  <script>
-				alert("로그인 실패");
-				location.replace('login_tap.jsp');
+			  Swal.fire({
+				  icon: 'warning',
+				  title: "로그인 실패"
+				})
+			  setTimeout("location.replace('login_tap.jsp')",1000);
 			</script>
 			<%
 		}		
