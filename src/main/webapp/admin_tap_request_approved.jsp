@@ -1,4 +1,4 @@
-<%@page import="bank.dto.RequestApproved_DTO"%>
+<%@page import="bank.dto.AccOpenManagementDTO"%>
 <%@page import="bank.dao.RequestApproved_DAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -11,13 +11,18 @@
 <body>
 <%
 RequestApproved_DAO dao = new RequestApproved_DAO();
-RequestApproved_DTO dto = new RequestApproved_DTO();
+AccOpenManagementDTO dto = new AccOpenManagementDTO();
 
-	dto.setAccnum(request.getParameter("accnum"));
+	dto.setName(request.getParameter("name"));
+	dto.setAccNum(request.getParameter("accnum"));
+	dto.setBalance(request.getParameter("balance"));
+	dto.setRegularDate(request.getParameter("regular"));
+	dto.setTerm(request.getParameter("term"));
+	dto.setMonthly(request.getParameter("monthly"));
+	dto.setAccType(request.getParameter("type"));
 	dto.setRequestDate(request.getParameter("requestDate"));
-	dto.setAccType(request.getParameter("requestDate"));
 	
-	int successCheck = dao.RequestApproved(dto.getAccnum(), dto.getRequestDate());
+	int successCheck = dao.RequestApproved(dto);
 	
 		if (successCheck == 1) {
 %>

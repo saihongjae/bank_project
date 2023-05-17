@@ -6,7 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <link href="./css/mainPage.css" rel="stylesheet" type="text/css">
-
 <title>삼조은행</title>
 </head>
 

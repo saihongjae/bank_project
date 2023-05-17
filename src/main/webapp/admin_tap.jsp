@@ -10,7 +10,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-	*{
+	* {
 	margin: 0;
 	padding: 0;
 	text-align: center;
@@ -54,20 +54,48 @@
 		<tbody>
 	<%
    AccOpenManagementDAO amoDAO = new AccOpenManagementDAO();
-   List<AccOpenManagementDTO> amoList = amoDAO.OpeningRequestInfoList();
+   List<AccOpenManagementDTO> amoList = amoDAO.OpeningNormalRequestInfoList();
+   List<AccOpenManagementDTO> amoList2 = amoDAO.OpeningDslRequestInfoList();
 
+   	if (amoList.size() != 0) {
 		for(AccOpenManagementDTO item : amoList){
 	%>
 			<tr>
 				<form action="admin_tap_request_approved.jsp" method="post">
-					<td><%=item.getName()%></td>
-					<td><input type="text" class="sub" name="accnum" value="<%=item.getAccnum()%>" readonly></td>
-					<td><input type="hidden" class="sub" name="type" value="<%=item.getAccType()%>" readonly></td>
+					<td><input type="text" class="sub" name="name" value="<%=item.getName()%>" readonly></td>
+					<td><input type="text" class="sub" name="accnum" value="<%=item.getAccNum()%>" readonly></td>
+					<td style="display: none;"><input type="hidden"  class="sub" name="balance" value="<%=item.getBalance()%>" readonly></td>
+					<td style="display: none;"><input type="hidden"  class="sub" name="regular" value="<%=item.getRegularDate()%>" readonly></td>
+					<td style="display: none;"><input type="hidden"  class="sub" name="term" value="<%=item.getTerm()%>" readonly></td>
+					<td style="display: none;"><input type="hidden"  class="sub" name="monthly" value="<%=item.getRegularDate()%>" readonly></td>
+					<td><input type="text" class="sub" name="type" value="<%=item.getAccType()%>" readonly></td>
 					<td><input type="text"  class="sub" name="requestDate"  value="<%=item.getRequestDate()%>" readonly></td>
 					<td><button type="submit">승인</button></td>
 				</form>
 			</tr>
 	<%
+   		}
+		}
+	%>
+	<%
+		if (amoList2.size() != 0) {
+		for(AccOpenManagementDTO item : amoList2){
+	%>
+			<tr>
+			<form action="admin_tap_request_approved.jsp" method="post">
+					<td><input type="text" class="sub" name="name" value="<%=item.getName()%>" readonly></td>
+					<td><input type="text" class="sub" name="accnum" value="<%=item.getAccNum()%>" readonly></td>
+					<td style="display: none;"><input type="hidden"  class="sub" name="balance" value="<%=item.getBalance()%>" readonly></td>
+					<td style="display: none;"><input type="hidden"  class="sub" name="regular" value="<%=item.getRegularDate()%>" readonly></td>
+					<td style="display: none;"><input type="hidden"  class="sub" name="term" value="<%=item.getTerm()%>" readonly></td>
+					<td style="display: none;"><input type="hidden"  class="sub" name="monthly" value="<%=item.getRegularDate()%>" readonly></td>
+					<td><input type="text" class="sub" name="type" value="<%=item.getAccType()%>" readonly></td>
+					<td><input type="text"  class="sub" name="requestDate"  value="<%=item.getRequestDate()%>" readonly></td>
+					<td><button type="submit">승인</button></td>
+				</form>
+			</tr>
+	<%
+   		}
 		}
 	%>
 		</tbody>	

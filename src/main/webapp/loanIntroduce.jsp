@@ -86,7 +86,7 @@
 	</dl>
 	</div>
 	<div>
-		<a href="./savingNotice.jsp" class="btn btn-success">개설 신청</a>
+		<a href="./loanNotice.jsp" class="btn btn-success">개설 신청</a>
 		<a href="./main.jsp" class="btn btn-outline-danger">뒤로가기</a>
 	</div>
 	</div>

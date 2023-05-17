@@ -7,20 +7,20 @@ public class AccOpenManagementDTO {
 	String accType;
 	String startDate;
 	String endDate;
+	String regularDate;
 	String balance;
 	String term;
 	String monthly;
-	
 	public String getName() {
 		return name;
 	}
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getAccnum() {
+	public String getAccNum() {
 		return accNum;
 	}
-	public void setAccnum(String accNum) {
+	public void setAccNum(String accNum) {
 		this.accNum = accNum;
 	}
 	public String getRequestDate() {
@@ -42,13 +42,19 @@ public class AccOpenManagementDTO {
 		this.startDate = startDate;
 	}
 	public String getEndDate() {
-		return startDate;
+		return endDate;
 	}
 	public void setEndDate(String endDate) {
 		this.endDate = endDate;
 	}
+	public String getRegularDate() {
+		return regularDate;
+	}
+	public void setRegularDate(String regularDate) {
+		this.regularDate = regularDate;
+	}
 	public String getBalance() {
-		return name;
+		return balance;
 	}
 	public void setBalance(String balance) {
 		this.balance = balance;
@@ -65,4 +71,6 @@ public class AccOpenManagementDTO {
 	public void setMonthly(String monthly) {
 		this.monthly = monthly;
 	}
+	
+	
 }
