@@ -28,7 +28,19 @@
 		<select id="sel" name="selectAcc">
 			<%
    accountTransferDAO acnDAO = new accountTransferDAO();
-   List<accountTransferDTO> amoList = acnDAO.accountNumList(userID);
+   List<accountTransferDTO> amoList = null;
+   if(acnDAO.accountNumList(userID)==null){
+	   %>
+		<script>
+		alert("개설된 계좌가 없습니다.");
+		location.href = "main.jsp";
+		</script>
+		<%
+		return;
+   } else {
+	   amoList = acnDAO.accountNumList(userID);
+   }
+   
 		for(accountTransferDTO item : amoList){
 	%>
 			<option value="<%=item.getAccnum()%>"><%=item.getAccnum()%></option>
@@ -36,12 +48,12 @@
 		}
 	%>
 		</select> <br> 
-		<input id="bal" type="text" value="0" name="balance" readonly>
+		<input id="bal" type="number" value="0" name="balance" readonly>
 		<button id="balbtn" type="button">잔액확인</button><br>
 		
-		<input type="text" name="depositAcc">입금계좌번호 <br>
+		<input  type="number" name="depositAcc">입금계좌번호 <br>
 		
-		<input name="depositAmount" id="depositAmount" type="text" value="0">입금 금액 입력 <br>
+		<input name="depositAmount" id="depositAmount"  type="number"value="0">입금 금액 입력 <br>
 		<button class="moneyBtn fivehunthou" type="button" value="500000">50만</button>
 		<button class="moneyBtn onehunthou" type="button" value="100000">10만</button>
 		<button class="moneyBtn fivehun" type="button" value="50000">5만</button>
@@ -49,7 +61,7 @@
 		<button id="allBtn" type="button" value="0">전액</button>
 		<button id="zeroBtn" type="button" value="0">정정</button><br>
 		
-		<input name="pw" type="text">계좌비밀번호 <br>
+		<input  type="number" name="pw">계좌비밀번호 <br>
 
 		<button>확인</button>
 	</form>
