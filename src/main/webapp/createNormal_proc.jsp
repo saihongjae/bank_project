@@ -6,7 +6,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<link rel="shortcut icon" type="image⁄x-icon" href="./imgs/bank.png">
+<link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.min.css" rel="stylesheet">
+<script	src=" https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.all.min.js">
+</script>
+<title>삼조은행</title>
 </head>
 <body>
 	<%
@@ -28,16 +32,22 @@
 		// 추가 성공
 	%>
 	<script>
-		alert('통장개설 신청이 완료되었습니다');
-		location.href = "main.jsp"; // 통장번호, 정보 담은 페이지로 or 마이페이지로 재연결
+	Swal.fire({
+		  icon: 'success',
+		  title: '통장개설 신청이 완료되었습니다'
+		})
+	  setTimeout("location.href= 'main.jsp'",1000);
 	</script>
 	<%
 	} else {
 	%>
 	<!-- 수정 실패-->
 	<script>
-		alert('통장개설 신청 실패');
-		location.href = "main.jsp";
+	 Swal.fire({
+		  icon: 'error',
+		  title: '통장개설 신청 실패'
+		})
+	  setTimeout("location.href= 'main.jsp'",1000);
 	</script>
 	<%
 	}

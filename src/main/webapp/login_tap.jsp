@@ -10,7 +10,8 @@
 
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<link rel="shortcut icon" type="image⁄x-icon" href="./imgs/bank.png">
+<title>삼조은행</title>
 <style>
 	#container {
 		display: flex;
@@ -33,6 +34,7 @@
 			type="submit" value="로그인"> <input type="reset" value="다시입력">
 	</form>
 	</div>
+	<%@ include file="./footer.jsp"%>
 
 </body>
 

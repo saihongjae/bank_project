@@ -6,7 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <link href="./css/mainPage.css" rel="stylesheet" type="text/css">
-
+<link rel="shortcut icon" type="image⁄x-icon" href="./imgs/bank.png">
+<title>삼조은행</title>
+</head>
 	<body>
 		<%@ include file="navBar.jsp" %>
 			<ul class="mainMenu">
@@ -31,7 +33,8 @@
 				</li>
 				<li>사회공헌
 					<ul class="innerMenu">
-						<li><a href="./imgs/QR.jpg"  target="_blank"></a>후원하기</li>
+						<li>
+						<a href="./imgs/QR.jpg" target="_blank">후원하기</a></li>
 						<li>후원내역</li>
 					</ul>
 				</li>
@@ -39,7 +42,6 @@
 					<ul class="innerMenu">
 						<li>자주하는 질문</li>
 						<li><a href="./boardContent.jsp">1대 1 문의</a></li>
-						<li>답변 확인</li>
 					</ul>
 				</li>
 			</ul>

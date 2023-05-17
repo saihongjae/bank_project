@@ -5,7 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <link href="./css/depositPage.css" rel="stylesheet" type="text/css">
-<title>Insert title here</title>
+<link rel="shortcut icon" type="image⁄x-icon" href="./imgs/bank.png">
+<title>삼조은행</title>
 </head>
 <body>
 	<%@ include file="navBar.jsp"%>
@@ -78,5 +79,7 @@
 		<a href="./main.jsp" class="btn btn-outline-danger">뒤로가기</a>
 	</div>
 	</div>
+		<%@ include file="./footer.jsp"%>
+	
 </body>
 </html>

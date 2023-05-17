@@ -14,7 +14,8 @@
 <head>
 <meta charset="UTF-8">
 <link href="./css/board.css" rel="stylesheet" type="text/css">
-<title>답변확인</title>
+<link rel="shortcut icon" type="image⁄x-icon" href="./imgs/bank.png">
+<title>삼조은행</title>
 </head>
 <body>
 	<%@ include file="navBar.jsp"%>
@@ -52,6 +53,6 @@
 	}
 	%>	
 		
-		
+<%@ include file="./footer.jsp"%>		
 </body>
 </html>

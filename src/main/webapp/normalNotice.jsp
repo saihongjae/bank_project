@@ -11,7 +11,8 @@
 <script src="
 https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.all.min.js">
 </script>
-<title>Insert title here</title>
+<link rel="shortcut icon" type="image⁄x-icon" href="./imgs/bank.png">
+<title>삼조은행</title>
 </head>
 
 <body>
@@ -213,6 +214,8 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.all.min.js">
 	</form>
 	</div>
 <script type="text/javascript" src="./javascript/normalNotice.js"></script>
+	<%@ include file="./footer.jsp"%>
+
 </body>
 
 </html>
