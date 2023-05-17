@@ -48,8 +48,9 @@
 		for(BoardDTO item : questionList){
 	%>
 			<tr>
-				<a href="" method="post">
-					<td><%=item.getTitle()%></td>
+			form
+				<a type="submit" method="post">
+					<td><input name="id"   value="<%=item.getTitle()%>" readonly></td>
 					<td><%=item.getQuastDate()%></td>
 				</a>
 			</tr><br>

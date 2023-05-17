@@ -16,16 +16,17 @@ request.setCharacterEncoding("UTF-8");
 answerDAO answerDAO = new answerDAO();
 answerDTO answerDTO = new answerDTO();
 
-answerDTO.setId(request.getParameter("id"));
-answerDTO.setTitle(request.getParameter("title"));
-answerDTO.setDate(request.getParameter("date"));
-answerDTO.setAnswerContent(request.getParameter("answerContent"));
+String id = request.getParameter("id");
+String title = request.getParameter("title");
+String date = request.getParameter("date");
+String answerContent = request.getParameter("answerContent");
 
-answerDAO.answerUpdate(answerDTO.getId(), answerDTO.getTitle(), answerDTO.getDate(), answerDTO.getAnswerContent());
+
+}
+
+
+
 %>
-<script>
-location.href= 'QnA_admin_tap.jsp';
-</script>
 
 
 </body>
