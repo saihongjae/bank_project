@@ -10,8 +10,21 @@
 </head>
 <body>
 	<%@ include file="navBar.jsp"%>
+	<% 
+	request.setCharacterEncoding("UTF-8");
+	if (session.getAttribute("id")==null) { // null이 아니면 로그인한 것
+		%>
+	<script>
+		alert("로그인 후 시도하세요.");
+		location.href = "main_login.jsp";
+		</script>
+	<%
+		}
+		%>
 
-	<form action="transferConfirmation.jsp" method="post" name="sendMoneyForm">
+
+	<form action="transferConfirmation.jsp" method="post"
+		name="sendMoneyForm">
 		<select id="sel" name="selectAcc">
 			<%
    accountTransferDAO acnDAO = new accountTransferDAO();
@@ -22,21 +35,21 @@
 			<%
 		}
 	%>
-		</select>
-		<br> 
-		<input id="bal" type="text" value="0" name="balance">
-		<button id="balbtn" type="button">잔액확인</button>
-		<br> 
-		<input type="text" name="depositAcc">입금계좌번호 
-		<br>
-		 <input name="depositAmount" id="depositAmount" type="text" value="0">입금 금액 입력 <br>
+		</select> <br> 
+		<input id="bal" type="text" value="0" name="balance" readonly>
+		<button id="balbtn" type="button">잔액확인</button><br>
+		
+		<input type="text" name="depositAcc">입금계좌번호 <br>
+		
+		<input name="depositAmount" id="depositAmount" type="text" value="0">입금 금액 입력 <br>
 		<button class="moneyBtn fivehunthou" type="button" value="500000">50만</button>
 		<button class="moneyBtn onehunthou" type="button" value="100000">10만</button>
 		<button class="moneyBtn fivehun" type="button" value="50000">5만</button>
 		<button class="moneyBtn onehun" type="button" value="10000">1만</button>
 		<button id="allBtn" type="button" value="0">전액</button>
-		<button id="zeroBtn" type="button" value="0">정정</button>
-		<br> <input name="pw" type="text">계좌비밀번호 <br>
+		<button id="zeroBtn" type="button" value="0">정정</button><br>
+		
+		<input name="pw" type="text">계좌비밀번호 <br>
 
 		<button>확인</button>
 	</form>

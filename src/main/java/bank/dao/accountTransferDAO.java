@@ -21,8 +21,8 @@ public class accountTransferDAO {
 			conn = DBConnectionManager.getConnection();
 
 			// 쿼리문!
-			String sql = "select * from account_common ac, bank_member bm "
-							+ "where ac.ac_ssn=bm.ssn and ac_code!=3 and ac_open_situation=1 and bm.id = ?";
+			String sql = "SELECT * FROM account_common ac, bank_member bm "
+							+ "WHERE ac.ac_ssn=bm.ssn AND ac_code!=3 and ac_open_situation=1 AND bm.id = ?";
 
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, id);
@@ -62,7 +62,7 @@ public class accountTransferDAO {
 			conn = DBConnectionManager.getConnection();
 
 			// 쿼리문!
-			String sql = "select * from account_common where ac_accnum = ?";
+			String sql = "SELECT * FROM account_common WHERE ac_accnum = ?";
 
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, accnum);
