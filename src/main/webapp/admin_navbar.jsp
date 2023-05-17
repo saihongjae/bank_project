@@ -36,7 +36,7 @@
 
 					<div style="width: 100%; display: flex; justify-content: flex-end;">
 							<a style="border: solid 1px black;" class="nav-link" href="admin_tap.jsp">계좌 요청 관리</a>
-							<a style="border: solid 1px black; margin: 0 70px" class="nav-link"  href="QnA_admin_tap.jsp">Q&A 관리</a>
+							<a style="border: solid 1px black; margin: 0 30px" class="nav-link"  href="QnA_admin_tap.jsp">Q&A 관리</a>
 						
 					</div>
 				</div>

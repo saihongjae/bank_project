@@ -7,18 +7,41 @@
 <meta charset="UTF-8">
 <link href="./css/mainPage.css" rel="stylesheet" type="text/css">
 
-<title>삼조은행</title>
-</head>
-
-<body>
-	<%@ include file="navBar.jsp"%>
-	<ul class="mainMenu" >
-		<li>상품소개
-			<ul class="innerMenu">
-				<li><a href="normalNotice.jsp">입출금통장</a></li>
-				<li><a href="depositProduce.jsp">예금</a></li>
-				<li><a href="savingProduce.jsp">적금</a></li>
-				<li><a href="loanProduce.jsp">대출</a></li>
+	<body>
+		<%@ include file="navBar.jsp" %>
+			<ul class="mainMenu">
+				<li>상품소개
+					<ul class="innerMenu">
+						<li><a href="normalProduce.jsp">입출금통장</a></li>
+						<li><a href="depositProduce.jsp">예금</a></li>
+						<li><a href="savingProduce.jsp">적금</a></li>
+						<li><a href="loanProduce.jsp">대출</a></li>
+					</ul>
+				</li>
+				<li>이체
+					<ul class="innerMenu">
+						<li><a href="accountTransfer.jsp">계좌이체</a></li>
+					</ul>
+				</li>
+				<li>조회
+					<ul class="innerMenu">
+						<li>거래내역조회</li>
+						<li>계좌조회</li>
+					</ul>
+				</li>
+				<li>사회공헌
+					<ul class="innerMenu">
+						<li>후원하기</li>
+						<li>후원내역</li>
+					</ul>
+				</li>
+				<li>고객센터
+					<ul class="innerMenu">
+						<li>자주하는 질문</li>
+						<li><a href="./boardContent.jsp">1대 1 문의</a></li>
+						<li>답변 확인</li>
+					</ul>
+				</li>
 			</ul>
 		</li>
 		<li>조회

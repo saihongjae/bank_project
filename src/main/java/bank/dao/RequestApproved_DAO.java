@@ -19,9 +19,9 @@ public class RequestApproved_DAO {
 			conn = DBConnectionManager.getConnection();
 
 			// 쿼리문!
-			String sql = "UPDATE customer_account_dn "
-					+ "SET dn_open_situation = 1, dn_startdate = TO_CHAR(sysdate, 'YYYY/MM/DD HH24:MI:SS') "
-					+ "WHERE dn_accnum = ? and dn_requestdate = ?";
+			String sql = "UPDATE account_common "
+					+ "SET ac_open_situation = 1, ac_startDate = TO_CHAR(sysdate, 'YYYY/MM/DD HH24:MI:SS') "
+					+ "WHERE ac_accNum = ? and ac_requestDate = ?";
 
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, accnum);
