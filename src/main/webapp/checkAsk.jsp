@@ -40,7 +40,7 @@
 
 				<tr>
 					<th>작성일 :</th>
-					<td><%=item.getAnswer_date()%></td>
+					<td><%=item.getAnswer_date().substring(0,10)%></td>
 				</tr>
 
 			</table>

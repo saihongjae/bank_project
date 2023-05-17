@@ -12,7 +12,7 @@
 			<ul class="mainMenu">
 				<li>상품소개
 					<ul class="innerMenu">
-						<li><a href="normalProduce.jsp">입출금통장</a></li>
+						<li><a href="normalNotice.jsp">입출금통장</a></li>
 						<li><a href="depositProduce.jsp">예금</a></li>
 						<li><a href="savingProduce.jsp">적금</a></li>
 						<li><a href="loanProduce.jsp">대출</a></li>
@@ -31,7 +31,7 @@
 				</li>
 				<li>사회공헌
 					<ul class="innerMenu">
-						<li>후원하기</li>
+						<li><a href="./imgs/QR.jpg"  target="_blank"></a>후원하기</li>
 						<li>후원내역</li>
 					</ul>
 				</li>
@@ -43,26 +43,8 @@
 					</ul>
 				</li>
 			</ul>
-		</li>
-		<li>조회
-			<ul class="innerMenu">
-				<li>거래내역조회</li>
-				<li>계좌조회</li>
-			</ul>
-		</li>
-		<li>사회공헌
-			<ul class="innerMenu">
-				<li><a href="./imgs/QR.jpg" target="_blank">후원하기</a></li>
-				<li>후원내역</li>
-			</ul>
-		</li>
-		<li>고객센터
-			<ul class="innerMenu">
-				<li><a href="https://www.shinhan.com/hpe/" target="_blank">자주하는 질문</a></li>
-				<li><a href="./boardContent.jsp">1대 1 문의</a></li>
-			</ul>
-		</li>
-	</ul>
+
+		
 	<div class="mainContent1">
 		<div class="txtWrapper">
 			<h3>

@@ -43,8 +43,7 @@
 
 				<tr>
 					<th>작성일 :</th>
-					<td><%=item.getQuastDate()%></td>
-					<td><%=item.getAnswer()%></td>
+					<td><%=item.getQuastDate().substring(0,10)%></td>
 				</tr>
 			</table>
 		</div>

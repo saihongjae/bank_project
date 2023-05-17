@@ -1,214 +1,214 @@
 @charset "UTF-8";
 
 a {
-	text-decoration: none;
-	color: black;
+   text-decoration: none;
+   color: black;
 }
 
 a:visited {
-	color: black;
+   color: black;
 }
 
 .mainMenu {
-	position:absolute;
-	z-index: 2;
-	width: 100%;
-	display: flex;
-	list-style: none;
-	cursor: pointer;
-	text-decoration: none;
-	background-color: #F8F9FA;
-	padding-bottom: 30px;
+   position:absolute;
+   z-index: 2;
+   width: 100%;
+   display: flex;
+   list-style: none;
+   cursor: pointer;
+   text-decoration: none;
+   background-color: #F8F9FA;
+   padding-bottom: 30px;
 }
 
 .mainMenu li {
-	width: 100%;
-	font-size: 20px;
-	font-weight: bold;
-	text-align: center;
-	text-decoration: none;
+   width: 100%;
+   font-size: 20px;
+   font-weight: bold;
+   text-align: center;
+   text-decoration: none;
 }
 
 .mainMenu li a {
-	text-decoration: none;
+   text-decoration: none;
 }
 
 
 .mainMenu ul {
-	width: 100%;
-	margin: 0;
-	padding: 0;
-	height: 0;
-	overflow: hidden;
-	list-style: none;
-	background-color: #F8F9FA;
+   width: 100%;
+   margin: 0;
+   padding: 0;
+   height: 0;
+   overflow: hidden;
+   list-style: none;
+   background-color: #F8F9FA;
 }
 
 .innerMenu li{
-	font-size: 18px;
-	font-weight: normal;
-	padding: 15px 0;
+   font-size: 18px;
+   font-weight: normal;
+   padding: 15px 0;
 }
 
 .innerMenu li:hover {
-	text-decoration: underline;
+   text-decoration: underline;
 }
 
 
 .mainMenu:hover .innerMenu {
-	height: 100%;
+   height: 100%;
 }
 
 .mainContent1 {
-	position: relative;
-	margin-top: 60px;
-	padding: 60px;
-	height: 100%;
-	min-height: 420px;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	background-color: #BCD8C1;
+   position: relative;
+   margin-top: 60px;
+   padding: 60px;
+   height: 100%;
+   min-height: 420px;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   background-color: #BCD8C1;
 }
 
 .mainContent1 .imgWrapper {
-	width: 450px;
-	height: 450px;
+   width: 450px;
+   height: 450px;
 }
 
 .mainContent1 h3 {
-	font-size: 49px;
-	font-weight: bolder;
-	margin-bottom: 10px;
-	line-height: 1.4;
+   font-size: 49px;
+   font-weight: bolder;
+   margin-bottom: 10px;
+   line-height: 1.4;
 }
 
 .mainContent1 .txtWrapper {
-	z-index: 1;
-	margin-left: 30px;
+   z-index: 1;
+   margin-left: 30px;
 }
 
 .mainContent1 .txtWrapper p {
-	font-size: 20px;
+   font-size: 20px;
 }
 
 .productIntroduce {
-	margin: 30px 20px;
+   margin: 30px 20px;
 }
 
 .productIntroduce ul {
-	padding: 0;
-	margin-top: 10px;
-	display: flex;
-	justify-content: space-between;
+   padding: 0;
+   margin-top: 10px;
+   display: flex;
+   justify-content: space-between;
 }
 
 .products a {
-	text-decoration: none;
+   text-decoration: none;
 }
 
 .productIntroduce ul {
-	padding: 0;
-	display: flex;
-	justify-content: space-between;
+   padding: 0;
+   display: flex;
+   justify-content: space-between;
 }
 
 .products li {
-	width: 30%;
-	list-style: none;
-	padding: 20px;
-	font-size: 24px;
-	font-weight: bolder;
+   width: 30%;
+   list-style: none;
+   padding: 20px;
+   font-size: 24px;
+   font-weight: bolder;
 }
 
 .products li a {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	text-align: center;
-	color: black;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   text-align: center;
+   color: black;
 }
 
 .products li .productKeyword {
-	font-size: 14px;
-	border-radius: 12px;
-	padding: 0px 10px;
-	border: 1px solid black;
-	color: black;
+   font-size: 14px;
+   border-radius: 12px;
+   padding: 0px 10px;
+   border: 1px solid black;
+   color: black;
 }
 
 .products li .pbText {
-	font-size: 16px;
-	font-weight: normal;
+   font-size: 16px;
+   font-weight: normal;
 }
 
 .products .productImg {
-	display: block;
-	width: 100px;
-	height: 100px;
-	margin: 10px 0;
+   display: block;
+   width: 100px;
+   height: 100px;
+   margin: 10px 0;
 }
 
 .productImg img {
-	width: 100%;
-	height: 100%;
+   width: 100%;
+   height: 100%;
 }
 
 
 .products li:first-child {
-	background-color: #d6dbb2;
+   background-color: #d6dbb2;
 }
 
 .productIntroduce ul li:nth-child(2) {
-	background-color: #e3d985;
+   background-color: #e3d985;
 }
 
 .productIntroduce ul li:last-child {
-	background-color: #d6dbb2;
+   background-color: #d6dbb2;
 }
 
 
 @media screen and (max-width: 992px) {
 .mainContent1 .imgWrapper {
-	width: 300px;
-	height: 300px;
+   width: 300px;
+   height: 300px;
 }
-	
+   
 .mainContent1 h3 {
-	font-size: 36px;
-	font-weight: bolder;
-	margin-bottom: 10px;
-	line-height: 1.4;
+   font-size: 36px;
+   font-weight: bolder;
+   margin-bottom: 10px;
+   line-height: 1.4;
 }
-	
+   
 .mainContent1 .txtWrapper p {
-	font-size: 18px;
+   font-size: 18px;
 }
 }
 
 @media screen and (max-width: 768px) {
 .mainContent1 {
-	padding: 30px;
+   padding: 30px;
 }
 
 .mainContent1 .imgWrapper {
-	z-index: 0;
-	position:absolute;
-	width: 300px;
-	height: 300px;
-	right: 0;
+   z-index: 0;
+   position:absolute;
+   width: 300px;
+   height: 300px;
+   right: 0;
 }
 
 .productIntroduce ul {
-	padding: 0;
-	display: flex;
-	flex-direction: column;
+   padding: 0;
+   display: flex;
+   flex-direction: column;
 }
 
 .products li {
-	width: 100%;
-	padding: 8px;
+   width: 100%;
+   padding: 8px;
 }
 
 }

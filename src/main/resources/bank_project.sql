@@ -51,6 +51,7 @@ VALUES ('사이홍','kingsaihong', '8507');
 DROP TABLE bank_board;
 
 CREATE TABLE bank_board (
+    bno NUMBER(2) NOT NULL,
     id VARCHAR2(20) NOT NULL,
     title VARCHAR2(200) NOT NULL,
     content VARCHAR2(1000) NOT NULL,
@@ -76,9 +77,10 @@ CREATE TABLE account_common (
     ac_ssn VARCHAR2(13) NOT NULL,
     ac_isClosed NUMBER(1) DEFAULT 0 NOT NULL,
     ac_requestDate VARCHAR2(20) DEFAULT TO_CHAR(sysdate, 'YYYY/MM/DD HH24:MI:SS') NOT NULL,
-    ac_startDate VARCHAR2(20) DEFAULT NULL, 
-    ac_endDate VARCHAR2(20) DEFAULT NULL,
-    ac_balance NUMBER(20) DEFAULT 0
+    ac_open_situation NUMBER(1) DEFAULT 0,
+    ac_startDate VARCHAR2(20) DEFAULT NULL,
+    ac_balance NUMBER(20) DEFAULT 0 NOT NULL,
+    ac_endDate VARCHAR2(20) DEFAULT NULL
 );
 
 DROP TABLE customer_account_dsl;
@@ -86,7 +88,9 @@ DROP TABLE customer_account_dsl;
 CREATE TABLE customer_account_dsl (
     dsl_accNum VARCHAR2(13) PRIMARY KEY,
     dsl_monthly NUMBER(20) DEFAULT NULL,
-    dsl_open_situation NUMBER(1) DEFAULT 0,
     dsl_term NUMBER(2) NOT NULL,
     dsl_regularDate NUMBER(2) DEFAULT NULL
 );
+
+SELECT * FROM account_common;
+

@@ -53,6 +53,7 @@
 	<!-- 수정 실패-->
 	<script>
 		alert('통장개설 신청 실패');
+		location.href = "main.jsp";
 	</script>
 	<%
 	}

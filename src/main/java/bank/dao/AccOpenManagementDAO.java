@@ -22,9 +22,9 @@ public class AccOpenManagementDAO {
 			conn = DBConnectionManager.getConnection();
 
 			// 쿼리문!
-			String sql = "SELECT bm.name, e.ac_accNum, e.ac_requestDate, pb.pb_type "
-					+ "FROM account_common e ,bank_member bm, bank_account_type pb "
-					+ "WHERE e.ac_ssn = bm.ssn AND e.ac_code = pb.pb_type_no AND e.ac_open_situation = 0";
+			String sql = "SELECT bm.name, ac.ac_accNum, ac.ac_requestDate, pb.pb_type "
+					+ "FROM account_common ac ,bank_member bm, bank_account_type pb "
+					+ "WHERE ac.ac_ssn = bm.ssn AND ac.ac_code = pb.pb_type_no AND ac.ac_open_situation = 0";
 
 			psmt = conn.prepareStatement(sql);
 			
