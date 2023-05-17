@@ -91,6 +91,8 @@ CREATE TABLE account_common (
     ac_open_situation NUMBER(1) DEFAULT 0
 );
 
+SELECT * FROM account_common;
+
 -----------------------------------------
 
 DROP TABLE customer_account_dsl;

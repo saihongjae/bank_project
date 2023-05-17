@@ -20,7 +20,7 @@
 			commonAccountDto.setPw(pw);
 			commonAccountDto.setSsn(ssn);
 			commonAccountDto.setCode("1");
-			
+			commonAccountDto.setBalance("0");
 			
 			int result = commonAccountDao.insertSavingAccount(commonAccountDto);
 

@@ -65,7 +65,7 @@
 		</div>
 		<div class="doneAccounts">
 			<p>
-				보유중인 계좌 <span>&#40;<%=amoList2.size()%>&#41;
+				보유중인 계좌 <span>&#40;<%=amoList2.size() + amoList3.size()%>&#41;
 				</span>
 			</p>
 			<div class="accordion" id="accordionExample" style="margin: 20px;">

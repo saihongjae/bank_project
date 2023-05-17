@@ -26,12 +26,12 @@
 				<li>조회
 					<ul class="innerMenu">
 						<li>거래내역조회</li>
-						<li>계좌조회</li>
+						<li><a href="./accountInquiryPage.jsp">계좌조회</a></li>
 					</ul>
 				</li>
 				<li>사회공헌
 					<ul class="innerMenu">
-						<li><a href="./imgs/QR.jpg"  target="_blank"></a>후원하기</li>
+						<li><a href="./imgs/QR.jpg"  target="_blank">후원하기</a></li>
 						<li>후원내역</li>
 					</ul>
 				</li>
