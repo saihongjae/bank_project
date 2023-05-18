@@ -9,7 +9,8 @@
 <link rel="shortcut icon" type="image⁄x-icon" href="./imgs/bank.png">
 <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.all.min.js"></script>
-<title>삼조은행</title></head>
+<title>삼조은행</title>
+</head>
 <body>
 	<%@ include file="navBar.jsp"%>
 	<% 

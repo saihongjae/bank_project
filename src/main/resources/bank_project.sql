@@ -93,8 +93,6 @@ CREATE TABLE account_common (
     ac_open_situation NUMBER(1) DEFAULT 0
 );
 
-SELECT * FROM account_common;
-
 -----------------------------------------
 
 DROP TABLE customer_account_dsl;
@@ -106,6 +104,5 @@ CREATE TABLE customer_account_dsl (
     dsl_regularDate NUMBER(2) DEFAULT NULL
 );
 
-
-
+--UPDATE account_common SET ac_balance = 100000;
 

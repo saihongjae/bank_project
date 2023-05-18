@@ -22,7 +22,7 @@ public class accountTransferDAO {
 
 			// 쿼리문!
 			String sql = "SELECT * FROM account_common ac, bank_member bm "
-							+ "WHERE ac.ac_ssn=bm.ssn AND ac_code!=3 and ac_open_situation=1 AND bm.id = ?";
+							+ "WHERE ac.ac_ssn=bm.ssn AND ac_code!=3 AND ac_code!=2 and ac_open_situation=1 AND bm.id = ?";
 
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, id);
