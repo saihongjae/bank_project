@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <link href="./css/inquiryPage.css" rel="stylesheet" type="text/css">
-<title>Insert title here</title>
+<title>삼조은행</title>
 </head>
 <body>
 	<%@ include file="navBar.jsp"%>
@@ -33,6 +33,7 @@
 	List<AccOpenManagementDTO> amoList2 = amoDAO.selectDoneInfoList(userID);
 	List<AccOpenManagementDTO> amoList3 = amoDAO.selectDoneNormalInfoList(userID);
 	DecimalFormat df = new DecimalFormat("###,###");
+	int normalAccCount=0;
 	%>
 	<div class="accountWrapper">
 		<h3>계좌 조회</h3>
@@ -87,6 +88,7 @@
 					} else {
 					if (amoList3.size() != 0) {
 						for (AccOpenManagementDTO item : amoList3) {
+							normalAccCount++;
 					%>
 					<form action="accountCancellation_Check.jsp" method="post">
 					<li class="accordion-item">
@@ -103,13 +105,13 @@
 								class="accordion-body">
 								<div>
 									개설일
-									<%=item.getStartDate()%>
+									<%=item.getStartDate().substring(0, 10)%>
 									<br /> 출금가능금액
 									<input type="text"  name="balance" value="<%=item.getBalance()%>" readonly></input>
 								</div>
 
 								<div style="display: flex; align-items: center;">
-									<button>해지</button>
+									<button id="normalCancelBtn" type="button">해지</button>
 								</div>
 							</div>
 						</div>
@@ -136,15 +138,18 @@
 								class="accordion-body">
 								<div>
 									개설일
-									<%=item.getStartDate()%>
+									<%=item.getStartDate().substring(0, 10)%>
 									<br /> 잔액
 									<input type="text"  name="balance" value="<%=item.getBalance()%>" readonly></input>
 									<br /> 마감일
-									<%=item.getEndDate()%>
+									<%=item.getEndDate().substring(0, 10)%>
 									<br /> 총 납입기간
 									<%=item.getTerm()%>
-									<br /> 월 납입금
+									<br /> 
+									<% if (!item.getAccType().equals("예금")) { %>
+									월 납입금
 									<%=item.getMonthly()%>
+									<% } %>
 								</div>
 								<% if (!item.getAccType().equals("대출")) {  %>
 								<div style="display: flex; align-items: center;">
@@ -164,5 +169,21 @@
 			</div>
 		</div>
 	</div>
+	<script>
+		var test = "<%=normalAccCount%>";
+		document.querySelector("#normalCancelBtn").addEventListener('click', ()=>{	
+			if (test === "1") {
+				 Swal.fire({
+					icon: 'warning',
+					title: '해지를 하시려면 은행에 방문하여 주시기 바랍니다.',
+					showConfirmButton: false,
+					timer: 1500
+				 });
+				 setTimeout("location.href = 'accountInquiryPage.jsp'", 1500);
+			} else {
+				document.querySelector("#normalCancelBtn").setAttribute("type","submit");  
+			}
+		});
+	</script>
 </body>
 </html>

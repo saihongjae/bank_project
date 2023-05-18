@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <link href="./css/inquiryPage.css" rel="stylesheet" type="text/css">
-<title>Insert title here</title>
+<title>삼조은행</title>
 </head>
 <body>
 	<%@ include file="navBar.jsp"%>
@@ -39,7 +39,6 @@
 			List<accCanDTO> amoList = acDAO.selectDepositAccount(request.getParameter("accnum"));
 			for (accCanDTO item : amoList) {
 			%>
-			
 			<option value="<%=item.getAccnum()%>"><%=item.getAccnum()%></option>
 			<%
 			}

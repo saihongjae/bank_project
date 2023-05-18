@@ -105,7 +105,7 @@
 		}
 	}
 	});
-	<%@ include file="./footer.jsp"%>		
 </script>
+<%@ include file="./footer.jsp"%>	
 </body>
 </html>
