@@ -22,18 +22,34 @@
 		  title: "로그인 후 시도하세요."
 		})
 	  setTimeout("location.href = 'main_login.jsp'",1000);
-		</script>
+	</script>
 	<%
-		}
-		%>
+	return;	
+	}
+	
+	accountTransferDAO acnDAO = new accountTransferDAO();
+	List<accountTransferDTO> amoList = acnDAO.accountNumList(userID);
+	
+	if (amoList.size() == 0) { %> 
+	<script>
+	 Swal.fire({
+		icon: 'warning',
+		title: '이체가 가능한 통장이 없습니다.',
+		showConfirmButton: false,
+		timer: 1500
+	 });
+	 setTimeout("location.href = 'main.jsp'", 1500);
+	</script>
+	<%
+	return;
+	}
+	%>
 
 
 	<form action="transferConfirmation.jsp" method="post"
 		name="sendMoneyForm">
 		<select id="sel" name="selectAcc">
-			<%
-   accountTransferDAO acnDAO = new accountTransferDAO();
-   List<accountTransferDTO> amoList = acnDAO.accountNumList(userID);
+	<%
 		for(accountTransferDTO item : amoList){
 	%>
 			<option value="<%=item.getAccnum()%>"><%=item.getAccnum()%></option>

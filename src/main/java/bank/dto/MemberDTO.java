@@ -4,17 +4,17 @@ public class MemberDTO {
 	String name;
 	String ssn;	
 	String id;
+	String pw;
+	String email;
+	String phone;
+	String regdate;
+	
 	public String getId() {
 		return id;
 	}
 	public void setId(String id) {
 		this.id = id;
 	}
-	String pw;
-	String email;
-	String phone;
-	String regdate;
-	
 	public String getName() {
 		return name;
 	}

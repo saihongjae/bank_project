@@ -38,7 +38,8 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.all.min.js
 			  icon: 'success',
 			  title: "수정 성공"
 			})
-			setTimeout("location.href = './myPage.jsp?phone=<%=phone%>'",1000);
+			setTimeout("location.href = './myPage.jsp'",1000);
+										//phone넘겨줘서 쓸곳이 따로 있는건가요? 
 		</script>
 	<%
 		} else {
@@ -48,7 +49,7 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.all.min.js
 			  icon: 'error',
 			  title: "수정실패..."
 			})
-			setTimeout("location.href = './myPage.jsp?phone=<%=phone%>'",1000);
+			setTimeout("location.href = './myPage.jsp'",1000);
 		</script>
 	<%
 		}

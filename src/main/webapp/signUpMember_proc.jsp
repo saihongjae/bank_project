@@ -47,7 +47,7 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.all.min.js
 			%>
 				<script>
 					Swal.fire("회원가입을 축하합니다!");
-					setTimeout("location.href='./main_login.jsp'",3000);// 회원가입하고 메인이나 로그인 페이지로 연결
+					setTimeout("location.href='./main_login.jsp'",1000);// 회원가입하고 메인이나 로그인 페이지로 연결
 				</script>
 			<%
 			} else {
@@ -57,7 +57,7 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.all.min.js
 					  icon: 'error',
 					  title: "회원가입에 실패하였습니다.."
 					})
-					setTimeout("history.back()",3000); // 메인이나 가입 페이지로 재연결
+					setTimeout("history.back()", 3000); // 메인이나 가입 페이지로 재연결
 				</script>
 			<% 
 			}
@@ -68,7 +68,7 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.all.min.js
 					  icon: 'info',
 					  title: "기존에 가입했던 내역이 존재합니다!"
 					})
-					setTimeout("history.back()",3000); // 메인이나 로그인 페이지로 연결
+					setTimeout("history.back()", 3000); // 메인이나 로그인 페이지로 연결
 				</script>
 			<% } %>
 </body>

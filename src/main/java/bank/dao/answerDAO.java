@@ -9,12 +9,12 @@ import bank.oracle.DBConnectionManager;
 
 public class answerDAO {
 	
-	public boolean answerUpdate(String id, String title, String date, String answerContent) {
+	public int answerUpdate(String id, String title, String date, String answerContent) {
 
 		Connection conn = null;
 		PreparedStatement psmt = null;
 		ResultSet rs = null;
-		boolean value = false;
+		int value = 0;
 
 		try {
 			conn = DBConnectionManager.getConnection();
@@ -31,12 +31,7 @@ public class answerDAO {
 			psmt.setString(3, title);
 			psmt.setString(4, date);
 			
-			System.out.println(id);
-			System.out.println(title);
-			System.out.println(date);
-			System.out.println(answerContent);
-			
-			System.out.println(psmt.executeUpdate());
+			value = psmt.executeUpdate();
 			
 			
 		} catch (SQLException e) {

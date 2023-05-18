@@ -20,33 +20,47 @@
 </head>
 
 <body>
-	<% request.setCharacterEncoding("UTF-8"); String pw=request.getParameter("pw1"); String
-							ssn=request.getParameter("ssn1") + request.getParameter("ssn2"); String
-							monthly=request.getParameter("monthly"); String term=request.getParameter("term"); String
-							regularDate=request.getParameter("regular"); CommonAccountDAO commonAccountDao=new
-							CommonAccountDAO(); CommonAccountDTO commonAccountDto=new CommonAccountDTO();
-							commonAccountDto.setPw(pw); commonAccountDto.setSsn(ssn); commonAccountDto.setCode("2");
-							commonAccountDto.setBalance(monthly); CommonDslDAO commonDslDao=new CommonDslDAO();
-							CommonDslDTO commonDslDto=new CommonDslDTO(); commonDslDto.setTerm(term);
-							commonDslDto.setCode("2"); commonDslDto.setRegularDate(regularDate); int
-							result=commonAccountDao.insertSavingAccount(commonAccountDto); int
-							result2=commonDslDao.insertDepositInfo(commonDslDto); if (result==result2) { // 추가 성공 %>
+	<% request.setCharacterEncoding("UTF-8"); 
+	String pw = request.getParameter("pw1"); 
+	String ssn = request.getParameter("ssn1") + request.getParameter("ssn2");
+	String monthly = request.getParameter("monthly"); 
+	String term = request.getParameter("term"); 
+	String regularDate = request.getParameter("regular"); 
+	
+	CommonAccountDAO commonAccountDao=new CommonAccountDAO();
+	CommonAccountDTO commonAccountDto=new CommonAccountDTO();
+	commonAccountDto.setPw(pw);
+	commonAccountDto.setSsn(ssn);
+	commonAccountDto.setCode("2");
+	commonAccountDto.setBalance(monthly); 
+	
+	CommonDslDAO commonDslDao=new CommonDslDAO();
+	CommonDslDTO commonDslDto=new CommonDslDTO();
+	
+	commonDslDto.setTerm(term);
+	commonDslDto.setCode("2");
+	commonDslDto.setRegularDate(regularDate); 
+	
+	int result = commonAccountDao.insertSavingAccount(commonAccountDto);
+	int result2 = commonDslDao.insertDepositInfo(commonDslDto); 
+	 
+	if (result==result2) { // 추가 성공 %>
 	<script>
-								Swal.fire({
-									icon: 'success',
-									title: '통장개설 신청이 완료되었습니다'
-								})
-								setTimeout("location.href= 'main.jsp'", 1000);
-							</script>
+		Swal.fire({
+		icon: 'success',
+		title: '통장개설 신청이 완료되었습니다'
+		})
+		setTimeout("location.href= 'main.jsp'", 1000);
+	</script>
 	<% } else { %>
-	<!-- 수정 실패-->
 	<script>
-									Swal.fire({
-										icon: 'error',
-										title: '통장개설 신청 실패'
-									})
-									setTimeout("location.href= 'main.jsp'", 1000);
-								</script>
+	// 추가 실패
+		Swal.fire({
+		icon: 'error',
+		title: '통장개설 신청 실패'
+		})
+		setTimeout("location.href= 'main.jsp'", 1000);
+	</script>
 	<% } %>
 
 </body>

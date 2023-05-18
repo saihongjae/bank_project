@@ -32,10 +32,10 @@
 		</div>
 		<form action="board_insert.jsp"  method="post"  onsubmit="return formCheck();">
 		
-			<strong>아이디</strong>: <input type="text" name="id"  value="<%=userID%>"  readonly><br>
-			
-			<strong>제목</strong> : <input type="text" name="title"  required><br> 
-			 
+			<strong>아이디</strong>: <input type="text" name="id"  value="<%=userID%>"  readonly>
+			&nbsp
+			<strong>제목</strong> : <input type="text" name="title"  required>
+			<br/> 
 			<strong>내용</strong> : <textarea cols="100" rows="10" name="content"  placeholder="1000자 이내로 작성 하시오."  maxlength="1000" required></textarea><br>
 			  
 				<input type="submit" value="등록">

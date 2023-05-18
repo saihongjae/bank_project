@@ -11,31 +11,51 @@
 <head>
 <meta charset="UTF-8">
 <link rel="shortcut icon" type="image⁄x-icon" href="./imgs/bank.png">
-<title>삼조은행</title>
+<title>삼조은행 관리자페이지</title>
 <style>
-	#container {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		width: 400px;
-		height: 400px;
-		border:1px solid black;
-		margin: auto;
-	}
+#container {
+	width: 500px;
+	height: 400px;
+	border: 1px solid black;
+	margin: auto;
+	padding: 50px;
+}
+
+.btnWrapper {
+margin-top: 100px;
+}
+
+.btnWrapper button{
+width: 49%;
+margin: 0 2px;
+}
 </style>
 </head>
 
 <body>
+	<%@ include file="admin_navbar.jsp"%>
+	<%
+	request.setCharacterEncoding("UTF-8");
+	%>
+
 	<div id="container">
 		<form name="frmLogin" method="post" action="login_check.jsp"
-		encType="UTF-8">
-		아이디 :<input id="m_id" type="text" name="id"><br> 비밀번호 :<input
-		id="m_pw" type="password" name="pw"><br> <input id="submit"
-			type="submit" value="로그인"> <input type="reset" value="다시입력">
-	</form>
+			encType="UTF-8">
+			<div class="mb-3">
+				<label for="m_id" class="form-label">ID</label> <input type="text"
+					class="form-control" id="m_id" name="id">
+			</div>
+			<div class="mb-3">
+				<label for="m_pw" class="form-label">Password</label> <input
+					type="password" class="form-control" id="m_pw" name="pw">
+			</div>
+			<div class="btnWrapper">
+				<button type="submit" class="btn btn-primary">로그인</button><button type="reset" class="btn btn-primary">다시 입력</button>
+			</div>
+		</form>
 	</div>
-	<%@ include file="./footer.jsp"%>
 
+	<%@ include file="./footer.jsp"%>
 </body>
 
 </html>

@@ -1,3 +1,4 @@
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="bank.dto.AccOpenManagementDTO"%>
 <%@page import="bank.dao.AccOpenManagementDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -6,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link href="./css/depositPage.css" rel="stylesheet" type="text/css">
+<link href="./css/inquiryPage.css" rel="stylesheet" type="text/css">
 <title>Insert title here</title>
 </head>
 <body>
@@ -16,8 +17,12 @@
 		session.setAttribute("loc", request.getServletPath());
 	%>
 	<script>
-		alert("로그인이 필요한 페이지입니다");
+	Swal.fire({
+		  icon: 'warning',
+		  title: "로그인이 필요한 페이지입니다"
+	}).then((result)=>{
 		location.href = "./main_login.jsp";
+	})
 	</script>
 	<%
 	return;
@@ -27,6 +32,7 @@
 	List<AccOpenManagementDTO> amoList = amoDAO.selectProcessInfoList(userID);
 	List<AccOpenManagementDTO> amoList2 = amoDAO.selectDoneInfoList(userID);
 	List<AccOpenManagementDTO> amoList3 = amoDAO.selectDoneNormalInfoList(userID);
+	DecimalFormat df = new DecimalFormat("###,###");
 	
 	%>
 	<div class="accountWrapper">
@@ -36,17 +42,18 @@
 				개설신청중인 계좌 <span>&#40;<%=amoList.size()%>&#41;
 				</span>
 			</p>
-			<ul>
+			<% if (amoList.size() == 0) { %>
+			<p>개설신청중인 계좌가 없습니다.</p>
+			<% } else { %>
+			<ul style="margin: 20px;">
 				<%
-				if (amoList.size() == 0) {
-				%>
-				<li>개설 신청중인 계좌가 없습니다.</li>
-				<%
-				} else {
 				for (AccOpenManagementDTO item : amoList) {
 				%>
 				<li>
 					<form method="post" action="./accountInquiry_proc.jsp">
+						<label> 이름 <input type="text"
+							value="<%=item.getName()%>" name="name" readOnly />
+						</label>
 						<label> 계좌번호 <input type="text"
 							value="<%=item.getAccNum()%>" name="accnum" readOnly />
 						</label> <label> 계좌유형 <input type="text"
@@ -57,10 +64,10 @@
 						<button type="submit" class="applyCancelBtn">신청 취소</button>
 					</form>
 				</li>
-				<%
+			<%
 				}
-				}
-				%>
+			}
+			%>
 			</ul>
 		</div>
 		<div class="doneAccounts">
@@ -90,7 +97,10 @@
 						<div id="collapseOne" class="accordion-collapse collapse show"
 							aria-labelledby="headingOne" data-bs-parent="#accordionExample">
 							<div class="accordion-body">
-								<strong>This is the first item's accordion body.</strong>
+								개설일
+								<%=item.getStartDate()%>
+								<br /> 출금가능금액
+								<%=item.getBalance()%>
 							</div>
 						</div>
 					</li>
@@ -111,10 +121,7 @@
 						<div id="collapseOne" class="accordion-collapse collapse show"
 							aria-labelledby="headingOne" data-bs-parent="#accordionExample">
 							<div class="accordion-body">
-								<strong>This is the first item's accordion body.</strong> <br />
-								계좌유형
-								<%=item.getAccType() %>
-								<br /> 계좌시작
+								개설일
 								<%=item.getStartDate()%>
 								<br /> 잔액
 								<%=item.getBalance()%>
@@ -123,7 +130,7 @@
 								<br /> 총 납입기간
 								<%=item.getTerm()%>
 								<br /> 월 납입금
-								<%=item.getMonthly()%>
+								<%=item.getMonthly() %>
 							</div>
 						</div>
 					</li>

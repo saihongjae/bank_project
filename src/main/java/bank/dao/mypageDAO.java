@@ -40,7 +40,6 @@ public class mypageDAO {
 				accountInfo.setRegdate(rs.getString("reg_date"));
 				}
 				
-				System.out.println(accountInfo.getUserId());
 				System.out.println("처리결과:" + result);
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -102,8 +101,8 @@ public class mypageDAO {
 
 				// 쿼리문!
 				String sql = "update bank_member "
-						+ " SET phone = ? , email = ? "
-						+ " WHERE id = ? ";
+						+ "SET phone = ? , email = ? "
+						+ "WHERE id = ? ";
 
 				psmt = conn.prepareStatement(sql);
 				psmt.setString(1,phone);

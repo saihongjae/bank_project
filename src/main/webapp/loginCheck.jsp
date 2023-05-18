@@ -42,7 +42,7 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.all.min.js">
 		if ("<%=loc%>" != "") { 
 			setTimeout("location.href = '<%=loc%>'",1000);
 		} else {
-			setTimeout("location.href = './main.jsp'",1000);
+			setTimeout("location.href = './main.jsp'", 1000);
 		}
 	</script>
 	<%
@@ -53,7 +53,7 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.all.min.js">
 		  icon: 'error',
 		  title: "로그인 실패.."
 		})
-		setTimeout("history.back()",3000);
+		setTimeout("history.back()", 3000);
 	</script>
 	<%
 	}

@@ -2,12 +2,14 @@ DROP TABLE bank_member;
 
 CREATE TABLE bank_member (
     name VARCHAR2(20) NOT NULL,
-    ssn VARCHAR2(13) PRIMARY KEY,
+    ssn VARCHAR2(13) NOT NULL,
     id VARCHAR2(20) NOT NULL,
     pw VARCHAR2(30) NOT NULL,
     email VARCHAR2(50) NOT NULL,
     phone VARCHAR2(11) NOT NULL,
-    reg_date VARCHAR2(20) DEFAULT TO_CHAR(sysdate, 'YYYY/MM/DD') NOT NULL
+    reg_date VARCHAR2(20) DEFAULT TO_CHAR(sysdate, 'YYYY/MM/DD') NOT NULL,
+    
+    PRIMARY KEY(id, ssn)
 );
 
 -----------------------------------------

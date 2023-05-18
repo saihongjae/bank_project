@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	list-style: none;
+}
+
+.accountWrapper ul {
+	padding: 0;
+}
+
+.accountWrapper .progressAccounts input[type="text"] {
+	border: 0;
+}

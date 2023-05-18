@@ -16,8 +16,9 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.all.min.js">
 			</head>
 
 			<body>
-				<% if (session.getAttribute("id")==null) { // null이 아니면 로그인한 것 session.setAttribute("loc",
-					request.getServletPath()); %>
+				<% if (session.getAttribute("id")==null) { // null이 아니면 로그인한 것 
+					session.setAttribute("loc", request.getServletPath()); 
+				%>
 					<script>
 						Swal.fire({
 							icon: 'warning',

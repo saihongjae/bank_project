@@ -27,8 +27,18 @@
 </style>
 <body>
 <%@ include file="admin_navbar.jsp"%>
+<%
+	QnaDAO QnaDAO = new QnaDAO();
+	List<QnaDTO> questionList = QnaDAO.QuestionInfoList(); 
 
-<table>
+	if (questionList.size() == 0) { %>
+	<div class="alert alert-success" style="margin: 30px;" role="alert">
+ 	답변 대기 중인 문의글이 없습니다.
+	</div>
+<% return;
+} %>
+
+<table class="container">
 		<thead>
 			<tr>
 				<th>이름</th>
@@ -39,8 +49,7 @@
 		</thead>
 		<tbody>
 <%
-  QnaDAO QnaDAO = new QnaDAO();
-   List<QnaDTO> questionList = QnaDAO.QuestionInfoList(); 
+ 
    
    for(QnaDTO item : questionList){
 	%>
@@ -50,7 +59,7 @@
 					<td><input name="title"   value="<%=item.getTitle()%>" readonly></td>
 					<td><input name="content"   value="<%=item.getContent()%>" readonly></td>
 					<td><input name="date"   value="<%=item.getQuastDate()%>" readonly></td>
-					<td><button type="submit">답변</button></td>
+					<td><button type="submit" class="btn btn-outline-dark">답변</button></td>
 				</form>
 			</tr>
 	<%
