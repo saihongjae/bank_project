@@ -1,0 +1,53 @@
+@charset "UTF-8";
+
+@font-face{ 
+	font-family: "CookieRun";
+	font-weight: 400;
+	font-style: normal;
+	src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/CookieRun-Regular.woff") format("woff")
+}
+
+#marquee-wrapper{
+	box-sizing: border-box;
+	width: calc(100vw - 2em);
+	background: #fff;
+	border-radius: .5rem;
+	padding: 0.3em;
+	margin: 1em;
+}
+.donations{
+	margin:0 10px;
+	display: inline-block;
+	font: 600 36px "CookieRun";
+	animation: donationAnime 5s infinite ease;
+}
+.donations:nth-child(2){
+	animation-delay: 1s;
+}
+.donations:nth-child(3){
+	animation-delay: 2s;
+}
+
+@keyframes donationAnime{
+0%{
+		opacity: 0;
+		transform: translateY(-1em);
+}
+5%{
+		opacity: 1;
+		transform: translateY(0em);
+} 
+95%{
+		opacity: 1;
+		transform: translateY(0em);
+}
+100%{
+		opacity: 0;
+		transform: translateY(1em);
+}
+
+}
+	
+		
+	
+		

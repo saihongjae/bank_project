@@ -30,6 +30,9 @@ document.querySelector(".calculBtn").addEventListener('click', ()=>{
 	const interest = (359 / 10000);
 	const term = form.term.value;
 	
+	// 총 기간
+	document.querySelector(".totalTerm").textContent = term;
+	
 	// 총 값아야 할 돈
 	document.querySelector(".totalPrincipal").value = (Number(principal) + Math.floor(principal * interest)).toLocaleString();
 	

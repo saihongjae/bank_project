@@ -33,7 +33,7 @@
 				</li>
 				<li>사회공헌
 					<ul class="innerMenu">
-						<li><a href="./Sponsor.jsp" target="_blank">후원하기</a></li>
+						<li><a href="./donate.jsp" target="_blank">후원하기</a></li>
 						<li>후원내역</li>
 					</ul>
 				</li>
