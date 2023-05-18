@@ -7,7 +7,7 @@
 
 <head>
 <meta charset="UTF-8">
-<link rel="shortcut icon" type="image⁄x-icon" href="./imgs/bank.png">
+<link rel="shortcut icon" type="image⁄x-icon" href="./imgs/lock.png">
 <title>삼조은행 관리자페이지</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -44,7 +44,7 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.all.min.js">
 		%>
 	<nav class="navbar navbar-expand-lg bg-body-tertiary">
 		<div class="container-fluid">
-			<a class="navbar-brand" href="./main.jsp">
+			<a class="navbar-brand">
 				<img src="./imgs/samjo-bank-low-resolution-logo-color-on-transparent-background (1).png" width="60px" height="60px"/>
 			</a>
 			<% if(userID != null) { %>
