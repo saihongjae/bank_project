@@ -26,7 +26,7 @@ margin-top: 70px;
 }
 
 .btnWrapper button{
-width: 49%;
+width: 48%;
 margin: 0 2px;
 }
 </style>

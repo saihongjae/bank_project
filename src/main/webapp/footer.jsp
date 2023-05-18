@@ -27,8 +27,8 @@
 				<li>위치기반서비스약관</li>
 			</ul>
 			<ul class="underNoticeLists">
-				<li>(주)삼조뱅크·최초롱·사업자번호 111-11-11111</li>
-				<li>고객센터 <span>1599-8000</span></li>
+				<li>(주)삼조뱅크·최초롱·사업자번호 111-11-11111　</li>
+				<li>고객센터 <span>1599-8000　</span></li>
 				<li>평일 09:00 ~ 18:00 (은행휴무일 제외)</li>
 			</ul>
 			<div class="footerBottom">

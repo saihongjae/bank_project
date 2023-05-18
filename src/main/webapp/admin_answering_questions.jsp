@@ -25,7 +25,7 @@
 	
 	textarea{
 	width: 100%;
-	height: 500px;
+	height: 160px;
 	}
 	
 </style>
@@ -33,6 +33,19 @@
 <body>
 <%@ include file="admin_navbar.jsp"%>
 <%request.setCharacterEncoding("UTF-8");%>
+<%
+	if (adminID == null || !adminID.equals("kingsaihong")) { %>
+	<script>
+	Swal.fire({
+		  icon: 'warning',
+		  title: "로그인이 필요한 페이지입니다"
+		})
+		setTimeout("location.href = 'login_tap.jsp'",1000);
+	</script>
+	<% 
+	return;
+	} 
+%>
 	<form action="answer_check.jsp"  method="post">
 	<div class="container">
 	<div class="content">
@@ -42,12 +55,15 @@
 		<p>내용 : <%=request.getParameter("content")%></p>
 	</div>
 	<div class="content">
-			<textarea name="answerContent"></textarea>
-			<button type="submit">확인</button>
+		<div class="form-floating">
+        	<textarea class="form-control" placeholder="Leave a comment here"
+            	name="answerContent" style="height: 100px" maxlength="1000" required></textarea>
+        	 <label for="floatingTextarea2">답변을 입력하세요(1,000자 이내)</label>
+     	</div>
+     	<br />
+		<button type="submit" class="btn btn-info">확인</button>
 	</div>
 	</div>
 	</form>
-
-<%@ include file="./footer.jsp"%>
 </body>
 </html>
