@@ -28,6 +28,18 @@
 <body>
 <%@ include file="admin_navbar.jsp"%>
 <%
+	if (userID == null || !userID.equals("kingsaihong")) { %>
+	<script>
+	Swal.fire({
+		  icon: 'warning',
+		  title: "로그인이 필요한 페이지입니다"
+		})
+		setTimeout("location.href = 'login_tap.jsp'",1000);
+	</script>
+	<% 
+	return;
+	}
+
 	QnaDAO QnaDAO = new QnaDAO();
 	List<QnaDTO> questionList = QnaDAO.QuestionInfoList(); 
 
@@ -59,7 +71,7 @@
 					<td><input name="title"   value="<%=item.getTitle()%>" readonly></td>
 					<td><input name="content"   value="<%=item.getContent()%>" readonly></td>
 					<td><input name="date"   value="<%=item.getQuastDate()%>" readonly></td>
-					<td><button type="submit" class="btn btn-outline-dark">답변</button></td>
+					<td><button type="submit" class="btn btn-outline-dark" style="width: 100%;">답변</button></td>
 				</form>
 			</tr>
 	<%
@@ -69,6 +81,5 @@
 	</table>
 	
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-<%@ include file="./footer.jsp"%>
 </body>
 </html>

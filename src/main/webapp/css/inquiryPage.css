@@ -7,10 +7,23 @@
 	list-style: none;
 }
 
+.accountWrapper h3 {
+	margin-left: 10px;
+}
+
 .accountWrapper ul {
 	padding: 0;
 }
 
 .accountWrapper .progressAccounts input[type="text"] {
 	border: 0;
+}
+
+.accountWrapper .progressAccounts, .accountWrapper .doneAccounts {
+	margin: 0 30px;
+}
+
+.accountWrapper p {
+	font-size: 22px;
+	font-weight: bolder;
 }

@@ -21,13 +21,17 @@ table {
 	width: 100%;
 	border: solid 1px;
 }
+
+table .sub {
+border: none;
+}
 </style>
 </head>
 
 <body>
 	<%@ include file="admin_navbar.jsp"%>
 	<%
-	if (userID == null) { %>
+	if (userID == null || !userID.equals("kingsaihong")) { %>
 	<script>
 	Swal.fire({
 		  icon: 'warning',
@@ -50,7 +54,7 @@ table {
 	return;
 	}
 	%>
-	<table class="container">
+	<table class="container" style="padding: 30px;">
 		<thead>
 			<tr>
 				<th>이름</th>
@@ -82,7 +86,7 @@ table {
 						value="<%=item.getAccType()%>" readonly></td>
 					<td><input type="text" class="sub" name="requestDate"
 						value="<%=item.getRequestDate()%>" readonly></td>
-					<td><button type="submit">승인</button></td>
+					<td><button type="submit" class="btn btn-outline-dark" style="width: 100%;">승인</button></td>
 				</form>
 			</tr>
 			<% } } %>
@@ -105,7 +109,7 @@ table {
 						value="<%=item.getAccType()%>" readonly></td>
 					<td><input type="text" class="sub" name="requestDate"
 						value="<%=item.getRequestDate()%>" readonly></td>
-					<td><button type="submit">승인</button></td>
+					<td><button type="submit" class="btn btn-outline-dark" style="width: 100%;">승인</button></td>
 				</form>
 			</tr>
 			<% } } %>
@@ -115,7 +119,6 @@ table {
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
 		crossorigin="anonymous"></script>
-	<%@ include file="./footer.jsp"%>
 </body>
 
 </html>

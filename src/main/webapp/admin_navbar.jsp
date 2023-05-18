@@ -36,15 +36,14 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.all.min.js">
 </head>
 <body>
 	<%
-			String userID = null;
-			if (session.getAttribute("id") != null) { // null이 아니면 로그인한 것
-				userID = (String) session.getAttribute("id");
-			}
-		System.out.println(userID);
-		%>
+	String userID = null;
+	if (session.getAttribute("id") != null) { // null이 아니면 로그인한 것
+		userID = (String) session.getAttribute("id");
+	}
+	%>
 	<nav class="navbar navbar-expand-lg bg-body-tertiary">
 		<div class="container-fluid">
-			<a class="navbar-brand" href="./main.jsp">
+			<a class="navbar-brand">
 				<img src="./imgs/samjo-bank-low-resolution-logo-color-on-transparent-background (1).png" width="60px" height="60px"/>
 			</a>
 			<% if(userID != null) { %>

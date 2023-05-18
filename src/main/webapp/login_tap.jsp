@@ -22,7 +22,7 @@
 }
 
 .btnWrapper {
-margin-top: 100px;
+margin-top: 70px;
 }
 
 .btnWrapper button{
@@ -39,6 +39,7 @@ margin: 0 2px;
 	%>
 
 	<div id="container">
+	<h3>관리자 로그인</h3>
 		<form name="frmLogin" method="post" action="login_check.jsp"
 			encType="UTF-8">
 			<div class="mb-3">
@@ -54,8 +55,6 @@ margin: 0 2px;
 			</div>
 		</form>
 	</div>
-
-	<%@ include file="./footer.jsp"%>
 </body>
 
 </html>
