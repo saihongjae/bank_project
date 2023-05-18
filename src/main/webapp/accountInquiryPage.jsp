@@ -5,6 +5,7 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+
 <head>
 <meta charset="UTF-8">
 <link href="./css/footer.css" rel="stylesheet" type="text/css">
@@ -16,30 +17,28 @@
 <link rel="shortcut icon" type="image⁄x-icon" href="./imgs/bank.png">
 <title>삼조은행</title>
 </head>
+
 <body>
 	<%@ include file="navBar.jsp"%>
 	<%
-	if (session.getAttribute("id") == null) { // null이 아니면 로그인한 것
+	if (session.getAttribute("id") == null) { // null이 아니면 로그인한 것 
 		session.setAttribute("loc", request.getServletPath());
 	%>
 	<script>
-	Swal.fire({
-		  icon: 'warning',
-		  title: "로그인이 필요한 페이지입니다"
-	}).then((result)=>{
-		location.href = "./main_login.jsp";
-	})
+		Swal.fire({
+			icon: 'warning',
+			title: "로그인이 필요한 페이지입니다"
+		});
+		setTimeout('location.href = "./main_login.jsp"', 1200);
 	</script>
 	<%
 	return;
 	}
-
 	AccOpenManagementDAO amoDAO = new AccOpenManagementDAO();
 	List<AccOpenManagementDTO> amoList = amoDAO.selectProcessInfoList(userID);
 	List<AccOpenManagementDTO> amoList2 = amoDAO.selectDoneInfoList(userID);
 	List<AccOpenManagementDTO> amoList3 = amoDAO.selectDoneNormalInfoList(userID);
-	DecimalFormat df = new DecimalFormat("###,###");
-	
+
 	%>
 	<div class="accountWrapper">
 		<h3>계좌 조회</h3>
@@ -48,32 +47,36 @@
 				개설신청중인 계좌 <span>&#40;<%=amoList.size()%>&#41;
 				</span>
 			</p>
-			<% if (amoList.size() == 0) { %>
+			<%
+			if (amoList.size() == 0) {
+			%>
 			<p>개설신청중인 계좌가 없습니다.</p>
-			<% } else { %>
+			<%
+			} else {
+			%>
 			<ul style="margin: 20px;">
 				<%
 				for (AccOpenManagementDTO item : amoList) {
 				%>
 				<li style="margin-bottom: 10px;">
 					<form method="post" action="./accountInquiry_proc.jsp">
-						<label> 이름 <input type="text"
-							value="<%=item.getName()%>" name="name" readOnly />
-						</label>
-						<label> 계좌번호 <input type="text"
+						<label> 이름 <input type="text" value="<%=item.getName()%>"
+							name="name" readOnly />
+						</label> <label> 계좌번호 <input type="text"
 							value="<%=item.getAccNum()%>" name="accnum" readOnly />
 						</label> <label> 계좌유형 <input type="text"
 							value="<%=item.getAccType()%>" name="accType" readOnly />
 						</label> <label> 신청일 <input type="text"
-							value="<%=item.getRequestDate() %>" name="requestDate" readOnly />
+							value="<%=item.getRequestDate()%>" name="requestDate" readOnly />
 						</label>
-						<button type="submit" class="applyCancelBtn btn btn-danger">신청 취소</button>
+						<button type="submit" class="applyCancelBtn btn btn-danger">신청
+							취소</button>
 					</form>
 				</li>
-			<%
+				<%
 				}
-			}
-			%>
+				}
+				%>
 			</ul>
 		</div>
 		<div class="doneAccounts">
@@ -81,24 +84,26 @@
 				보유중인 계좌 <span>&#40;<%=amoList2.size() + amoList3.size()%>&#41;
 				</span>
 			</p>
-			<div class="accordion" id="accordionExample" style="margin: 20px; height: 100%; max-height: 400px; overflow-y : scroll;">
+			<div class="accordion" id="accordionExample"
+				style="margin: 20px; height: 100%; max-height: 400px; overflow-y: scroll;">
 				<ul>
 					<%
-					if (amoList2.size() == 0 && amoList3.size() == 0 ) {
+					if (amoList2.size() == 0 && amoList3.size() == 0) {
 					%>
 					<li>보유 중인 계좌가 없습니다.</li>
 					<%
 					} else {
 					if (amoList3.size() != 0) {
 						for (AccOpenManagementDTO item : amoList3) {
-							%>
+					%>
 					<li class="accordion-item">
 						<h2 class="accordion-header">
 							<button class="accordion-button" type="button"
 								data-bs-toggle="collapse" data-bs-target="#collapseOne"
 								aria-expanded="true" aria-controls="collapseOne">
-								<%=item.getAccType() %>
-								<%=item.getAccNum() %></button>
+								<%=item.getAccType()%>
+								<%=item.getAccNum()%>
+							</button>
 						</h2>
 						<div id="collapseOne" class="accordion-collapse collapse show"
 							aria-labelledby="headingOne" data-bs-parent="#accordionExample">
@@ -111,18 +116,19 @@
 						</div>
 					</li>
 					<%
-							}
+					}
 					}
 					if (amoList2.size() != 0) {
-						for (AccOpenManagementDTO item : amoList2) {
-							%>
+					for (AccOpenManagementDTO item : amoList2) {
+					%>
 					<li class="accordion-item">
 						<h2 class="accordion-header">
 							<button class="accordion-button" type="button"
 								data-bs-toggle="collapse" data-bs-target="#collapseOne"
 								aria-expanded="true" aria-controls="collapseOne">
 								<%=item.getAccType()%>
-								<%=item.getAccNum()%></button>
+								<%=item.getAccNum()%>
+							</button>
 						</h2>
 						<div id="collapseOne" class="accordion-collapse collapse show"
 							aria-labelledby="headingOne" data-bs-parent="#accordionExample">
@@ -136,12 +142,12 @@
 								<br /> 총 납입기간
 								<%=item.getTerm()%>
 								<br /> 월 납입금
-								<%=item.getMonthly() %>
+								<%=item.getMonthly()%>
 							</div>
 						</div>
 					</li>
 					<%
-							}
+					}
 					}
 					}
 					%>
@@ -196,4 +202,5 @@
 		</div>
 	</footer>
 </body>
+
 </html>

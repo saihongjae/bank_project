@@ -30,7 +30,7 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.all.min.js
 	int LoginCheckValue = dao.BankManagerLoginCheck(dto.getAdmin_id(), dto.getAdmin_pw());
 	
 		if (LoginCheckValue == 1) {
-			session.setAttribute("id", request.getParameter("id"));
+			session.setAttribute("adminId", request.getParameter("id"));
 %>
 			  <script>
 			  Swal.fire({

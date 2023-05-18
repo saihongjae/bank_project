@@ -8,8 +8,8 @@
 
 <head>
 <meta charset="UTF-8">
-<link rel="shortcut icon" type="image⁄x-icon" href="./imgs/bank.png">
-<title>삼조은행</title>
+<link rel="shortcut icon" type="image⁄x-icon" href="./imgs/lock.png">
+<title>삼조은행 관리자페이지</title>
 <style>
 * {
 	margin: 0;
@@ -31,7 +31,7 @@ border: none;
 <body>
 	<%@ include file="admin_navbar.jsp"%>
 	<%
-	if (userID == null || !userID.equals("kingsaihong")) { %>
+	if (adminID == null || !adminID.equals("kingsaihong")) { %>
 	<script>
 	Swal.fire({
 		  icon: 'warning',

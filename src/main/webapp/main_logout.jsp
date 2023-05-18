@@ -11,7 +11,7 @@
 	<%@ include file="navBar.jsp"%>
 	<% request.setCharacterEncoding("UTF-8"); %>
 	<%
-		session.invalidate();
+		session.removeAttribute("id");
 	%>
 	<script>
 	Swal.fire({
