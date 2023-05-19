@@ -17,6 +17,10 @@ function checkFormValidate() {
 		return false;
 	}
 	
+	 if (form.pw1.value.length !== 4 ) {
+		return false;
+	}
+	
     return true;
 }
 

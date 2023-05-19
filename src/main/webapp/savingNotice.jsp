@@ -73,7 +73,7 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.all.min.js
 			<span style="color: red;">*필수</span>
 			<span>삼조뱅크 자유적금 특약 (2)</span>
 			<label>
-				<input type="checkbox" name="chkbox1" class="consent1" required> 동의
+				<input type="checkbox" name="chkbox2" class="consent2" required> 동의
 			</label>
 		</div>
 	<p class="text">제10조 이자 이 예금의 이자는 상품유형에 따라 다음과 같이 적용합니다. (1) 정기적립식:
@@ -108,9 +108,9 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.all.min.js
 		</div>
 		<div class="pwInput">
 		<label> 신규 비밀번호 <input type="password" id="pw1"
-			name="pw1" placeholder="신규계좌 비밀번호" required class="form-control" maxLength="4">
+			name="pw1" placeholder="신규계좌 비밀번호" required class="form-control" minLength="4" maxLength="4">
 		</label><label> 신규 비밀번호 확인 <input type="password" id="pw2"
-			name="pw2" placeholder="신규계좌 비밀번호 확인" required class="form-control" maxLength="4">
+			name="pw2" placeholder="신규계좌 비밀번호 확인" required class="form-control" minLength="4" maxLength="4">
 		</label>
 		</div>
 		<p class="warningText1 text-danger" style="display: none;">비밀번호가

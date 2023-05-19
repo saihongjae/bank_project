@@ -129,7 +129,7 @@ public class accountTransferDAO {
 			conn = DBConnectionManager.getConnection();
 
 			// 쿼리문!
-			String sql = "SELECT bm.name FROM account_common ac, bank_member bm WHERE ac.ac_ssn = bm.ssn AND ac_accnum = ?";
+			String sql = "SELECT bm.name FROM account_common ac, bank_member bm WHERE ac.ac_ssn = bm.ssn AND ac.ac_accnum = ?";
 
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, accnum);

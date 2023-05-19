@@ -1,4 +1,3 @@
-<%@page import="java.text.DecimalFormat"%>
 <%@page import="bank.dto.AccOpenManagementDTO"%>
 <%@page import="bank.dao.AccOpenManagementDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -32,7 +31,7 @@
 	List<AccOpenManagementDTO> amoList = amoDAO.selectProcessInfoList(userID);
 	List<AccOpenManagementDTO> amoList2 = amoDAO.selectDoneInfoList(userID);
 	List<AccOpenManagementDTO> amoList3 = amoDAO.selectDoneNormalInfoList(userID);
-	DecimalFormat df = new DecimalFormat("###,###");
+
 	int normalAccCount=0;
 	%>
 	<div class="accountWrapper">

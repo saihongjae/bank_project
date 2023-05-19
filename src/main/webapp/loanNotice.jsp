@@ -109,7 +109,7 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.all.min.js">
 		<span style="color: red;">*필수</span>
 		<span>삼편한 직장인대출S 특약 (2)</span>
 		<label>
-		<input type="checkbox" name="chkbox1" class="consent1" required> 동의
+		<input type="checkbox" name="chkbox2" class="consent2" required> 동의
 		</label>
 	</div>
 			<p class="text">제 7 조 담보권 설정 ① 이 약정에 의한 채무를 담보하기 위하여 제 1 조에 표시된 (근)질권의 목적인 예금

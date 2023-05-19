@@ -20,7 +20,7 @@ if(atDAO.depositExecution1(request.getParameter("depositAmount"), request.getPar
 		<script>
 		Swal.fire({
 			  icon: 'success',
-			  title: "계좌이체를 완료하였습다."
+			  title: "계좌이체를 완료하였습니다."
 			})
 		  setTimeout("location.href = 'main.jsp'",1000);
 		</script>
@@ -30,7 +30,7 @@ if(atDAO.depositExecution1(request.getParameter("depositAmount"), request.getPar
 		<script>
 		Swal.fire({
 			  icon: 'error',
-			  title: "계좌이체를 실패하였습다."
+			  title: "계좌이체를 실패하였습니다."
 			})
 		  setTimeout("location.href = 'transferConfirmation.jsp'",1000);
 		</script>
@@ -41,7 +41,7 @@ if(atDAO.depositExecution1(request.getParameter("depositAmount"), request.getPar
 	<script>
 	Swal.fire({
 		  icon: 'error',
-		  title: "계좌이체를 실패하였습다."
+		  title: "계좌이체를 실패하였습니다."
 		})
 	  setTimeout("location.href = 'transferConfirmation.jsp'",1000);
 	</script>

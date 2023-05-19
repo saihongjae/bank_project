@@ -32,7 +32,7 @@
 	commonAccountDto.setPw(pw);
 	commonAccountDto.setSsn(ssn);
 	commonAccountDto.setCode("2");
-	commonAccountDto.setBalance(monthly); 
+	commonAccountDto.setBalance("0"); 
 	
 	CommonDslDAO commonDslDao=new CommonDslDAO();
 	CommonDslDTO commonDslDto=new CommonDslDTO();

@@ -12,7 +12,7 @@
 </head>
 <body>
 <%@ include file="navBar.jsp" %>
-<form action="depositExecution.jsp" method="post">
+
 
 <%
 accountTransferDAO atDAO = new accountTransferDAO();
@@ -31,6 +31,7 @@ if(balance < depositAmount){
 	  setTimeout("location.href = 'accountTransfer.jsp'",1000);
 	</script>
 	<%
+	return;
 }
 
 if(depositAmount <= 0){
@@ -43,6 +44,7 @@ if(depositAmount <= 0){
 	  setTimeout("location.href = 'accountTransfer.jsp'",1000);
 	</script>
 	<%
+return;
 }
 
 if(selectAcc.equals(depositAcc)){
@@ -55,6 +57,7 @@ if(selectAcc.equals(depositAcc)){
 	  setTimeout("location.href = 'accountTransfer.jsp'",1000);
 	</script>
 	<%
+return;
 }
 
 if(atDAO.accTransferCheck(request.getParameter("depositAcc"))==null){
@@ -67,6 +70,7 @@ if(atDAO.accTransferCheck(request.getParameter("depositAcc"))==null){
 	  setTimeout("location.href = 'accountTransfer.jsp'",1000);
 	</script>
 	<%
+return;
 }
 
 if(atDAO.pwcheck(request.getParameter("selectAcc"), request.getParameter("pw"))!=1){
@@ -79,9 +83,10 @@ if(atDAO.pwcheck(request.getParameter("selectAcc"), request.getParameter("pw"))!
 	  setTimeout("location.href = 'accountTransfer.jsp'",1000);
 	</script>
 	<%
+return;
 }
 %>
-
+<form action="depositExecution.jsp" method="post">
 출금계좌번호
 <input name="selectAcc" value="<%=request.getParameter("selectAcc")%>" readonly><br>
 

@@ -77,14 +77,14 @@ return;
 			<option value="yahoo.com">yahoo.com</option>
 		</select>
 	</div>
-	<div>
+	<div style="margin-bottom: 10px;">
 		<label for="inputPhone" class="form-label">휴대폰</label> 
 		<input type="tel" class="form-control" required maxLength="11"
 			name="phone" id="inputPhone" placeholder="연락처를 입력하세요" autoComplete="false">
 		<span>(-)없이 숫자만 입력해주세요</span>
 	</div>
-	<button id="signUpBtn" type="submit">회원가입</button>
-	<button id="cancelBtn" type="button">취소</button>
+	<button id="signUpBtn" type="submit" class="btn btn-success">회원가입</button>
+	<button id="cancelBtn" type="button" class="btn btn-outline-danger">취소</button>
 	</form>
 	</div>
 	<script type="text/javascript" src="./javascript/signUp.js"></script>
