@@ -10,7 +10,7 @@
 
 <head>
 <meta charset="UTF-8">
-<link rel="shortcut icon" type="image⁄x-icon" href="./imgs/bank.png">
+<link rel="shortcut icon" type="image⁄x-icon" href="./imgs/lock.png">
 <title>삼조은행 관리자페이지</title>
 <style>
 #container {

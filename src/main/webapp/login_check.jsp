@@ -12,7 +12,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="shortcut icon" type="image⁄x-icon" href="./imgs/bank.png">
+<link rel="shortcut icon" type="image⁄x-icon" href="./imgs/lock.png">
 <title>삼조은행</title>
 <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.min.css" rel="stylesheet">
 <script src="
