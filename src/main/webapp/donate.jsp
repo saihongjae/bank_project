@@ -6,10 +6,14 @@
 <meta charset="UTF-8">
 <link rel="shortcut icon" type="image⁄x-icon" href="./imgs/cash.png">
 <link href="./css/donate.css" rel="stylesheet" type="text/css">
+ <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    rel="stylesheet"/>
 <title>후원하기</title>
 </head>
-<body>
-	<h1 style="text-align: center;">지금 바로 후원하기</h1>
+<body style="background-image:url('./imgs/money.gif')">
+
+	<h1 class="animate__animated animate__bounce" style="text-align: center;">지금 바로 후원하기</h1>
+
 	<table id="alert-container">
 		<tbody>
 			<tr>
