@@ -8,6 +8,7 @@
 <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.all.min.js"></script>
 <link rel="shortcut icon" type="image⁄x-icon" href="./imgs/bank.png">
+<link href="./css/footer.css" rel="stylesheet" type="text/css">
 <title>삼조은행</title>
 </head>
 <body>
@@ -89,21 +90,70 @@ return;
 <form action="depositExecution.jsp" method="post">
 출금계좌번호
 <input name="selectAcc" value="<%=request.getParameter("selectAcc")%>" readonly><br>
+<br>
 
 입금계좌번호
 <input name="depositAcc" value="<%=request.getParameter("depositAcc")%>" readonly><br>
+<br>
 
 이체금액(원)
 <input name="depositAmount" value="<%=request.getParameter("depositAmount")%>" readonly><br>
+<br>
 
 받는분 예금주명
 <input name="name" value="<%=atDAO.accTransferCheck(request.getParameter("depositAcc"))%>" readonly><br>
+<br>
 
 <button>결제</button>
 		
 
 </form>
-	<%@ include file="./footer.jsp"%>
+	<footer class="footer" style="position: absolute; bottom: 0;">
+		<ul class="noticeLists">
+			<li>개인정보처리방침</li>
+			<li>신용정보활용체제</li>
+			<li>전자민원</li>
+			<li>사고신고</li>
+			<li>삼조지킴이</li>
+			<li>보호금융상품등록부</li>
+			<li>상품공시실</li>
+			<li>영업점안내</li>
+			<li>상담신청</li>
+			<li>웹접근성이용안내</li>
+			<li>위치기반서비스약관</li>
+		</ul>
+		<ul class="underNoticeLists">
+			<li>(주)삼조뱅크·최초롱·사업자번호 111-11-11111</li>
+			<li>고객센터 <span>1599-8000</span></li>
+			<li>평일 09:00 ~ 18:00 (은행휴무일 제외)</li>
+		</ul>
+		<div class="footerBottom">
+			<p class="copyRight">Copyright © Samjo Bank Korea. All Rights
+				Reserved.</p>
+			<ul class="snsBtns">
+				<li>
+					<button class="youtubeBtn" type="button">
+						<i class="fa-brands fa-youtube"></i>
+					</button>
+				</li>
+				<li>
+					<button class="fbBtn" type="button">
+						<i class="fa-brands fa-facebook"></i>
+					</button>
+				</li>
+				<li>
+					<button class="twitterBtn" type="button">
+						<i class="fa-brands fa-twitter"></i>
+					</button>
+				</li>
+				<li>
+					<button class="instaBtn" type="button">
+						<i class="fa-brands fa-instagram"></i></i>
+					</button>
+				</li>
+			</ul>
+		</div>
+	</footer>
 
 </body>
 </html>

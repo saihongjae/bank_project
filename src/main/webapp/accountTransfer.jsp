@@ -86,7 +86,7 @@
 		<button id="allBtn" type="button" value="0">전액</button>
 		<button id="zeroBtn" type="button" value="0">정정</button><br>
 		<br>
-		<input name="pw" type="text">계좌비밀번호 <br>
+		<input name="pw" type="password" maxLength="4" minLength="4">계좌비밀번호 <br>
 		<br>
 		<button class="btn btn-success">확인</button>
 	</form>

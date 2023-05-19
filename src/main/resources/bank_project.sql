@@ -12,6 +12,9 @@ CREATE TABLE bank_member (
     PRIMARY KEY(id, ssn)
 );
 
+INSERT INTO bank_member 
+VALUES ('이홍재', '0104171234567', 'saihong', 'VffCGdqif78TwWP5QNVZ6w==', 'king_sai@gmail.com', '01011111111', '2023/05/19');
+
 -----------------------------------------
 
 DROP TABLE bank_account_type;
@@ -93,6 +96,10 @@ CREATE TABLE account_common (
     ac_open_situation NUMBER(1) DEFAULT 0
 );
 
+INSERT INTO account_common
+VALUES (1, '4084150000001', '0000', '0104171234567', 0, '2023/05/19 11:42:55', '2023/05/19 11:42:59', null, 0, 1);
+
+UPDATE account_common SET ac_balance = 1000000 WHERE ac_code = 1 AND ac_accNum = '4084150000001';
 -----------------------------------------
 
 DROP TABLE customer_account_dsl;
@@ -103,6 +110,3 @@ CREATE TABLE customer_account_dsl (
     dsl_term NUMBER(2) NOT NULL,
     dsl_regularDate NUMBER(2) DEFAULT NULL
 );
-
---UPDATE account_common SET ac_balance = 100000;
-
